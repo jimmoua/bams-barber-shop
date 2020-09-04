@@ -1,11 +1,12 @@
 import { shallow } from "enzyme";
 import React from "react";
-import Home from "../components/Home";
+import Home from "../components/pages/Home";
+import HomeSection from "../components/HomeSection";
 
 describe("Home component", () => {
-  it("should render the text `Home Component`", () => {
-    const wrapper = shallow(<Home />);
-    const item = wrapper.find("#header");
-    expect(item.props().children).toEqual("Home Component");
+  const wrapper = shallow(<Home />);
+  it("renders a HomeSection component", () => {
+    expect(wrapper.find(HomeSection)).toHaveLength(1);
   });
+
 });
