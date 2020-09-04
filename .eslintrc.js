@@ -26,6 +26,16 @@ module.exports = {
       "error",
       2
     ],
+    "space-before-function-paren": ["error", "never"],
+    "space-before-blocks": ["error", "always"],
+    "comma-spacing": [
+      2
+    ],
+    "comma-dangle": ["error", "never"],
+    "object-curly-spacing": [
+      "error",
+      "always"
+    ],
     "linebreak-style": [
       "error",
       "unix"
@@ -34,16 +44,21 @@ module.exports = {
       "error",
       "double"
     ],
+    "jsx-quotes": [
+      2
+    ],
     "semi": [
       "error",
       "always"
-    ]
+    ],
+    "space-infix-ops": ["error", { "int32Hint": false }],
+    "no-multi-spaces": [2]
   },
   "settings": {
     "react": {
       "pragma": "React",
-      "version": "detect",
-    },
+      "version": "detect"
+    }
   },
   "overrides": [
     {

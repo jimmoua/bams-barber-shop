@@ -1,13 +1,13 @@
-import React from 'react';
-import '../../App.css'
-import PriceList from '../PriceList'
+import React from "react";
+import "../../App.css";
+import PriceList from "../PriceList";
 
-function Services(){
-    return(
-        <>
-            <PriceList/>
-        </>
-    );
+function Services() {
+  return(
+    <>
+      <PriceList/>
+    </>
+  );
 }
 
 export default Services;
