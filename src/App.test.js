@@ -1,9 +1,13 @@
-import React from 'react';
-import { render } from '@testing-library/react';
-import App from './App';
+import React from "react";
+import { shallow } from "enzyme";
+import App from "./App";
+import {
+  BrowserRouter as Router
+} from "react-router-dom";
 
-test('renders learn react link', () => {
-  const { getByText } = render(<App />);
-  const linkElement = getByText(/learn react/i);
-  expect(linkElement).toBeInTheDocument();
+describe("App", () => {
+  const wrapper = shallow(<App />);
+  it("Renders a React Router component", () => {
+    expect(wrapper.find(Router)).toHaveLength(1);
+  });
 });
