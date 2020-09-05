@@ -1,6 +1,6 @@
 import React from "react";
 import { shallow } from "enzyme";
-import App from "./App";
+import App from "../App";
 import {
   BrowserRouter as Router
 } from "react-router-dom";
