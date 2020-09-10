@@ -50,7 +50,9 @@ module.exports = {
     "semi": [
       "error",
       "always"
-    ]
+    ],
+    "space-infix-ops": ["error", { "int32Hint": false }],
+    "no-multi-spaces": [2]
   },
   "settings": {
     "react": {
