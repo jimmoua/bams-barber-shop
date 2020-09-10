@@ -26,6 +26,16 @@ module.exports = {
       "error",
       2
     ],
+    "space-before-function-paren": ["error", "never"],
+    "space-before-blocks": ["error", "always"],
+    "comma-spacing": [
+      2
+    ],
+    "comma-dangle": ["error", "never"],
+    "object-curly-spacing": [
+      "error",
+      "always"
+    ],
     "linebreak-style": [
       "error",
       "unix"
@@ -33,6 +43,9 @@ module.exports = {
     "quotes": [
       "error",
       "double"
+    ],
+    "jsx-quotes": [
+      2
     ],
     "semi": [
       "error",
@@ -42,8 +55,8 @@ module.exports = {
   "settings": {
     "react": {
       "pragma": "React",
-      "version": "detect",
-    },
+      "version": "detect"
+    }
   },
   "overrides": [
     {
