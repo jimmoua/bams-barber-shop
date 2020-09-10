@@ -1,7 +1,7 @@
 import React from "react";
 import "../App.css";
 
-function SignUp(){
+function SignUp() {
   return(
     <div>
       <h1>Register</h1>

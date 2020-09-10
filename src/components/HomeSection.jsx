@@ -5,18 +5,18 @@ import "./HomeSection.css" ;
 
 function HomeSection() {
   return (
-    <div className='home-container'>
+    <div className="home-container">
             
       <h1>BAMS BARBER SHOP</h1>
       <p>Come for the freshest trims!!</p>
-      <div className='home-btns'>
+      <div className="home-btns">
         <Button 
-          className='btns'
-          buttonStye='btn--outline'
-          buttonSize='btn--large'
+          className="btns"
+          buttonStye="btn--outline"
+          buttonSize="btn--large"
           onClick={console.log("hey")}
         >
-                         BOOK AN APPOINTMENT
+          BOOK AN APPOINTMENT
         </Button>
               
       </div>

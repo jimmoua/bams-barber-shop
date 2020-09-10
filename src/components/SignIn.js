@@ -1,7 +1,7 @@
 import React from "react";
 import "../App.css";
 
-function SignIn(){
+function SignIn() {
   return(
     <div>
       <h1>Login </h1>

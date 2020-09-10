@@ -2,7 +2,7 @@ import React from "react";
 import "../../App.css";
 import PriceList from "../PriceList";
 
-function Services(){
+function Services() {
   return(
     <>
       <PriceList/>

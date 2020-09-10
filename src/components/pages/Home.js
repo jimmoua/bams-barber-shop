@@ -2,7 +2,7 @@ import React from "react";
 import "../../App.css";
 import HomeSection from "../HomeSection";
 
-function Home(){
+function Home() {
   return(
     <>
       <HomeSection/>
