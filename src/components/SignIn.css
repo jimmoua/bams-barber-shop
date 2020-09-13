@@ -53,13 +53,6 @@ input::placeholder {
 
 
 
-.firstName {
-    margin-right :1%;
-}
-
-.lastName {
-    margin-left :1%;
-}
 
 
 .password {
@@ -88,8 +81,9 @@ input::placeholder {
 .loginAccount button {
     background-color: #519e8a;
     color:#fff;
+    border-radius: 20px;
     border: 2px solid #fff;
-    width:100%;
+    width:30%;
     margin-top: 1em;
     padding:8px 0px;
     font-size: 1em;
