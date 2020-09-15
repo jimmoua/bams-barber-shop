@@ -1,5 +1,7 @@
 <h1>Bam's Barber Shop</h1>
 
+![Test and Build](https://github.com/jimmoua/bams-barber-shop/workflows/Test%20and%20Build/badge.svg)
+
 This is the front-end to our senior capstone project.
 
 <h1>Table of Contents</h1>
