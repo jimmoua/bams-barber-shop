@@ -17,8 +17,6 @@ describe("App", () => {
   });
 
   it("has the proper routes and components", () => {
-    expect(wrapper.find(Switch).children()).toHaveLength(4);
-
     expect(wrapper.find(Switch).children().at(0).prop("path")).toEqual("/");
     expect(wrapper.find(Switch).children().at(0).prop("component")).toEqual(Home);
 
