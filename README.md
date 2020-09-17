@@ -1,68 +1,40 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<h1>Bam's Barber Shop</h1>
 
-## Available Scripts
+![Test and Build](https://github.com/jimmoua/bams-barber-shop/workflows/Test%20and%20Build/badge.svg)
 
-In the project directory, you can run:
+This is the front-end to our senior capstone project.
 
-### `npm start`
+<h1>Table of Contents</h1>
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+- [Running The Test Script](#running-the-test-script)
+- [Building](#building)
+- [Viewing Staging](#viewing-staging)
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+# Running The Test Script
+The test script `$ npm run test` invokes two script commands:
+1. `$ npm run jest`
+2. `$ npm run lint`
 
-### `npm test`
+# Building
+You can build the project with:
+```
+$ npm run build
+```
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+This build create a folder called `build` with all the assets the website will use.
 
-### `npm run build`
+and serve the build with
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+```
+$ serve -s build
+```
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+**You must have the `serve` program installed**. You can install it with `$ npm install -g serve`. This may require root privileges.
 
-### `npm run eject`
+# Viewing Staging
+The application is hosted via AWS Amplify. You can view the application in staging in the below url:
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+https://master.d1smlrwpipxh5g.amplifyapp.com/
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+In final deployment (production), we will have to purchase a domain name and route said domain to this this website.
