@@ -9,25 +9,6 @@ function SignUp() {
       <div className="form-wrapper">
         <h1>Create Account</h1>
         <form noValidate >
-          
-          <div className="firstName">
-            <label htmlFor="firstName">First Name</label>
-            <input type="text" 
-              className="" 
-              placeholder="First Name" 
-              name="FirstName"
-              noValidate/>
-          </div>
-
-          <div className="lastName">
-            <label htmlFor="lastName">Last Name</label>
-            <input type="text" 
-              className="" 
-              placeholder="Last Name" 
-              name="LastName"
-              noValidate
-            />
-          </div>
 
           <div className="email">
             <label htmlFor="email">Email</label>
@@ -43,10 +24,9 @@ function SignUp() {
             <label htmlFor="phone">Phone</label>
             <input type="tel" 
               className="" 
-              placeholder="Enter your phone number" 
+              placeholder="Enter your phone number (optional)" 
               pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
               name="phone"
-            
             />
           </div>
 
