@@ -1,5 +1,6 @@
 import React from "react";
 import axios from "axios";
+import apiUri from "../../helpers/apiUri";
 
 /**
  * @function Foo is a dummy component used for manual testing
@@ -15,7 +16,7 @@ const Foo = () => {
         <button type="submit"
           onClick={async(e) => {
             e.preventDefault();
-            const data = await axios.get("http://localhost:5000");
+            const data = await axios.get(apiUri);
             setHeader(data.data.message);
           }}
         >
