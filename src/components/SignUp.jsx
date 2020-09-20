@@ -2,21 +2,31 @@ import React from "react";
 import "../App.css";
 import "./SignUp.css";
 import { Link } from "react-router-dom";
+import useForm from "./useForm";
+import validate from "./validateInfo";
 
-function SignUp() {
+const SignUp = () => {
+  const { handleChange, values, handleSubmit, errors } = useForm(
+    
+    validate
+  );
+
   return(
     <div className="wrapper">
       <div className="form-wrapper">
         <h1>Create Account</h1>
-        <form noValidate >
+        <form noValidate onSubmit={handleSubmit}>
           
           <div className="firstName">
             <label htmlFor="firstName">First Name</label>
             <input type="text" 
               className="" 
               placeholder="First Name" 
-              name="FirstName"
+              name="firstName"
+              value={values.firstName}
+              onChange={handleChange}
               noValidate/>
+            {errors.firstName && <p>{errors.firstName}</p>}
           </div>
 
           <div className="lastName">
@@ -24,9 +34,12 @@ function SignUp() {
             <input type="text" 
               className="" 
               placeholder="Last Name" 
-              name="LastName"
+              name="lastName"
+              value={values.lastName}
+              onChange={handleChange}
               noValidate
             />
+            {errors.lastName && <p>{errors.lastName}</p>}
           </div>
 
           <div className="email">
@@ -35,8 +48,11 @@ function SignUp() {
               className="" 
               placeholder="Enter your email address" 
               name="email"
+              value={values.email}
+              onChange={handleChange}
               noValidate
             />
+            {errors.email && <p>{errors.email}</p>}
           </div>
 
           <div className="phone">
@@ -46,8 +62,10 @@ function SignUp() {
               placeholder="Enter your phone number" 
               pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
               name="phone"
-            
+              value={values.phone}
+              onChange={handleChange}
             />
+            {errors.phone && <p>{errors.phone}</p>}
           </div>
 
           <div className="password">
@@ -56,8 +74,11 @@ function SignUp() {
               className="" 
               placeholder="Enter a password" 
               name="password"
+              value={values.password}
+              onChange={handleChange}
               noValidate
             />
+            {errors.password && <p>{errors.password}</p>}
           </div>
 
           <div className="createAccount">
@@ -72,7 +93,7 @@ function SignUp() {
       </div>
     </div>
   );
-}
+};
 
 
 export default SignUp;

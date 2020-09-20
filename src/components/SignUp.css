@@ -45,11 +45,22 @@ input {
     border: 1px solid #cfcfcf;
 }
 
+input:hover {
+    cursor: pointer;
+    border-color: #508CA4;
+  }
+
 input::placeholder {
     font-size: 1.2em;
     font-weight:lighter;
     color:#999;
 }
+
+.form-wrapper p {
+    font-size: 0.8rem;
+    margin-top: 0.5rem;
+    color: #f00e0e;
+  }
 
 
 
