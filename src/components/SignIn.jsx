@@ -2,13 +2,20 @@ import React from "react";
 import "../App.css";
 import "./SignIn.css";
 import { Link } from "react-router-dom";
+import useForm from "./useForm";
+import validate from "./validateInfo";
 
-function SignIn() {
+// eslint-disable-next-line react/prop-types
+const SignIn = ({ submitForm }) => {
+  const { handleChange, values, handleSubmit, errors } = useForm(
+    submitForm,
+    validate
+  );
   return(
     <div className="wrapper">
       <div className="form-wrapper">
         <h1>SIGN IN</h1>
-        <form noValidate >
+        <form noValidate onSubmit={handleSubmit}>
           
           
           <div className="email">
@@ -17,8 +24,11 @@ function SignIn() {
               className="" 
               placeholder="Enter your email address" 
               name="email"
+              value={values.email}
+              onChange={handleChange}
               noValidate
             />
+            {errors.email && <p>{errors.email}</p>}
           </div>
 
            
@@ -29,6 +39,8 @@ function SignIn() {
               className="" 
               placeholder="Enter a password" 
               name="password"
+              value={values.password}
+              onChange={handleChange}
               noValidate
             />
           </div>
@@ -45,6 +57,6 @@ function SignIn() {
       </div>
     </div>
   );
-}
+};
 
 export default SignIn;
