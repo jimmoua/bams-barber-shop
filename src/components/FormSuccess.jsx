@@ -8,7 +8,7 @@ function FormSuccess() {
     <div className="wrapper">
       <div className="form-wrapper">
         <h3>Thank you for joining us!</h3>
-        <img className="form-image" src="formsuccess.jpg" alt="image" />
+        <img className="form-image" src="formsuccess.jpg" alt="form-success"/>
         <Link to ="/Login" style={{ textDecoration: "none" }}>
           <div className="gotologin">
           
