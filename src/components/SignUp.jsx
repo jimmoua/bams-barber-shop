@@ -5,9 +5,12 @@ import { Link } from "react-router-dom";
 import useForm from "./useForm";
 import validate from "./validateInfo";
 
-const SignUp = () => {
+
+
+// eslint-disable-next-line react/prop-types
+const SignUp = ({ submitForm }) => {
   const { handleChange, values, handleSubmit, errors } = useForm(
-    
+    submitForm,
     validate
   );
 
@@ -82,7 +85,11 @@ const SignUp = () => {
           </div>
 
           <div className="createAccount">
-            <button type="submit"> Create an Account</button>
+            <button type="submit"
+              
+            > Create an Account</button>
+
+
             <Link to ="/Login" style={{ textDecoration: "none" }}>
               <small>Already Have an Account? Log in</small>
             </Link>
