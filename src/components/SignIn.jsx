@@ -44,6 +44,7 @@ const SignIn = ({ submitForm }) => {
               onChange={handleChange}
               noValidate
             />
+            {errors.password && <p>{errors.password}</p>}
           </div>
 
           <div className="loginAccount">
