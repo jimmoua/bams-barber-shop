@@ -2,12 +2,9 @@ import react from "react";
 import axios from "axios";
 
 
-const useForm = (callback, validate) => {
+const useFormSignIn = (callback, validate) => {
   const [values, setValues] = react.useState({
-    firstName: "",
-    lastName: "",
     email: "",
-    phone: "",
     password: ""
   });
 
@@ -49,4 +46,4 @@ const useForm = (callback, validate) => {
   return { handleChange, values, handleSubmit, errors };
 };
 
-export default useForm;
+export default useFormSignIn;
