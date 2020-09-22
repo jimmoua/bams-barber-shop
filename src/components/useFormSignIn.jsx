@@ -23,7 +23,7 @@ const useFormSignIn = (callback, validate) => {
     e.preventDefault();
 
     
-    axios.post("https://jsonplaceholder.typicode.com/shiddarthbista/fakedb/posts/", { values })
+    axios.post("/api/login", { values })
       .then(res => {
         console.log(res);
         console.log(res.data);

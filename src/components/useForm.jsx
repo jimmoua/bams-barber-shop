@@ -26,7 +26,7 @@ const useForm = (callback, validate) => {
     e.preventDefault();
 
     
-    axios.post("https://jsonplaceholder.typicode.com/shiddarthbista/fakedb/posts/", { values })
+    axios.post("/api/register", { values })
       .then(res => {
         console.log(res);
         console.log(res.data);
