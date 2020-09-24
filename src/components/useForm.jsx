@@ -1,5 +1,6 @@
 import react from "react";
 import axios from "axios";
+import apiUri from "../helpers/apiUri";
 
 
 const useForm = (callback, validate) => {
@@ -27,7 +28,7 @@ const useForm = (callback, validate) => {
     e.preventDefault();
 
     
-    axios.post("/api/register", { values })
+    axios.post(`${apiUri}/api/register`, { values })
       .then(res => {
         console.log(res);
         console.log(res.data);
