@@ -8,7 +8,8 @@ const useForm = (callback, validate) => {
     lastName: "",
     email: "",
     phone: "",
-    password: ""
+    password1: "",
+    password2: ""
   });
 
   const [errors, setErrors] = react.useState({});
