@@ -5,8 +5,6 @@ import apiUri from "../helpers/apiUri";
 
 const useForm = (callback, validate) => {
   const [values, setValues] = react.useState({
-    firstName: "",
-    lastName: "",
     email: "",
     phone: "",
     password1: "",

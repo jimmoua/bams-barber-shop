@@ -6,7 +6,7 @@ import apiUri from "../helpers/apiUri";
 const useFormSignIn = (callback, validate) => {
   const [values, setValues] = react.useState({
     email: "",
-    password1: ""
+    password: ""
   });
 
   const [errors, setErrors] = react.useState({});
@@ -20,13 +20,12 @@ const useFormSignIn = (callback, validate) => {
     });
   };
 
-  const handleSubmit = e => {
+  const handleSubmit = async(e) => {
     e.preventDefault();
-
     
-    axios.post(`${apiUri}/api/login`, { values })
+    await axios.post(`${apiUri}/api/login`, values)
       .then(res => {
-        console.log(res);
+        console.log(res.status);
         console.log(res.data);
       });
 
