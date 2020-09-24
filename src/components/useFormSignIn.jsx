@@ -6,7 +6,7 @@ import apiUri from "../helpers/apiUri";
 const useFormSignIn = (callback, validate) => {
   const [values, setValues] = react.useState({
     email: "",
-    password: ""
+    password1: ""
   });
 
   const [errors, setErrors] = react.useState({});
