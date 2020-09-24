@@ -84,6 +84,21 @@ const SignUp = ({ submitForm }) => {
             {errors.password && <p>{errors.password}</p>}
           </div>
 
+          <div className="password2">
+            <label htmlFor="password2">Confirm your password</label>
+            <input type="password" 
+              className="" 
+              placeholder="Confirm your password" 
+              name="password2"
+              value={values.password2}
+              onChange={handleChange}
+              noValidate
+            />
+            {errors.password2 && <p>{errors.password2}</p>}
+          </div>
+
+          
+
           <div className="createAccount">
             <button type="submit"
               
