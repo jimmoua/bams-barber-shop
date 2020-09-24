@@ -24,7 +24,7 @@ form {
     flex-wrap: wrap;
 }
 
-.form-wrapper >h1 {
+.form-wrapper >h1 ,.form-wrapper >h3 {
     text-align: center;
     width: 100%;
     color: #111;
@@ -76,7 +76,8 @@ input::placeholder {
 .lastName,
 .email,
 .phone,
-.password {
+.password1,
+.password2 {
     display: flex;
     flex-direction: column;
     margin-bottom: 15px;
@@ -88,7 +89,8 @@ input::placeholder {
 }
 
 .email,
-.password,
+.password1,
+.password2,
 .phone{
     width:100%;
 }
@@ -122,4 +124,32 @@ input::placeholder {
 .createAccount small {
     font-weight:lighter;
 }
+
+.gotologin {
+    width:100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.gotologin button {
+    background-color: #519e8a;
+    color:#fff;
+    border: 2px solid #fff;
+    width:40%;
+    margin-top: 1em;
+    padding:8px 0px;
+    font-size: 1em;
+    font-weight: lighter;
+    letter-spacing: 1px;
+    margin-bottom: 0.25em;
+    border-radius:25px;
+}
+
+.gotologin button:hover {
+    color: #5198ea;
+    background-color: #fff;
+    border: 2px solid #519e8a;
+}
+
 

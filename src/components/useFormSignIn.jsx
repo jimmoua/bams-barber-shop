@@ -3,12 +3,10 @@ import axios from "axios";
 import apiUri from "../helpers/apiUri";
 
 
-const useForm = (callback, validate) => {
+const useFormSignIn = (callback, validate) => {
   const [values, setValues] = react.useState({
     email: "",
-    phone: "",
-    password1: "",
-    password2: ""
+    password: ""
   });
 
   const [errors, setErrors] = react.useState({});
@@ -24,20 +22,16 @@ const useForm = (callback, validate) => {
 
   const handleSubmit = async(e) => {
     e.preventDefault();
-    await axios.post(`${apiUri}/api/register`, {
-      email: values.email,
-      password1: values.password1,
-      password2: values.password2
-    }, {
-      headers: {
-        "content-type": "application/json"
-      }
-    }).then(response => {
-      console.log(`Status is: ${response.status}`);
-      console.log(response.data);
-    });
+    
+    await axios.post(`${apiUri}/api/login`, values)
+      .then(res => {
+        console.log(res.status);
+        console.log(res.data);
+      });
+
     setErrors(validate(values));
     setIsSubmitting(true);
+
   };
 
 
@@ -52,4 +46,4 @@ const useForm = (callback, validate) => {
   return { handleChange, values, handleSubmit, errors };
 };
 
-export default useForm;
+export default useFormSignIn;

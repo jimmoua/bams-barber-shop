@@ -5,9 +5,12 @@ import { Link } from "react-router-dom";
 import useForm from "./useForm";
 import validate from "./validateInfo";
 
-const SignUp = () => {
+
+
+// eslint-disable-next-line react/prop-types
+const SignUp = ({ submitForm }) => {
   const { handleChange, values, handleSubmit, errors } = useForm(
-    
+    submitForm,
     validate
   );
 
@@ -68,12 +71,12 @@ const SignUp = () => {
             {errors.phone && <p>{errors.phone}</p>}
           </div>
 
-          <div className="password">
-            <label htmlFor="password">Password</label>
+          <div className="password1">
+            <label htmlFor="password1">Password</label>
             <input type="password" 
               className="" 
               placeholder="Enter a password" 
-              name="password"
+              name="password1"
               value={values.password}
               onChange={handleChange}
               noValidate
@@ -81,8 +84,27 @@ const SignUp = () => {
             {errors.password && <p>{errors.password}</p>}
           </div>
 
+          <div className="password2">
+            <label htmlFor="password2">Confirm your password</label>
+            <input type="password" 
+              className="" 
+              placeholder="Confirm your password" 
+              name="password2"
+              value={values.password2}
+              onChange={handleChange}
+              noValidate
+            />
+            {errors.password2 && <p>{errors.password2}</p>}
+          </div>
+
+          
+
           <div className="createAccount">
-            <button type="submit"> Create an Account</button>
+            <button type="submit"
+              
+            > Create an Account</button>
+
+
             <Link to ="/Login" style={{ textDecoration: "none" }}>
               <small>Already Have an Account? Log in</small>
             </Link>
