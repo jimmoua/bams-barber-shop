@@ -76,7 +76,7 @@ input::placeholder {
 .lastName,
 .email,
 .phone,
-.password
+.password,
 .password2 {
     display: flex;
     flex-direction: column;
@@ -90,7 +90,7 @@ input::placeholder {
 
 .email,
 .password,
-.password2
+.password2,
 .phone{
     width:100%;
 }
