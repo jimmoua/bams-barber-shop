@@ -24,19 +24,22 @@ const useForm = (callback, validate) => {
     });
   };
 
-  const handleSubmit = e => {
+  const handleSubmit = async(e) => {
     e.preventDefault();
-
-    
-    axios.post(`${apiUri}/api/register`, { values })
-      .then(res => {
-        console.log(res);
-        console.log(res.data);
-      });
-
+    await axios.post(`${apiUri}/api/register`, {
+      email: values.email,
+      password1: values.password1,
+      password2: values.password2
+    }, {
+      headers: {
+        "content-type": "application/json"
+      }
+    }).then(response => {
+      console.log(`Status is: ${response.status}`);
+      console.log(response.data);
+    });
     setErrors(validate(values));
     setIsSubmitting(true);
-
   };
 
 
