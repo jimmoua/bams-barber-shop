@@ -2,12 +2,13 @@ import React from "react";
 import "../App.css";
 import "./SignIn.css";
 import { Link } from "react-router-dom";
-import useForm from "./useForm";
-import validate from "./validateInfo";
+import useFormSignIn from "./useFormSignIn";
+import validate from "./validateInfoSignIn";
+
 
 // eslint-disable-next-line react/prop-types
 const SignIn = ({ submitForm }) => {
-  const { handleChange, values, handleSubmit, errors } = useForm(
+  const { handleChange, values, handleSubmit, errors } = useFormSignIn(
     submitForm,
     validate
   );
@@ -43,6 +44,7 @@ const SignIn = ({ submitForm }) => {
               onChange={handleChange}
               noValidate
             />
+            {errors.password && <p>{errors.password}</p>}
           </div>
 
           <div className="loginAccount">
