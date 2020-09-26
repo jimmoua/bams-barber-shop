@@ -26,7 +26,7 @@ const useForm = (callback, validate) => {
     e.preventDefault();
     await axios.post(`${apiUri}/api/register`, {
       email: values.email,
-      password1: values.password,
+      password: values.password,
       password2: values.password2
     }, {
       headers: {
