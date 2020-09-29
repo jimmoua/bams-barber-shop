@@ -23,11 +23,12 @@ const useFormSignIn = (callback, validate) => {
   const handleSubmit = async(e) => {
     e.preventDefault();
     
-    await axios.post(`${apiUri}/api/login`, values)
-      .then(res => {
-        console.log(res.status);
-        console.log(res.data);
-      });
+    await axios.post(`${apiUri}/api/login`, values, {
+      withCredentials: true
+    }).then(res => {
+      console.log(res.status);
+      console.log(res.data);
+    });
 
     setErrors(validate(values));
     setIsSubmitting(true);
