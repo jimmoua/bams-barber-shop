@@ -17,7 +17,6 @@ function Navbar() {
     else {
       setButton(true);
     }
-        
   };
 
   useEffect(() => {
@@ -31,7 +30,7 @@ function Navbar() {
       <nav className="navbar">
         <div className="navbar-container">
           <Link to="/" className="navbar-logo" onClick={closeMobileMenu}>
-                        BAMS BARBER <i className="fa fa-scissors "/>
+            BAMS BARBER <i className="fa fa-scissors "/>
           </Link>
           <div className="menu-icon" onClick={handleClick}>
             <i className={click ? "fa fa-times" : "fa fa-bars"}/>
@@ -39,34 +38,33 @@ function Navbar() {
           <ul className={click ? "nav-menu active" : "nav-menu"}>
             <li className="nav-item">
               <Link to="/" className="nav-links" onClick={closeMobileMenu}>
-                                Home
+                Home
               </Link>
             </li>
             <li className="nav-item">
               <Link to="/services" className="nav-links" onClick={closeMobileMenu}>
-                                Services
+                Services
+              </Link>
+            </li>
+            <li className="nav-item">
+              <Link to="/scheduling" className="nav-links" onClick={closeMobileMenu}>
+                Schedule
               </Link>
             </li>
             <li className="nav-item">
               <Link to="/login" className="nav-links" onClick={closeMobileMenu}>
-                                Login
+                Login
               </Link>
             </li>
-                       
             <li className="nav-item">
               <Link to="/register" className="nav-links-mobile" onClick={closeMobileMenu}>
-                                Register
+                Register
               </Link>
             </li>
-                        
-
           </ul>
           {button && <Button buttonStyle="btn--outline">Register</Button>}
-
         </div>
       </nav>
-
-
     </>
   );
 }
