@@ -71,12 +71,12 @@ const SignUp = ({ submitForm }) => {
             {errors.phone && <p>{errors.phone}</p>}
           </div>
 
-          <div className="password1">
-            <label htmlFor="password1">Password</label>
+          <div className="password">
+            <label htmlFor="password">Password</label>
             <input type="password" 
               className="" 
               placeholder="Enter a password" 
-              name="password1"
+              name="password"
               value={values.password}
               onChange={handleChange}
               noValidate
