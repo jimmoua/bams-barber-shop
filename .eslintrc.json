@@ -1,4 +1,4 @@
-module.exports = {
+{
   "env": {
     "browser": true,
     "es2021": true,
@@ -22,6 +22,7 @@ module.exports = {
     "jest"
   ],
   "rules": {
+    "no-multiple-empty-lines": ["error", { "max": 1 }],
     "indent": [
       "error",
       2
@@ -68,4 +69,4 @@ module.exports = {
       }
     }
   ]
-};
+}

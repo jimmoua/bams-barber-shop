@@ -5,7 +5,6 @@ import { Link } from "react-router-dom";
 import useFormSignIn from "./useFormSignIn";
 import validate from "./validateInfoSignIn";
 
-
 // eslint-disable-next-line react/prop-types
 const SignIn = ({ submitForm }) => {
   const { handleChange, values, handleSubmit, errors } = useFormSignIn(
@@ -17,7 +16,6 @@ const SignIn = ({ submitForm }) => {
       <div className="form-wrapper">
         <h1>SIGN IN</h1>
         <form noValidate onSubmit={handleSubmit}>
-          
           
           <div className="email">
             <label htmlFor="email">Email</label>
@@ -31,8 +29,6 @@ const SignIn = ({ submitForm }) => {
             />
             {errors.email && <p>{errors.email}</p>}
           </div>
-
-           
 
           <div className="password">
             <label htmlFor="password">Password</label>

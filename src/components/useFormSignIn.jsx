@@ -2,7 +2,6 @@ import react from "react";
 import axios from "axios";
 import apiUri from "../helpers/apiUri";
 
-
 const useFormSignIn = (callback, validate) => {
   const [values, setValues] = react.useState({
     email: "",
@@ -34,7 +33,6 @@ const useFormSignIn = (callback, validate) => {
     setIsSubmitting(true);
 
   };
-
 
   react.useEffect(() => {
     if(Object.keys(errors).length === 0 && 
