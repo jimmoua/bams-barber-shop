@@ -22,17 +22,17 @@ export default class Scheduling extends Component {
     const data = res.data;
     
     const options = data.map(d => ({
-      "value" : d.id,
-      "label" : d.styleName,
-      "label2" : d.price,
-      "label3" : d.ect
+      "id" : d.id,
+      "styleName" : d.styleName,
+      "price" : d.price,
+      "ect" : d.ect
       
     }));
     this.setState({ selectOptions: options });
   }
 
   handleChange(e) {
-    this.setState({ id:e.value, styleName:e.label, price:e.label2, ect:e.label3 });
+    this.setState({ id:e.id, styleName:e.styleName, price:e.price, ect:e.ect });
   }
 
   componentDidMount() {
