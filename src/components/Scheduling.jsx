@@ -1,50 +1,93 @@
-import React from "react";
+import React, { Component } from "react";
 import "./SignIn.css";
 import "../App.css";
+import Select from "react-select";
+import axios from "axios";
 
-const Scheduling = () => {
+export default class Scheduling extends Component {
+ 
+  constructor(props) {
+    super(props);
+    this.state = {
+      selectOptions : [],
+      id: "",
+      styleName: " ",
+      price: " ",
+      ect: " "
+    };
+  }
 
-  const handleSubmit = async(e) => {
+  async getOptions() {
+    const res = await axios.get("https://my-json-server.typicode.com/shiddarthbista/fakedb/posts");
+    const data = res.data;
+    
+    const options = data.map(d => ({
+      "value" : d.id,
+      "label" : d.styleName,
+      "label2" : d.price,
+      "label3" : d.ect
+      
+    }));
+    this.setState({ selectOptions: options });
+  }
+
+  handleChange(e) {
+    this.setState({ id:e.value, styleName:e.label, price:e.label2, ect:e.label3 });
+  }
+
+  componentDidMount() {
+    this.getOptions();
+  }
+
+  async handleSubmit(e) {
     e.preventDefault();
-  };
+  }
 
-  return (   
-    <div className="wrapper">
-      <div className="form-wrapper">
-        <h1>Schedule an Appointment</h1>
-        <form noValidate onSubmit={handleSubmit}>
-        
-          <div className="date">
-            <label htmlFor="date">Date: </label>
-            <input type="date" 
-              className="" 
-              placeholder="Pick an appointment date" 
-              name="date"
-              noValidate
-            />
-          </div>
+  render() {
+    return (
+      <div className="wrapper">
+        <div className="form-wrapper">
+          <h1>Schedule an Appointment</h1>
+          <form noValidate onSubmit={this.handleSubmit}>
 
-          <div className="time">
-            <label htmlFor="time">Time: </label>
-            <input type="time" 
-              className="" 
-              placeholder="Choose a time" 
-              name="time"
-              noValidate
-            />
-         
-          </div>
+            <div className="date">
+              <label htmlFor="date">Date: </label>
+              <input type="date"
+                className=""
+                placeholder="Pick an appointment date"
+                name="date"
+                noValidate />
+            </div>
 
-          <div className="loginAccount">
-            <button type="submit"> Confirm</button>
-          
-          </div>
-        
-        </form>
+            <div className="time">
+              <label htmlFor="time">Time: </label>
+              <input type="time"
+                className=""
+                placeholder="Choose a time"
+                name="time"
+                min="5:00" max="09:00" required
+                noValidate />
 
+            </div>
+            <br></br>
+
+            <div className="hairstyle">
+              <Select options={this.state.selectOptions} placeholder="Select a hairstyle" onChange={this.handleChange.bind(this)} />
+              <p>Price: $<strong>{this.state.price}</strong></p>
+              <p>Time: <strong>{this.state.ect}</strong> mins</p>
+
+            </div>
+
+            <div className="loginAccount">
+              <button type="submit"> Confirm</button>
+
+            </div>
+
+          </form>
+
+        </div>
       </div>
-    </div>
-        
-  );
-};
-export default Scheduling;
+
+    );
+  }
+}

@@ -56,7 +56,17 @@ input::placeholder {
     padding-bottom:20px ;
 }
 
+.hairstyle {
+    display:flex;
+    flex-direction:column;
+    padding-top:20px;
+    padding-left:35px;
+    width:90%;
+}
 
+select:hover{
+    border: 2px solid #519e8a;
+}
 
 .password .time{
     display: flex;
@@ -103,5 +113,10 @@ input::placeholder {
 
 .loginAccount small {
     font-weight:lighter;
+}
+
+.hairstyle >p{
+    color:red;
+    
 }
 
