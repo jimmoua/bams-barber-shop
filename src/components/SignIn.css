@@ -51,11 +51,14 @@ input::placeholder {
     color:#999;
 }
 
+.date {
+    padding-top:15px;
+    padding-bottom:20px ;
+}
 
 
 
-
-.password {
+.password .time{
     display: flex;
     flex-direction: column;
     margin-bottom: 15px;

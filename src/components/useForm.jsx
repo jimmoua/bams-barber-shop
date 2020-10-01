@@ -2,7 +2,6 @@ import react from "react";
 import axios from "axios";
 import apiUri from "../helpers/apiUri";
 
-
 const useForm = (callback, validate) => {
   const [values, setValues] = react.useState({
     email: "",
@@ -39,7 +38,6 @@ const useForm = (callback, validate) => {
     setErrors(validate(values));
     setIsSubmitting(true);
   };
-
 
   react.useEffect(() => {
     if(Object.keys(errors).length === 0 && 
