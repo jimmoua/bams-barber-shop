@@ -22,10 +22,10 @@ export default function validateInfo(values) {
     errors.phone = "Enter a valid phone number";
   }
   
-  if (!values.password1) {
-    errors.password1 = "Password is required";
-  } else if (values.password1.length < 6) {
-    errors.password1 = "Password needs to be 6 characters or more";
+  if (!values.password) {
+    errors.password = "Password is required";
+  } else if (values.password.length < 6) {
+    errors.password = "Password needs to be 6 characters or more";
   }
 
   if (!values.password2) {
