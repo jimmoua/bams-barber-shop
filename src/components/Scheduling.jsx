@@ -2,7 +2,6 @@ import React from "react";
 import "./SignIn.css";
 import "../App.css";
 
-
 const Scheduling = () => {
 
   const handleSubmit = async(e) => {
@@ -14,7 +13,6 @@ const Scheduling = () => {
       <div className="form-wrapper">
         <h1>Schedule an Appointment</h1>
         <form noValidate onSubmit={handleSubmit}>
-        
         
           <div className="date">
             <label htmlFor="date">Date: </label>
@@ -37,9 +35,6 @@ const Scheduling = () => {
          
           </div>
 
-         
-
-
           <div className="loginAccount">
             <button type="submit"> Confirm</button>
           
@@ -49,7 +44,6 @@ const Scheduling = () => {
 
       </div>
     </div>
-
         
   );
 };

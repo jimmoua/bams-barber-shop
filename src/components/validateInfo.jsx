@@ -8,7 +8,6 @@ export default function validateInfo(values) {
   if (!values.lastName.trim()) {
     errors.lastName = "Last Name required";
   }
- 
   
   if (!values.email) {
     errors.email = "Email required";
@@ -33,7 +32,6 @@ export default function validateInfo(values) {
   } else if (values.password2 !== values.password1) {
     errors.password2 = "Passwords do not match";
   }
-  
   
   return errors;
 }
