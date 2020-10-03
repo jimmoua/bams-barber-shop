@@ -17,31 +17,6 @@ const SignUp = ({ submitForm }) => {
       <div className="form-wrapper">
         <h1>Create Account</h1>
         <form noValidate onSubmit={handleSubmit}>
-          
-          <div className="firstName">
-            <label htmlFor="firstName">First Name</label>
-            <input type="text" 
-              className="" 
-              placeholder="First Name" 
-              name="firstName"
-              value={values.firstName}
-              onChange={handleChange}
-              noValidate/>
-            {errors.firstName && <p>{errors.firstName}</p>}
-          </div>
-
-          <div className="lastName">
-            <label htmlFor="lastName">Last Name</label>
-            <input type="text" 
-              className="" 
-              placeholder="Last Name" 
-              name="lastName"
-              value={values.lastName}
-              onChange={handleChange}
-              noValidate
-            />
-            {errors.lastName && <p>{errors.lastName}</p>}
-          </div>
 
           <div className="email">
             <label htmlFor="email">Email</label>
@@ -77,6 +52,7 @@ const SignUp = ({ submitForm }) => {
               name="password"
               value={values.password}
               onChange={handleChange}
+              required={true}
               noValidate
             />
             {errors.password && <p>{errors.password}</p>}
@@ -90,6 +66,7 @@ const SignUp = ({ submitForm }) => {
               name="password2"
               value={values.password2}
               onChange={handleChange}
+              required={true}
               noValidate
             />
             {errors.password2 && <p>{errors.password2}</p>}
