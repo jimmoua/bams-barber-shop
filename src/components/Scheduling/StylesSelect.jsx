@@ -17,7 +17,7 @@ const StylesSelect = ({ options, onChangeStyle }) => {
 };
 
 StylesSelect.propTypes = {
-  options: PropTypes.object.isRequired,
+  options: PropTypes.array.isRequired,
   onChangeStyle: PropTypes.func.isRequired
 };
 
