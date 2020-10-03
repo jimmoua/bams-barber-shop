@@ -18,10 +18,10 @@ const Scheduling = () => {
 
   const [stylesList, setStylesList] = React.useState([]);
   const [currStyle, setCurrStyle] = React.useState();
+  const [noSelectionSubmitFlag, setNoSelectionSubmitFlag] = React.useState(false);
 
   React.useEffect(() => {
     const fetchList = async() => {
-      console.log(`${apiUri}/api/styles`);
       let data;
       try {
         data = await (await axios.get(`${apiUri}/api/styles`)).data;
@@ -32,6 +32,16 @@ const Scheduling = () => {
     };
     fetchList();
   }, []);
+
+  const shouldDisplayMessageNoSelection = () => {
+    if(noSelectionSubmitFlag) {
+      return(
+        <React.Fragment>
+          <p>Please select a style!</p>
+        </React.Fragment>
+      );
+    }
+  };
 
   /**
    * @function getListOfStyles
@@ -92,6 +102,7 @@ const Scheduling = () => {
               options={getListOfStyles()}
               placeholder="Select a hairstyle"
               onChange={ev => {
+                if(noSelectionSubmitFlag) setNoSelectionSubmitFlag(false);
                 setCurrStyle(stylesList.filter(e => {
                   return ev.value === e.id;
                 })[0]);
@@ -100,11 +111,17 @@ const Scheduling = () => {
             {displayCurrSelectedInfo()}
           </div>
 
+          {shouldDisplayMessageNoSelection()}
+
           <div className="loginAccount">
             <button
               type="submit"
               onClick={() => {
-                console.log(currStyle);
+                if(!currStyle) {
+                  setNoSelectionSubmitFlag(true);
+                } else {
+                  console.log(currStyle);
+                }
               }}
             >
               Confirm
