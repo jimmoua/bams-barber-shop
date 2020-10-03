@@ -11,7 +11,7 @@ export default function validateInfo(values) {
   
   if (!values.email) {
     errors.email = "Email required";
-  } else if (!/\S+@\S+\.\S+/.test(values.email)) {
+  } else if (!/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/.test(values.email)) {
     errors.email = "Email address is invalid";
   }
 
