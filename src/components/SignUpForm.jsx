@@ -4,6 +4,7 @@ import "./SignUp.css";
 import { Link } from "react-router-dom";
 import useForm from "./useForm";
 import validate from "./validateInfo";
+import PropTypes from "prop-types";
 
 const SignUp = ({ submitForm }) => {
   const { handleChange, values, handleSubmit, errors } = useForm(
@@ -86,6 +87,10 @@ const SignUp = ({ submitForm }) => {
       </div>
     </div>
   );
+};
+
+SignUp.propTypes = {
+  submitForm: PropTypes.func.isRequired
 };
 
 export default SignUp;
