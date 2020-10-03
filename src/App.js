@@ -8,7 +8,7 @@ import Register from "./components/pages/Register";
 import Login from "./components/pages/Login";
 import Component404 from "./components/404/404";
 import Foo from "./components/component_testers/cors";
-import Scheduling from "./components/Scheduling";
+import Scheduling from "./components/Scheduling/Scheduling";
 
 function App() {
   return (

@@ -1,9 +1,9 @@
 import React from "react";
-import "./SignIn.css";
-import "../App.css";
-import Select from "react-select";
+import "./../SignIn.css";
+import "../../App.css";
 import axios from "axios";
-import apiUri from "../helpers/apiUri";
+import apiUri from "../../helpers/apiUri";
+import StylesSelect from "./StylesSelect";
 
 /**
  * @function Scheduling
@@ -55,6 +55,12 @@ const Scheduling = () => {
     }));
   };
 
+  /**
+   * @function displayCurrSelectedInfo
+   * 
+   * @description
+   * The function decides whether or not to display the message denoting user to choose a style.
+   */
   const displayCurrSelectedInfo = () => {
     if(!currStyle) {
       return (<React.Fragment></React.Fragment>);
@@ -66,7 +72,7 @@ const Scheduling = () => {
       </React.Fragment>
     );
   };
- 
+
   return (
     <div className="wrapper">
       <div className="form-wrapper">
@@ -98,16 +104,12 @@ const Scheduling = () => {
           <br></br>
 
           <div className="hairstyle">
-            <Select
-              options={getListOfStyles()}
-              placeholder="Select a hairstyle"
-              onChange={ev => {
-                if(noSelectionSubmitFlag) setNoSelectionSubmitFlag(false);
-                setCurrStyle(stylesList.filter(e => {
-                  return ev.value === e.id;
-                })[0]);
-              }}
-            />
+            <StylesSelect options={getListOfStyles()} onChangeStyle={(id) => {
+              if(noSelectionSubmitFlag) setNoSelectionSubmitFlag(false);
+              setCurrStyle(stylesList.filter(e => {
+                return id === e.id;
+              })[0]);
+            }} />
             {displayCurrSelectedInfo()}
           </div>
 
