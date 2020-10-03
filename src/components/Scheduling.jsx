@@ -3,6 +3,7 @@ import "./SignIn.css";
 import "../App.css";
 import Select from "react-select";
 import axios from "axios";
+import apiUri from "../helpers/apiUri";
 
 export default class Scheduling extends Component {
  
@@ -18,16 +19,21 @@ export default class Scheduling extends Component {
   }
 
   async getOptions() {
-    const res = await axios.get("https://my-json-server.typicode.com/shiddarthbista/fakedb/posts");
-    const data = res.data;
+    let data;
+    await axios.get(`${apiUri}/api/styles`)
+      .then(results => {
+        data = results.data;
+      }).catch(err => {
+        console.log(err);
+      });
     
-    const options = data.map(d => ({
-      "id" : d.id,
-      "styleName" : d.styleName,
-      "price" : d.price,
-      "ect" : d.ect
-      
+    const options = data.map(e => ({
+      id: e.id,
+      styleName: e.styleName,
+      price: e.price,
+      ect: e.ect
     }));
+
     this.setState({ selectOptions: options });
   }
 
