@@ -5,7 +5,6 @@ import { Link } from "react-router-dom";
 import useForm from "./useForm";
 import validate from "./validateInfo";
 
-// eslint-disable-next-line react/prop-types
 const SignUp = ({ submitForm }) => {
   const { handleChange, values, handleSubmit, errors } = useForm(
     submitForm,
