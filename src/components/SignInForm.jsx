@@ -1,9 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
+import apiUri from "../helpers/apiUri";
 import "../App.css";
 import "./SignIn.css";
-import apiUri from "../helpers/apiUri";
 
 /**
  * @function SignIn
