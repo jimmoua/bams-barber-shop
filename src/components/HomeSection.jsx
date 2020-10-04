@@ -14,11 +14,10 @@ function HomeSection() {
           className="btns"
           buttonStye="btn--outline"
           buttonSize="btn--large"
-          onClick={console.log("hey")}
+          linkTo="/register"
         >
           BOOK AN APPOINTMENT
         </Button>
-              
       </div>
     </div>
         
