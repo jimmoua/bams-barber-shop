@@ -94,6 +94,8 @@ const SignUp = () => {
             case 400:
               setErrorMsg(err.response.data.msg);
               break;
+            default:
+              break;
           }
         });
     }
