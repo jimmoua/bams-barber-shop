@@ -1,7 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import axios from "axios";
 import "../App.css";
 import "./SignIn.css";
+import apiUri from "../helpers/apiUri";
 
 /**
  * @function SignIn
@@ -14,9 +16,36 @@ const SignInForm = () => {
     password: ""
   });
 
+  const [errorMsg, setErrorMsg] = React.useState("");
+
+  /**
+   * @function handleFormSubmit
+   * 
+   * @param {Object} ev is an HTML event coming from onClick
+   * 
+   * @description
+   * Will post to server login information.
+   */
   const handleFormSubmit = (ev) => {
     ev.preventDefault();
-    alert(`${formData.email} ${formData.password}`);
+    axios.post(`${apiUri}/api/login`, formData, {
+      headers: {
+        "Content-Type": "application/json"
+      }
+    }).catch(errors => {
+      if(errors.response) {
+        switch(errors.response.status) {
+          case 401:
+            setErrorMsg("Wrong password or username.");
+            break;
+          case 404: 
+          default:
+            break;
+        }
+      } else {
+        setErrorMsg("Could not reach servers. Please try again later.");
+      }
+    });
   };
 
   return(
@@ -33,6 +62,7 @@ const SignInForm = () => {
               onChange={ev => {
                 setFormData({ ...formData, email: ev.target.value });
               }}
+              required
             />
           </div>
 
@@ -45,8 +75,13 @@ const SignInForm = () => {
               onChange={ev => {
                 setFormData({ ...formData, password: ev.target.value });
               }}
+              required
             />
           </div>
+
+          <p>
+            {errorMsg.length > 0 ? errorMsg : ""}
+          </p>
 
           <div className="loginAccount">
             <button type="submit"> Login</button>
