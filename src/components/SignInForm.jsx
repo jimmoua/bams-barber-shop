@@ -31,14 +31,21 @@ const SignInForm = () => {
     axios.post(`${apiUri}/api/login`, formData, {
       headers: {
         "Content-Type": "application/json"
-      }
+      },
+      withCredentials: true
+    }).then(results => {
+      // TODO: login state
+      console.log(results.status);
+      console.log(results.data);
     }).catch(errors => {
       if(errors.response) {
         switch(errors.response.status) {
           case 401:
             setErrorMsg("Wrong password or username.");
             break;
-          case 404: 
+          case 400:
+            setErrorMsg(errors.response.data);
+            break;
           default:
             break;
         }
