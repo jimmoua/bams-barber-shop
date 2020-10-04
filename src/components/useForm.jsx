@@ -6,7 +6,7 @@ const useForm = (callback, validate) => {
   const [values, setValues] = react.useState({
     email: "",
     phone: "",
-    password: "",
+    password1: "",
     password2: ""
   });
 
@@ -25,7 +25,7 @@ const useForm = (callback, validate) => {
     e.preventDefault();
     await axios.post(`${apiUri}/api/register`, {
       email: values.email,
-      password: values.password,
+      password1: values.password1,
       password2: values.password2
     }, {
       headers: {
