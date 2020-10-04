@@ -184,7 +184,7 @@ const SignUpForm = ({ submitForm }) => {
           <div className="createAccount">
             <button type="submit">Create an Account</button>
 
-            <Link to ="/Login" style={{ textDecoration: "none" }}>
+            <Link to ="/login" style={{ textDecoration: "none" }}>
               <small>Already Have an Account? Log in</small>
             </Link>
           </div>
