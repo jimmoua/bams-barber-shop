@@ -84,18 +84,22 @@ const SignUp = () => {
     if(noErrors) {
       await axios.post(`${apiUri}/api/register`, formData)
         .catch(err => {
-          switch(err.response.status) {
-            case 409:
-              setErrorMsg("A user with that email already exists!");
-              break;
-            case 500:
-              setErrorMsg("Something went wrong. Please refresh the page or try again later.");
-              break;
-            case 400:
-              setErrorMsg(err.response.data.msg);
-              break;
-            default:
-              break;
+          if(err.response) {
+            switch(err.response.status) {
+              case 409:
+                setErrorMsg("A user with that email already exists!");
+                break;
+              case 500:
+                setErrorMsg("Something went wrong. Please refresh the page or try again later.");
+                break;
+              case 400:
+                setErrorMsg(err.response.data.msg);
+                break;
+              default:
+                break;
+            }
+          } else {
+            setErrorMsg("An error occurred. Please try again later.");
           }
         });
     }
