@@ -2,10 +2,17 @@ import axios from "axios";
 import React from "react";
 import { Link } from "react-router-dom";
 import apiUri from "../helpers/apiUri";
+import PropTypes from "prop-types";
 import "../App.css";
 import "./SignUp.css";
 
-const SignUp = () => {
+/**
+ * @function SignUpForm
+ * 
+ * @description
+ * The form for registering
+ */
+const SignUpForm = ({ submitForm }) => {
   const [formData, setFormData] = React.useState({
     email: "",
     password1: "",
@@ -83,7 +90,9 @@ const SignUp = () => {
     }
     if(noErrors) {
       await axios.post(`${apiUri}/api/register`, formData)
-        .catch(err => {
+        .then(() => {
+          submitForm();
+        }).catch(err => {
           if(err.response) {
             switch(err.response.status) {
               case 409:
@@ -145,7 +154,7 @@ const SignUp = () => {
             <input
               type="password" 
               placeholder="Enter a password" 
-              name="password"
+              name="password1"
               value={formData.password}
               onChange={ev => {
                 setFormData({ ...formData, password1: ev.target.value });
@@ -186,4 +195,8 @@ const SignUp = () => {
   );
 };
 
-export default SignUp;
+SignUpForm.propTypes = {
+  submitForm: PropTypes.func.isRequired
+};
+
+export default SignUpForm;
