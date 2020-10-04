@@ -16,6 +16,7 @@ const SignInForm = () => {
 
   const handleFormSubmit = (ev) => {
     ev.preventDefault();
+    alert(`${formData.email} ${formData.password}`);
   };
 
   return(
