@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
-import apiUri from "../helpers/apiUri";
+import apiUri from "../api/apiUri";
 import "../App.css";
 import "./SignIn.css";
 

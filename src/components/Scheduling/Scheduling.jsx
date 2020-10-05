@@ -2,7 +2,7 @@ import React from "react";
 import "./../SignIn.css";
 import "../../App.css";
 import axios from "axios";
-import apiUri from "../../helpers/apiUri";
+import apiUri from "../../api/apiUri";
 import StylesSelect from "./StylesSelect";
 
 /**

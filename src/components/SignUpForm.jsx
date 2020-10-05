@@ -1,7 +1,7 @@
 import axios from "axios";
 import React from "react";
 import { Link } from "react-router-dom";
-import apiUri from "../helpers/apiUri";
+import apiUri from "../api/apiUri";
 import PropTypes from "prop-types";
 import "../App.css";
 import "./SignUp.css";

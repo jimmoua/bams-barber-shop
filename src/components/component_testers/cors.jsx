@@ -1,6 +1,6 @@
 import React from "react";
 import axios from "axios";
-import apiUri from "../../helpers/apiUri";
+import apiUri from "../../api/apiUri";
 
 /**
  * @function Foo is a dummy component used for manual testing
