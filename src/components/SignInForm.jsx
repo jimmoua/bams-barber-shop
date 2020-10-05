@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 import apiUri from "../api/apiUri";
 import "../App.css";
-import "./SignIn.css";
+import "./styles/SignIn.css";
 
 /**
  * @function SignIn

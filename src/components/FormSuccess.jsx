@@ -1,5 +1,5 @@
 import React from "react";
-import "./SignUp.css";
+import "./styles/SignUp.css";
 import { Link } from "react-router-dom" ;
 
 function FormSuccess() {
