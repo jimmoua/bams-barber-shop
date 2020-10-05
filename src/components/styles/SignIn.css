@@ -115,8 +115,6 @@ select:hover{
     font-weight:lighter;
 }
 
-.hairstyle >p{
-    color:red;
-    
+.hairstyle {
+    color: #555
 }
-
