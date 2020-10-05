@@ -5,7 +5,11 @@ import SignInForm from "../SignInForm";
 function Login() {
   return(
     <>
-      <SignInForm />
+      <div className="wrapper">
+        <div className="form-wrapper">
+          <SignInForm />
+        </div>
+      </div>
     </>
   );
 }
