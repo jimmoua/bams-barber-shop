@@ -31,7 +31,7 @@
     "eject": "react-scripts eject",
     "lint": "eslint --ext js,jsx .",
     "lint:style": "stylelint \"**/*.css\"",
-    "test": "npm run lint && npm run jest",
+    "test": "npm run lint && npm run jest && npm run lint:style",
     "dev": "concurrently \"npm run start\" \"cd ../bams_barber_shop && npm run dev\""
   },
   "eslintConfig": {
