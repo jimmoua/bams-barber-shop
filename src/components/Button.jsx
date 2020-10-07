@@ -31,7 +31,7 @@ const Button = ({
   const checkButtonSize = SIZES.includes(buttonSize) ? buttonSize : SIZES[0];
 
   return (
-    <Link to={linkTo} className="btn-mobile">
+    <Link to={linkTo || "#"} className="btn-mobile">
       <button
         className={`btn ${checkButtonStyle} ${checkButtonSize}`}
         onClick={onClick}
@@ -44,7 +44,7 @@ const Button = ({
 
 Button.propTypes = {
   children: PropTypes.string.isRequired,
-  linkTo: PropTypes.string.isRequired,
+  linkTo: PropTypes.string,
   onClick: PropTypes.func,
   buttonStyle: PropTypes.string,
   buttonSize: PropTypes.string
