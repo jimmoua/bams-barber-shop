@@ -34,7 +34,7 @@ function ServiceList({ serviceList, displayScheduleNow }) {
 
 ServiceList.propTypes = {
   displayScheduleNow: PropTypes.bool,
-  serviceList: PropTypes.array.isRequired
+  serviceList: PropTypes.array
 };
 
 export default ServiceList;
