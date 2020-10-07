@@ -1,10 +1,10 @@
 import React from "react";
-import PriceCard from "./PriceCard";
+import ServiceCard from "./ServiceCard";
 import axios from "axios";
 import apiUri from "../api/apiUri";
 import styles from "./styles/Services.module.css";
 
-function PriceList() {
+function ServiceList() {
   const [cardList, setCardList] = React.useState([]);
   React.useEffect(() => {
     const fetchList = async() => {
@@ -13,8 +13,7 @@ function PriceList() {
           const list = [];
           response.data.forEach(e => {
             list.push(
-              <PriceCard
-                className={styles.serviceCard}
+              <ServiceCard
                 key={e.id}
                 haircut={{
                   name: e.styleName,
@@ -36,4 +35,4 @@ function PriceList() {
   );
 }
 
-export default PriceList;
+export default ServiceList;

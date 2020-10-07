@@ -1,11 +1,11 @@
 import React from "react";
-import PriceList from "../PriceList";
+import ServiceList from "../ServiceList";
 import styles from "../styles/Services.module.css";
 
 function Services() {
   return(
     <div className={styles.servicePage}>
-      <PriceList />
+      <ServiceList />
     </div>
   );
 }
