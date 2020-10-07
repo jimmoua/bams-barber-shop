@@ -22,14 +22,6 @@ const Scheduling = () => {
   const [step, setStep] = React.useState(0);
   const [stepComponent, setStepComponent] = React.useState(<ClipLoader />);
 
-  // TODO: replace with their appropriate components later.
-  const stepComponentMap = [
-    <ServiceList key={0} serviceList={serviceList} displayScheduleNow={false} />,
-    <ClipLoader key={1} />,
-    <ClipLoader key={2} />,
-    <ClipLoader key={3} />
-  ];
-
   React.useEffect(() => {
     // Define a function to fetch the data from our API
     const fetchData = async() => {
@@ -39,6 +31,14 @@ const Scheduling = () => {
         });
     };
 
+    // TODO: replace with their appropriate components later.
+    const stepComponentMap = [
+      <ServiceList key={0} serviceList={serviceList} displayScheduleNow={false} />,
+      <ClipLoader key={1} />,
+      <ClipLoader key={2} />,
+      <ClipLoader key={3} />
+    ];
+
     // Determine the which component to render based on which step we are in.
     setStepComponent(stepComponentMap[step]);
 
@@ -46,7 +46,6 @@ const Scheduling = () => {
     // Otherwise, we will be infinitely looping the useEffect.
     if(!serviceList) {
       fetchData();
-      console.log("hello");
     }
   }, [serviceList, step]);
 
