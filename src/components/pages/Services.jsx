@@ -5,6 +5,7 @@ import styles from "../styles/Services.module.css";
 function Services() {
   return(
     <div className={styles.servicePage}>
+      <h1>Services Offered</h1>
       <ServiceList />
     </div>
   );
