@@ -19,7 +19,8 @@ function PriceList() {
                   price: e.price,
                   time: e.ect
                 }}
-              />);
+              />
+            );
           });
           setCardList(list);
         });
