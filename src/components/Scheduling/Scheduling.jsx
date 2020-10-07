@@ -1,7 +1,11 @@
 import React from "react";
 import axios from "axios";
 import apiUri from "../../api/apiUri";
-import StylesSelect from "./StylesSelect";
+import { Step, Stepper } from "react-form-stepper";
+import ServiceList from "../ServiceList";
+import ClipLoader from "react-spinners/ClipLoader";
+import Button from "../Button";
+import styles from "../styles/Scheduling.module.css";
 
 /**
  * @function Scheduling
@@ -14,124 +18,66 @@ import StylesSelect from "./StylesSelect";
  */
 const Scheduling = () => {
 
-  const [stylesList, setStylesList] = React.useState([]);
-  const [currStyle, setCurrStyle] = React.useState();
-  const [noSelectionSubmitFlag, setNoSelectionSubmitFlag] = React.useState(false);
+  const [serviceList, setServiceList] = React.useState([]);
+  const [step, setStep] = React.useState(0);
+  const [stepComponent, setStepComponent] = React.useState(null);
 
   React.useEffect(() => {
-    const fetchList = async() => {
-      let data;
-      try {
-        data = await (await axios.get(`${apiUri}/api/styles`)).data;
-        setStylesList(data);
-      } catch(err) {
-        console.log(err);
-      }
+    const fetchData = async() => {
+      await axios.get(`${apiUri}/api/styles`)
+        .then(response => {
+          setServiceList(response.data);
+        });
     };
-    fetchList();
+    fetchData();
   }, []);
 
-  const shouldDisplayMessageNoSelection = () => {
-    if(noSelectionSubmitFlag) {
-      return(
-        <React.Fragment>
-          <p>Please select a style!</p>
-        </React.Fragment>
-      );
+  const renderStep = () => {
+    switch(step) {
+      case 0:
+        return <ServiceList serviceList={serviceList} displayScheduleNow={false} />;
+      case 1:
+        return <ClipLoader />;
+      case 2:
+        return <ClipLoader />;
+      case 3:
+        return <ClipLoader />;
+      default:
+        return <ClipLoader />;
     }
   };
 
-  /**
-   * @function getListOfStyles
-   * 
-   * @returns a data mapping of the styles
-   */
-  const getListOfStyles = () => {
-    return stylesList.map(e => ({
-      value: e.id,
-      label: e.styleName
-    }));
-  };
-
-  /**
-   * @function displayCurrSelectedInfo
-   * 
-   * @description
-   * The function decides whether or not to display the message denoting user to choose a style.
-   */
-  const displayCurrSelectedInfo = () => {
-    if(!currStyle) {
-      return (<React.Fragment></React.Fragment>);
+  const buttonContinueHandler = () => {
+    if(step >= 0 && step < 3) {
+      setStep(step + 1);
     }
-    return (
-      <React.Fragment>
-        <p>Price: $ <strong>{currStyle.price}</strong></p>
-        <p>Time: <strong>{currStyle.ect}</strong> mins</p>
-      </React.Fragment>
-    );
+  };
+  const buttonBackHandler = () => {
+    if(step > 0 && step < 4) {
+      setStep(step - 1);
+    }
   };
 
   return (
-    <div className="wrapper">
-      <div className="form-wrapper">
-        <h1>Schedule an Appointment</h1>
-        <form noValidate onSubmit={e => e.preventDefault()}>
-
-          <div className="date">
-            <label htmlFor="date">Date: </label>
-            <input
-              type="date"
-              className=""
-              placeholder="Pick an appointment date"
-              name="date"
-              noValidate
-            />
-          </div>
-
-          <div className="time">
-            <label htmlFor="time">Time: </label>
-            <input type="time"
-              className=""
-              placeholder="Choose a time"
-              name="time"
-              min="5:00" max="09:00" required
-              noValidate
-            />
-
-          </div>
-          <br></br>
-
-          <div className="hairstyle">
-            <StylesSelect options={getListOfStyles()} onChangeStyle={(id) => {
-              if(noSelectionSubmitFlag) setNoSelectionSubmitFlag(false);
-              setCurrStyle(stylesList.filter(e => {
-                return id === e.id;
-              })[0]);
-            }} />
-            {displayCurrSelectedInfo()}
-          </div>
-
-          {shouldDisplayMessageNoSelection()}
-
-          <div className="loginAccount">
-            <button
-              type="submit"
-              onClick={() => {
-                if(!currStyle) {
-                  setNoSelectionSubmitFlag(true);
-                } else {
-                  console.log(currStyle);
-                }
-              }}
-            >
-              Confirm
-            </button>
-          </div>
-        </form>
+    <React.Fragment>
+      <div className={styles.container}>
+        <h1 className="pageHeader">Scheduling</h1>
+        <Stepper activeStep={step} >
+          <Step label="Select a Service" onClick={() => setStep(0)} />
+          <Step label="Select a date" onClick={() => setStep(1)} />
+          <Step label="Additional Information" onClick={() => setStep(2)} />
+          <Step label="Review" onClick={() => setStep(3)} />
+        </Stepper>
       </div>
-    </div>
+      <div className={styles.schedulingBody}>
+        {renderStep()}
+      </div>
+      <div className={styles.buttonBody}>
+        <span className={styles.leftAlignedBtn}><Button onClick={buttonBackHandler}>Back</Button></span>
+        <span className={styles.rightAlignedBtn}><Button onClick={buttonContinueHandler}>Continue</Button></span>
+      </div>
+    </React.Fragment>
   );
-  
 };
 
 export default Scheduling;

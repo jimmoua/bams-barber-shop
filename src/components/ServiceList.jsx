@@ -1,36 +1,30 @@
 import React from "react";
 import ServiceCard from "./ServiceCard";
-import axios from "axios";
-import apiUri from "../api/apiUri";
 import styles from "./styles/Services.module.css";
 import PropTypes from "prop-types";
 
-function ServiceList({ displayScheduleNow }) {
+function ServiceList({ serviceList, displayScheduleNow }) {
   const [cardList, setCardList] = React.useState([]);
   React.useEffect(() => {
-    const fetchList = async() => {
-      await axios.get(`${apiUri}/api/styles`)
-        .then(response => {
-          const list = [];
-          response.data.forEach(e => {
-            list.push(
-              <ServiceCard
-                key={e.id}
-                haircut={{
-                  key: e.id,
-                  name: e.styleName,
-                  price: e.price,
-                  time: e.ect
-                }}
-                display={displayScheduleNow}
-              />
-            );
-          });
-          setCardList(list);
-        });
-    };
-    fetchList();
-  }, []);
+    if(serviceList) {
+      const l = [];
+      serviceList.forEach(e => {
+        l.push(
+          <ServiceCard
+            key={e.id}
+            haircut={{
+              key: e.id,
+              name: e.styleName,
+              price: e.price,
+              time: e.ect
+            }}
+            display={displayScheduleNow}
+          />
+        );
+        setCardList(l);
+      });
+    }
+  }, [serviceList, displayScheduleNow]);
   return(
     <div className={styles.serviceList}>
       {cardList}
@@ -39,7 +33,8 @@ function ServiceList({ displayScheduleNow }) {
 }
 
 ServiceList.propTypes = {
-  displayScheduleNow: PropTypes.bool
+  displayScheduleNow: PropTypes.bool,
+  serviceList: PropTypes.array.isRequired
 };
 
 export default ServiceList;
