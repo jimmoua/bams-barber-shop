@@ -5,7 +5,7 @@ import styles from "../styles/Services.module.css";
 function Services() {
   return(
     <div className={styles.servicePage}>
-      <h1>Services Offered</h1>
+      <h1 className="pageHeader">Services Offered</h1>
       <ServiceList displayScheduleNow={true}/>
     </div>
   );
