@@ -20,7 +20,7 @@ const SIZES = ["btn--medium", "btn--large"];
  * Returns an a link wrapper around an HTML button with certain styles and
  * attributes.
  */
-export const Button = ({
+const Button = ({
   onClick,
   buttonStyle,
   buttonSize,
@@ -49,3 +49,5 @@ Button.propTypes = {
   buttonStyle: PropTypes.string,
   buttonSize: PropTypes.string
 };
+
+export default Button;
