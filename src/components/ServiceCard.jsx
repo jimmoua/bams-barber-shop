@@ -11,7 +11,7 @@ function ServiceCard({
   haircut
 }) {
   return (
-    <div className={styles.serviceCard} >
+    <div key={haircut.key} className={styles.serviceCard} onClick={() => alert(haircut.key)}>
       <span className={styles.bookNow}>Book Now</span>
       <h2>{haircut.name}</h2>
       <span className={styles.servicePrice}>${haircut.price} &bull; {haircut.time} minutes</span>

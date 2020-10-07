@@ -16,6 +16,7 @@ function ServiceList() {
               <ServiceCard
                 key={e.id}
                 haircut={{
+                  key: e.id,
                   name: e.styleName,
                   price: e.price,
                   time: e.ect
