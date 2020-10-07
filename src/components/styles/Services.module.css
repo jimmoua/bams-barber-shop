@@ -5,7 +5,6 @@
 .serviceList {
   margin: auto;
   padding: 2px;
-  display: list-item;
   max-width: 600px;
   width: 60%;
 }
