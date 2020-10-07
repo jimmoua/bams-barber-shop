@@ -11,47 +11,63 @@ import styles from "../styles/Scheduling.module.css";
  * @function Scheduling
  * 
  * @description
- * The scheduling component
+ * The scheduling component. This component contains a plethora of other components.
  * 
  * @returns
  * React stuff
  */
 const Scheduling = () => {
 
-  const [serviceList, setServiceList] = React.useState([]);
+  const [serviceList, setServiceList] = React.useState();
   const [step, setStep] = React.useState(0);
-  const [stepComponent, setStepComponent] = React.useState(null);
+  const [stepComponent, setStepComponent] = React.useState(<ClipLoader />);
+
+  // TODO: replace with their appropriate components later.
+  const stepComponentMap = [
+    <ServiceList key={0} serviceList={serviceList} displayScheduleNow={false} />,
+    <ClipLoader key={1} />,
+    <ClipLoader key={2} />,
+    <ClipLoader key={3} />
+  ];
 
   React.useEffect(() => {
+    // Define a function to fetch the data from our API
     const fetchData = async() => {
       await axios.get(`${apiUri}/api/styles`)
         .then(response => {
           setServiceList(response.data);
         });
     };
-    fetchData();
-  }, []);
 
-  const renderStep = () => {
-    switch(step) {
-      case 0:
-        return <ServiceList serviceList={serviceList} displayScheduleNow={false} />;
-      case 1:
-        return <ClipLoader />;
-      case 2:
-        return <ClipLoader />;
-      case 3:
-        return <ClipLoader />;
-      default:
-        return <ClipLoader />;
+    // Determine the which component to render based on which step we are in.
+    setStepComponent(stepComponentMap[step]);
+
+    // This conditional if should allow us to perform the fetch just once.
+    // Otherwise, we will be infinitely looping the useEffect.
+    if(!serviceList) {
+      fetchData();
+      console.log("hello");
     }
-  };
+  }, [serviceList, step]);
 
+  /**
+   * @function buttonContinueHandler
+   * 
+   * @description
+   * Handles the actions for when the continue button is pressed
+   */
   const buttonContinueHandler = () => {
     if(step >= 0 && step < 3) {
       setStep(step + 1);
     }
   };
+
+  /**
+   * @function buttonBackHandler
+   * 
+   * @description
+   * Handles the action for when the back button is pressed
+   */
   const buttonBackHandler = () => {
     if(step > 0 && step < 4) {
       setStep(step - 1);
@@ -70,7 +86,7 @@ const Scheduling = () => {
         </Stepper>
       </div>
       <div className={styles.schedulingBody}>
-        {renderStep()}
+        {stepComponent}
       </div>
       <div className={styles.buttonBody}>
         <span className={styles.leftAlignedBtn}><Button onClick={buttonBackHandler}>Back</Button></span>
