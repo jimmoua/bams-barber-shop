@@ -1,12 +1,12 @@
 import React from "react";
-import "../../App.css";
 import PriceList from "../PriceList";
+import styles from "../styles/Services.module.css";
 
 function Services() {
   return(
-    <>
-      <PriceList/>
-    </>
+    <div className={styles.servicePage}>
+      <PriceList />
+    </div>
   );
 }
 

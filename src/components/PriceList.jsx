@@ -2,6 +2,7 @@ import React from "react";
 import PriceCard from "./PriceCard";
 import axios from "axios";
 import apiUri from "../api/apiUri";
+import styles from "./styles/Services.module.css";
 
 function PriceList() {
   const [cardList, setCardList] = React.useState([]);
@@ -13,6 +14,7 @@ function PriceList() {
           response.data.forEach(e => {
             list.push(
               <PriceCard
+                className={styles.serviceCard}
                 key={e.id}
                 haircut={{
                   name: e.styleName,
@@ -28,7 +30,7 @@ function PriceList() {
     fetchList();
   }, []);
   return(
-    <div className="price">
+    <div className={styles.serviceList}>
       {cardList}
     </div>
   );
