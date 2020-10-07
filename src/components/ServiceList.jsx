@@ -3,8 +3,9 @@ import ServiceCard from "./ServiceCard";
 import axios from "axios";
 import apiUri from "../api/apiUri";
 import styles from "./styles/Services.module.css";
+import PropTypes from "prop-types";
 
-function ServiceList() {
+function ServiceList({ displayScheduleNow }) {
   const [cardList, setCardList] = React.useState([]);
   React.useEffect(() => {
     const fetchList = async() => {
@@ -21,6 +22,7 @@ function ServiceList() {
                   price: e.price,
                   time: e.ect
                 }}
+                display={displayScheduleNow}
               />
             );
           });
@@ -35,5 +37,9 @@ function ServiceList() {
     </div>
   );
 }
+
+ServiceList.propTypes = {
+  displayScheduleNow: PropTypes.bool
+};
 
 export default ServiceList;

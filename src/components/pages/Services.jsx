@@ -6,7 +6,7 @@ function Services() {
   return(
     <div className={styles.servicePage}>
       <h1>Services Offered</h1>
-      <ServiceList />
+      <ServiceList displayScheduleNow={true}/>
     </div>
   );
 }

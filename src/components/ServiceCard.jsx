@@ -8,11 +8,12 @@ import styles from "./styles/Services.module.css";
  * @returns {React.Component} a react component that will be rendered to the DOM.
  */
 function ServiceCard({
-  haircut
+  haircut,
+  display = false
 }) {
   return (
     <div key={haircut.key} className={styles.serviceCard} onClick={() => alert(haircut.key)}>
-      <span className={styles.bookNow}>Schedule Now</span>
+      { display && <span className={styles.bookNow}>Schedule Now</span>}
       <h2>{haircut.name}</h2>
       <span className={styles.servicePrice}>${haircut.price} &bull; {haircut.time} minutes</span>
     </div>
@@ -20,7 +21,8 @@ function ServiceCard({
 }
 
 ServiceCard.propTypes = {
-  haircut: PropTypes.object.isRequired
+  haircut: PropTypes.object.isRequired,
+  display: PropTypes.bool
 };
 
 export default ServiceCard;
