@@ -1,9 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
-import apiUri from "../helpers/apiUri";
+import apiUri from "../api/apiUri";
 import "../App.css";
-import "./SignIn.css";
+import "./styles/SignIn.css";
 
 /**
  * @function SignIn
@@ -56,51 +56,48 @@ const SignInForm = () => {
   };
 
   return(
-    <div className="wrapper">
-      <div className="form-wrapper">
-        <h1>SIGN IN</h1>
-        <form onSubmit={ev => handleFormSubmit(ev)}>
-          <div className="email">
-            <label htmlFor="email">Email</label>
-            <input
-              type="email" 
-              placeholder="Enter your email address" 
-              name="email"
-              onChange={ev => {
-                setFormData({ ...formData, email: ev.target.value });
-              }}
-              required
-            />
-          </div>
+    <React.Fragment>
+      <h1>Sign in</h1>
+      <form onSubmit={ev => handleFormSubmit(ev)}>
+        <div className="email">
+          <label htmlFor="email">Email</label>
+          <input
+            type="email" 
+            placeholder="Enter your email address" 
+            name="email"
+            onChange={ev => {
+              setFormData({ ...formData, email: ev.target.value });
+            }}
+            required
+          />
+        </div>
 
-          <div className="password">
-            <label htmlFor="password">Password</label>
-            <input
-              type="password" 
-              placeholder="Enter a password" 
-              name="password"
-              onChange={ev => {
-                setFormData({ ...formData, password: ev.target.value });
-              }}
-              required
-            />
-          </div>
+        <div className="password">
+          <label htmlFor="password">Password</label>
+          <input
+            type="password" 
+            placeholder="Enter a password" 
+            name="password"
+            onChange={ev => {
+              setFormData({ ...formData, password: ev.target.value });
+            }}
+            required
+          />
+        </div>
 
-          <p>
-            {errorMsg.length > 0 ? errorMsg : ""}
-          </p>
+        <p>
+          {errorMsg.length > 0 ? errorMsg : ""}
+        </p>
 
-          <div className="loginAccount">
-            <button type="submit"> Login</button>
-            <Link to ="/register" style={{ textDecoration: "none" }}>
-              <small>Don&apos;t Have an account? Sign up</small>
-            </Link>
-          </div>
+        <div className="loginAccount">
+          <button type="submit"> Login</button>
+          <Link to ="/register" style={{ textDecoration: "none" }}>
+            <small>Don&apos;t Have an account? Sign up</small>
+          </Link>
+        </div>
           
-        </form>
-
-      </div>
-    </div>
+      </form>
+    </React.Fragment>
   );
 };
 
