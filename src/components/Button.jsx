@@ -20,7 +20,7 @@ const SIZES = ["btn--medium", "btn--large"];
  * Returns an a link wrapper around an HTML button with certain styles and
  * attributes.
  */
-export const Button = ({
+const Button = ({
   onClick,
   buttonStyle,
   buttonSize,
@@ -31,7 +31,7 @@ export const Button = ({
   const checkButtonSize = SIZES.includes(buttonSize) ? buttonSize : SIZES[0];
 
   return (
-    <Link to={linkTo} className="btn-mobile">
+    <Link to={linkTo || "#"} className="btn-mobile">
       <button
         className={`btn ${checkButtonStyle} ${checkButtonSize}`}
         onClick={onClick}
@@ -44,8 +44,10 @@ export const Button = ({
 
 Button.propTypes = {
   children: PropTypes.string.isRequired,
-  linkTo: PropTypes.string.isRequired,
+  linkTo: PropTypes.string,
   onClick: PropTypes.func,
   buttonStyle: PropTypes.string,
   buttonSize: PropTypes.string
 };
+
+export default Button;
