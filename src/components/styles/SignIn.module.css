@@ -52,7 +52,7 @@ input::placeholder {
 }
 
 input:focus {
-  border-color:#258ea6; 
+  border-color: #258ea6;
 }
 
 select:hover {
