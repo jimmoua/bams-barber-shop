@@ -8,7 +8,7 @@
   background-color: #258ea6;
 }
 
-.form-wrapper {
+.formWrapper {
   width: 400px;
   display: flex;
   flex-direction: column;
@@ -24,7 +24,7 @@ form {
   flex-wrap: wrap;
 }
 
-.form-wrapper > h1 {
+.formWrapper > h1 {
   text-align: center;
   width: 100%;
   color: #111;
@@ -51,38 +51,20 @@ input::placeholder {
   color: #999;
 }
 
-.date {
-  padding-top: 15px;
-  padding-bottom: 20px;
-}
-
-.hairstyle {
-  display: flex;
-  flex-direction: column;
-  padding-top: 20px;
-  padding-left: 35px;
-  width: 90%;
-  color: #555;
+input:focus {
+  border-color:#258ea6; 
 }
 
 select:hover {
   border: 2px solid #519e8a;
 }
 
-.password .time {
-  display: flex;
-  flex-direction: column;
-  margin-bottom: 15px;
-}
-
-.firstName,
-.lastName {
-  width: 49%;
-}
-
 .email,
 .password {
   width: 100%;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 15px;
 }
 
 .loginAccount {
