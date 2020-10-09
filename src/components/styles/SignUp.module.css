@@ -8,7 +8,7 @@
   background-color: #258ea6;
 }
 
-.form-wrapper {
+.formWrapper {
   width: 400px;
   display: flex;
   flex-direction: column;
@@ -24,8 +24,8 @@ form {
   flex-wrap: wrap;
 }
 
-.form-wrapper > h1,
-.form-wrapper > h3 {
+.formWrapper > h1,
+.formWrapper > h3 {
   text-align: center;
   width: 100%;
   color: #111;
