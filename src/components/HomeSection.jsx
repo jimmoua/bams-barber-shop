@@ -1,7 +1,7 @@
 import React from "react";
 import "../App.css";
-import { Button } from "./Button";
-import "./HomeSection.css" ;
+import Button from "./Button";
+import "./styles/HomeSection.css" ;
 
 function HomeSection() {
   return (
@@ -14,11 +14,10 @@ function HomeSection() {
           className="btns"
           buttonStye="btn--outline"
           buttonSize="btn--large"
-          onClick={console.log("hey")}
+          linkTo="/register"
         >
           BOOK AN APPOINTMENT
         </Button>
-              
       </div>
     </div>
         
