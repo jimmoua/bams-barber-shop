@@ -57,21 +57,11 @@ input::placeholder {
   color: #999;
 }
 
-.form-wrapper p {
+.formWrapper p {
   font-size: 0.8rem;
   margin-top: 0.5rem;
 }
 
-.firstName {
-  margin-right: 1%;
-}
-
-.lastName {
-  margin-left: 1%;
-}
-
-.firstName,
-.lastName,
 .email,
 .phone,
 .password,
@@ -79,11 +69,6 @@ input::placeholder {
   display: flex;
   flex-direction: column;
   margin-bottom: 15px;
-}
-
-.firstName,
-.lastName {
-  width: 49%;
 }
 
 .email,
