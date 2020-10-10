@@ -6,9 +6,9 @@ export const photos = [
     height: 4
   },
   {
-    src: "https://source.unsplash.com/Dm-qxdynoEc/800x799",
-    width: 1,
-    height: 1
+    src: ("/barber.jpeg"),
+    width: 3,
+    height: 2
   },
   {
     src: "https://source.unsplash.com/qDkso9nvCg0/600x799",
