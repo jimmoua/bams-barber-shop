@@ -1,49 +1,99 @@
 
 export const photos = [
   {
-    src: ("/uv.jpg"),
+    src: ("/gallery/uv.jpg"),
     width: 3,
     height: 4
   },
   {
-    src: ("/barber.jpeg"),
-    width: 3,
-    height: 2
-  },
-  {
-    src: "https://source.unsplash.com/qDkso9nvCg0/600x799",
+    src: ("/gallery/1.jpg"),
     width: 3,
     height: 4
   },
   {
-    src: "https://source.unsplash.com/iecJiKe_RNg/600x799",
+    src: ("/gallery/2.png"),
     width: 3,
     height: 4
   },
   {
-    src: "https://source.unsplash.com/epcsn8Ed8kY/600x799",
+    src: ("/gallery/16.jpg"),
     width: 3,
     height: 4
   },
   {
-    src: "https://source.unsplash.com/NQSWvyVRIJk/800x599",
-    width: 4,
-    height: 3
-  },
-  {
-    src: "https://source.unsplash.com/zh7GEuORbUw/600x799",
+    src: ("/gallery/4.png"),
     width: 3,
     height: 4
   },
   {
-    src: "https://source.unsplash.com/PpOHJezOalU/800x599",
-    width: 4,
-    height: 3
+    src: ("/gallery/5.jpg"),
+    width: 3,
+    height: 4
   },
   {
-    src: "https://source.unsplash.com/I1ASdgphUH4/800x599",
-    width: 4,
-    height: 3
+    src: ("/gallery/6.jpg"),
+    width: 3,
+    height: 4
+  },
+  {
+    src: ("/gallery/7.jpg"),
+    width: 3,
+    height: 4
+  },
+  {
+    src: ("/gallery/8.jpg"),
+    width: 3,
+    height: 4
+  },
+  {
+    src: ("/gallery/10.jpg"),
+    width: 3,
+    height: 4
+  },
+  {
+    src: ("/gallery/11.jpg"),
+    width: 3,
+    height: 4
+  },
+  {
+    src: ("/gallery/12.jpg"),
+    width: 3,
+    height: 4
+  },
+  {
+    src: ("/gallery/13.jpg"),
+    width: 3,
+    height: 4
+  },
+  {
+    src: ("/gallery/14.jpg"),
+    width: 3,
+    height: 4
+  },
+  {
+    src: ("/gallery/15.jpg"),
+    width: 3,
+    height: 4
+  },
+  {
+    src: ("/gallery/3.jpg"),
+    width: 3,
+    height: 4
+  },
+  {
+    src: ("/gallery/17.png"),
+    width: 3,
+    height: 4
+  },
+  {
+    src: ("/gallery/1.jpg"),
+    width: 3,
+    height: 4
+  },
+  {
+    src: ("/gallery/5.jpg"),
+    width: 3,
+    height: 4
   }
 ];
   
