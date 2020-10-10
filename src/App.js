@@ -8,6 +8,7 @@ import Register from "./components/pages/Register";
 import Login from "./components/pages/Login";
 import { Component404 } from "./components/pages/ErrorPages";
 import Scheduling from "./components/Scheduling/Scheduling";
+import Gallery from "./components/Gallery/Gallery";
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
           <Route path="/login" exact component={Login}/>
           <Route path="/register" exact component={Register}/>
           <Route exact path="/scheduling" component={Scheduling}/>
+          <Route exact path="/gallery" component={Gallery}/>
           <Route component={Component404} />
         </Switch>
       </Router>
