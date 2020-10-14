@@ -18,7 +18,7 @@ function ImageGallery() {
   };
 
   return (
-    <div>
+    <React.Fragment>
       <Gallery photos={photos.map((e, idx) => ({ key: idx.toString(), ...e }))} onClick={openLightbox} />
       <ModalGateway>
         {viewerIsOpen ? (
