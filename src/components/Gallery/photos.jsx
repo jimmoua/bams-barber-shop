@@ -1,5 +1,5 @@
 
-export const photos = [
+const photos = [
   {
     src: ("/gallery/uv.jpg"),
     width: 3,
@@ -96,4 +96,6 @@ export const photos = [
     height: 4
   }
 ];
+
+export default photos;
   
