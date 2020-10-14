@@ -12,8 +12,6 @@ function ServiceCard({
   display = false,
   setService
 }) {
-  React.useEffect(() => {
-  }, [setService]);
   return (
     <div key={haircut.key} className={styles.serviceCard} onClick={setService ? () => setService(haircut.key) : () => alert(haircut.key)}>
       { display && <span className={styles.bookNow}>Schedule Now</span>}
