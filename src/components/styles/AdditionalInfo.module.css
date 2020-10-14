@@ -1,5 +1,73 @@
-textarea {
-  margin-top: 10px;
-  width: 100%;
+.infoForm{
+  width: 80%;
   padding: 10px;
 }
+
+form {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .infoForm> h3 {
+    width: 100%;
+    color: #111;
+    font-weight: lighter;
+    padding-bottom:10px;
+  }
+  
+  input {
+    padding: 10px 10px;
+    border-radius: 5px;
+    outline: none;
+    border: 1px solid #cfcfcf;
+  }
+  
+  input:hover {
+    cursor: text;
+    border-color: #508ca4;
+  }
+
+  input:focus {
+      border: 2px solid blue;
+  }
+  
+  input::placeholder {
+    font-size: 1.2em;
+    font-weight: lighter;
+    color: #999;
+  }
+  
+
+  .email,
+  .phone,
+  .firstName,
+  .lastName {
+    display: flex;
+    flex-direction: column;
+    width: 50%; 
+    padding-top:5px;
+    padding-bottom:5px;
+  }
+
+  .phone,
+  .firstName {
+      padding-right:20px;
+  }
+
+  .textarea{
+      max-width:100%;
+      padding-top:5px;
+  }
+
+  textarea{
+      padding:10px 10px;
+      max-width:100%;
+  }
+
+ 
+  
+ 
+  
+ 
+  
