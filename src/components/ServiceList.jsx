@@ -3,7 +3,7 @@ import ServiceCard from "./ServiceCard";
 import styles from "./styles/Services.module.css";
 import PropTypes from "prop-types";
 
-function ServiceList({ serviceList, displayScheduleNow }) {
+function ServiceList({ serviceList, displayScheduleNow, setService }) {
   const [cardList, setCardList] = React.useState([]);
   React.useEffect(() => {
     if(serviceList) {
@@ -19,12 +19,13 @@ function ServiceList({ serviceList, displayScheduleNow }) {
               time: e.ect
             }}
             display={displayScheduleNow}
+            setService={setService}
           />
         );
         setCardList(l);
       });
     }
-  }, [serviceList, displayScheduleNow]);
+  }, [serviceList, displayScheduleNow, setService]);
   return(
     <div className={styles.serviceList}>
       {cardList}
@@ -34,7 +35,8 @@ function ServiceList({ serviceList, displayScheduleNow }) {
 
 ServiceList.propTypes = {
   displayScheduleNow: PropTypes.bool,
-  serviceList: PropTypes.array
+  serviceList: PropTypes.array,
+  setService: PropTypes.func
 };
 
 export default ServiceList;
