@@ -7,6 +7,7 @@ import ClipLoader from "react-spinners/ClipLoader";
 import Button from "../Button";
 import styles from "../styles/Scheduling.module.css";
 import DatePicker from "./DatePicker";
+import AdditionalInfo from "./AdditionalInfo";
 
 /**
  * @function Scheduling
@@ -36,7 +37,7 @@ const Scheduling = () => {
     const stepComponentMap = [
       <ServiceList key={0} serviceList={serviceList} displayScheduleNow={false} />,
       <DatePicker key={1} />,
-      <ClipLoader key={2} />,
+      <AdditionalInfo key={2} />,
       <ClipLoader key={3} />
     ];
 
