@@ -12,9 +12,21 @@ import apiUri from "./apiUri";
  * Sends data to the backend
  */
 async function sendData({ service, date, formDetails }) {
-  const appointmentData = { service, date, formDetails };
-  const response = await axios.post(`${apiUri}/api/appointments`, appointmentData);
-  return response;
+  const appointmentData = { service: service.key, date, formDetails };
+  const { data } = await axios.post(`${apiUri}/api/appointments`, appointmentData)
+    .catch(error => {
+      if(error.response) {
+        switch(error.response.status) {
+          case 404:
+            alert("Hello! Not found c: please contact a developer");
+            break;
+          case 500:
+          default:
+            alert("Something went wrong!");
+        }
+      }
+    });
+  return data;
 }
 
 export default sendData;

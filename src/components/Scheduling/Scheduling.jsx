@@ -7,6 +7,7 @@ import ClipLoader from "react-spinners/ClipLoader";
 import Button from "../Button";
 import styles from "../styles/Scheduling.module.css";
 import DatePicker from "./DatePicker";
+import Review from "./Review";
 
 /**
  * @function Scheduling
@@ -29,7 +30,8 @@ const Scheduling = () => {
       firstName: null,
       lastName: null,
       email: null,
-      phoneNumber: null
+      phoneNumber: null,
+      additionalInfo: null
     }
   });
 
@@ -44,10 +46,10 @@ const Scheduling = () => {
 
     // TODO: replace with their appropriate components later.
     const stepComponentMap = [
-      <ServiceList key={0} serviceList={serviceList} displayScheduleNow={false} setService={(serviceKey) => {
+      <ServiceList key={0} serviceList={serviceList} displayScheduleNow={false} setService={(service) => {
         setAppointmentDetails({
           ...appointmentDetails,
-          service: serviceKey
+          service: service
         });
         setStep(step + 1);
       }} />,
@@ -59,7 +61,7 @@ const Scheduling = () => {
         setStep(step + 1);
       }}/>,
       <ClipLoader key={2} />,
-      <ClipLoader key={3} />
+      <Review appointmentDetails={appointmentDetails} key={3} />
     ];
 
     // Determine the which component to render based on which step we are in.
