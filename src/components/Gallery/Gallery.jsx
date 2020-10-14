@@ -18,18 +18,14 @@ function ImageGallery() {
   };
 
   return (
-    <React.Fragment>
-      <Gallery photos={photos} onClick={openLightbox} />
+    <div>
+      <Gallery photos={photos.map((e, idx) => ({ key: idx.toString(), ...e }))} onClick={openLightbox} />
       <ModalGateway>
         {viewerIsOpen ? (
           <Modal onClose={closeLightbox}>
             <Carousel
               currentIndex={currentImage}
-              views={photos.map(x => ({
-                ...x,
-                srcset: x.srcSet,
-                caption: x.title
-              }))}
+              views={photos.map((e, idx) => ({ key: idx.toString(), ...e }))}
             />
           </Modal>
         ) : null}
