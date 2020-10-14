@@ -6,59 +6,86 @@ import PropTypes from "prop-types";
 import styles from "../styles/DatePicker.module.css";
 import "react-datepicker/dist/react-datepicker.css";
 
+const createMockTime = (hh, mm = 0) => {
+  const foo = new Date();
+  foo.setUTCMilliseconds(0);
+  foo.setUTCHours(hh);
+  foo.setUTCMinutes(mm);
+  return foo;
+};
+
 /**
  * 
  * @param {Function} setDate - sets the time state for scheduling component or parent component
  */
 const DatePicker = ({ setDate }) => {
+  const [loading, setLoading] = React.useState(false);
   const [chosenDate, setChosenDate] = React.useState(null);
   const [availableTimes, setAvailableTimes] = React.useState([]);
 
   React.useEffect(() => {
-    if(chosenDate) {
-      const mockTimes = [
-        new Date(),
-        new Date(),
-        new Date()
-      ];
-      mockTimes[0].setUTCMilliseconds(0);
-      mockTimes[1].setUTCMilliseconds(0);
-      mockTimes[2].setUTCMilliseconds(0);
+    if(loading) {
+      setTimeout(() => {
+        const mockTimes = [
+          createMockTime(14, 30),
+          createMockTime(15),
+          createMockTime(16, 30),
+          createMockTime(18),
+          createMockTime(21)
+        ];
 
-      mockTimes[0].setUTCSeconds(0);
-      mockTimes[1].setUTCSeconds(0);
-      mockTimes[2].setUTCSeconds(0);
-
-      mockTimes[0].setUTCMinutes(30);
-      mockTimes[1].setUTCMinutes(30);
-      mockTimes[2].setUTCMinutes(30);
-
-      mockTimes[0].setUTCHours(14);
-      mockTimes[1].setUTCHours(15);
-      mockTimes[2].setUTCHours(16);
-
-      const btnArray = [];
-      mockTimes.forEach((e, idx) => {
-        const s = e.toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" } );
-        btnArray.push(
-          <button key={idx} onClick={() => setDate(e.toISOString())}>{s}</button>
-        );
-      });
-      setAvailableTimes(btnArray);
+        const btnArray = [];
+        mockTimes.forEach((e, idx) => {
+          const s = e.toLocaleTimeString([], { timeStyle: "short" } );
+          btnArray.push(
+            <button key={idx} className={styles.dateBtn} onClick={() => setDate(e.toISOString())}>{s}</button>
+          );
+        });
+        setAvailableTimes(btnArray);
+        setLoading(false);
+      }, 300);
     }
-  }, [setDate, chosenDate]);
+  }, [setDate, chosenDate, loading]);
+
+  const renderDates = () => {
+    if(availableTimes.length === 0 && loading) {
+      return (
+        <div className={styles.selectTimeTitle}>
+          <ClipLoader />
+        </div>
+      );
+    } else if(availableTimes.length > 0) {
+      return (
+        <React.Fragment>
+          <h3 className={styles.selectTimeTitle}>select a time slot</h3>
+          {availableTimes}
+        </React.Fragment>
+      );
+    }
+    return (
+      <React.Fragment></React.Fragment>
+    );
+  };
 
   return (
     <div className={styles.container}>
-      <ReactDatePicker
-        placeholderText="Select a Date"
-        selected={chosenDate}
-        onChange={date => setChosenDate(date)}
-        minDate={new Date()}
-        withPortal
-        todayButton="Go to Today"
-      />
-      {availableTimes ? availableTimes : <ClipLoader />}
+      <div className={styles.dateContainer}>
+        <ReactDatePicker
+          placeholderText="Select a Date"
+          selected={chosenDate}
+          onChange={date => {
+            setLoading(true);
+            setChosenDate(date);
+            setAvailableTimes([]);
+          }}
+          minDate={new Date()}
+          withPortal
+          todayButton="Go to Today"
+        />
+      </div>
+      <div className={styles.timeContainer}>
+        {renderDates()}
+      </div>
     </div>
   );
 };
