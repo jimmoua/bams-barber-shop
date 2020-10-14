@@ -1,18 +1,21 @@
 import React from "react";
 import ReactDatePicker from "react-datepicker";
 import ClipLoader from "react-spinners/ClipLoader";
+import PropTypes from "prop-types";
 
 import styles from "../styles/DatePicker.module.css";
 import "react-datepicker/dist/react-datepicker.css";
 
-const DatePicker = () => {
-  const [chosenDate, setChosenDate] = React.useState();
+/**
+ * 
+ * @param {Function} setDate - sets the time state for scheduling component or parent component
+ */
+const DatePicker = ({ setDate }) => {
+  const [chosenDate, setChosenDate] = React.useState(null);
   const [availableTimes, setAvailableTimes] = React.useState([]);
 
   React.useEffect(() => {
-    setAvailableTimes(null);
-
-    setTimeout(() => {
+    if(chosenDate) {
       const mockTimes = [
         new Date(),
         new Date(),
@@ -38,14 +41,12 @@ const DatePicker = () => {
       mockTimes.forEach((e, idx) => {
         const s = e.toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" } );
         btnArray.push(
-          <button key={idx}>{s}</button>
+          <button key={idx} onClick={() => setDate(e.toISOString())}>{s}</button>
         );
       });
-
       setAvailableTimes(btnArray);
-    }, 1000);
-
-  }, [chosenDate]);
+    }
+  }, [setDate, chosenDate]);
 
   return (
     <div className={styles.container}>
@@ -60,6 +61,10 @@ const DatePicker = () => {
       {availableTimes ? availableTimes : <ClipLoader />}
     </div>
   );
+};
+
+DatePicker.propTypes = {
+  setDate: PropTypes.func
 };
 
 export default DatePicker;

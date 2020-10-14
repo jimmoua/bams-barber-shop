@@ -49,9 +49,15 @@ const Scheduling = () => {
           ...appointmentDetails,
           service: serviceKey
         });
-        console.log(serviceKey);
+        setStep(step + 1);
       }} />,
-      <DatePicker key={1} />,
+      <DatePicker key={1} setDate={(date) => {
+        setAppointmentDetails({
+          ...appointmentDetails,
+          date: date
+        });
+        setStep(step + 1);
+      }}/>,
       <ClipLoader key={2} />,
       <ClipLoader key={3} />
     ];
