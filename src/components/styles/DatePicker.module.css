@@ -1,3 +1,25 @@
 .container {
-  position: fixed;
+  max-width: 600px;
+  text-align: center;
+}
+
+.dateContainer {
+  padding: 10px;
+  text-align: center;
+  align-content: center;
+  align-items: center;
+}
+
+.dateBtn {
+  padding: 5px;
+  margin: 2rem;
+}
+
+.selectTimeTitle {
+  padding-top: 20px;
+  text-align: center;
+}
+
+.timeContainer {
+  text-align: left;
 }

@@ -1,0 +1,14 @@
+.box {
+  text-align: center;
+}
+
+.textarea {
+  resize: none;
+  max-width: 500px;
+  max-height: 200px;
+  text-align: center;
+}
+
+.spacer {
+  padding: 10px;
+}

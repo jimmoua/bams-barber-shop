@@ -7,8 +7,7 @@ import {
 } from "react-router-dom";
 import Home from "../components/pages/Home";
 import Services from "../components/pages/Services";
-import Register from "../components/pages/Register";
-import Login from "../components/pages/Login";
+import Scheduling from "../components/Scheduling/Scheduling";
 
 describe("App", () => {
   const wrapper = shallow(<App />);
@@ -17,16 +16,15 @@ describe("App", () => {
   });
 
   it("has the proper routes and components", () => {
-    expect(wrapper.find(Switch).children().at(0).prop("path")).toEqual("/");
-    expect(wrapper.find(Switch).children().at(0).prop("component")).toEqual(Home);
+    const switchComponent = wrapper.find(Switch);
+    expect(switchComponent).toBeDefined();
+    expect(switchComponent.children().at(0).prop("path")).toEqual("/");
+    expect(switchComponent.children().at(0).prop("component")).toEqual(Home);
 
-    expect(wrapper.find(Switch).children().at(1).prop("path")).toEqual("/services");
-    expect(wrapper.find(Switch).children().at(1).prop("component")).toEqual(Services);
+    expect(switchComponent.children().at(1).prop("path")).toEqual("/services");
+    expect(switchComponent.children().at(1).prop("component")).toEqual(Services);
 
-    expect(wrapper.find(Switch).children().at(2).prop("path")).toEqual("/login");
-    expect(wrapper.find(Switch).children().at(2).prop("component")).toEqual(Login);
-
-    expect(wrapper.find(Switch).children().at(3).prop("path")).toEqual("/register");
-    expect(wrapper.find(Switch).children().at(3).prop("component")).toEqual(Register);
+    expect(switchComponent.children().at(2).prop("path")).toEqual("/scheduling");
+    expect(switchComponent.children().at(2).prop("component")).toEqual(Scheduling);
   });
 });

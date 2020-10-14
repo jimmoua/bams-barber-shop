@@ -8,6 +8,7 @@ import Button from "../Button";
 import styles from "../styles/Scheduling.module.css";
 import DatePicker from "./DatePicker";
 import AdditionalInfo from "./AdditionalInfo";
+import Review from "./Review";
 
 /**
  * @function Scheduling
@@ -23,6 +24,17 @@ const Scheduling = () => {
   const [serviceList, setServiceList] = React.useState();
   const [step, setStep] = React.useState(0);
   const [stepComponent, setStepComponent] = React.useState(<ClipLoader />);
+  const [appointmentDetails, setAppointmentDetails] = React.useState({
+    service: null,
+    date: null,
+    formDetails: {
+      firstName: null,
+      lastName: null,
+      email: null,
+      phoneNumber: null,
+      additionalInfo: null
+    }
+  });
 
   React.useEffect(() => {
     // Define a function to fetch the data from our API
@@ -35,10 +47,22 @@ const Scheduling = () => {
 
     // TODO: replace with their appropriate components later.
     const stepComponentMap = [
-      <ServiceList key={0} serviceList={serviceList} displayScheduleNow={false} />,
-      <DatePicker key={1} />,
+      <ServiceList key={0} serviceList={serviceList} displayScheduleNow={false} setService={(service) => {
+        setAppointmentDetails({
+          ...appointmentDetails,
+          service: service
+        });
+        setStep(step + 1);
+      }} />,
+      <DatePicker key={1} setDate={(date) => {
+        setAppointmentDetails({
+          ...appointmentDetails,
+          date: date
+        });
+        setStep(step + 1);
+      }}/>,
       <AdditionalInfo key={2} />,
-      <ClipLoader key={3} />
+      <Review appointmentDetails={appointmentDetails} key={3} />
     ];
 
     // Determine the which component to render based on which step we are in.
@@ -49,7 +73,7 @@ const Scheduling = () => {
     if(!serviceList) {
       fetchData();
     }
-  }, [serviceList, step]);
+  }, [serviceList, step, appointmentDetails]);
 
   /**
    * @function buttonContinueHandler

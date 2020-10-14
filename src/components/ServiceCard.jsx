@@ -9,10 +9,11 @@ import styles from "./styles/Services.module.css";
  */
 function ServiceCard({
   haircut,
-  display = false
+  display = false,
+  setService
 }) {
   return (
-    <div key={haircut.key} className={styles.serviceCard} onClick={() => alert(haircut.key)}>
+    <div key={haircut.key} className={styles.serviceCard} onClick={setService ? () => setService(haircut) : () => alert(haircut.key)}>
       { display && <span className={styles.bookNow}>Schedule Now</span>}
       <h2>{haircut.name}</h2>
       <span className={styles.servicePrice}>${haircut.price} &bull; {haircut.time} minutes</span>
@@ -22,7 +23,8 @@ function ServiceCard({
 
 ServiceCard.propTypes = {
   haircut: PropTypes.object.isRequired,
-  display: PropTypes.bool
+  display: PropTypes.bool,
+  setService: PropTypes.func
 };
 
 export default ServiceCard;
