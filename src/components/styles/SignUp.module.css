@@ -8,7 +8,7 @@
   background-color: #258ea6;
 }
 
-.form-wrapper {
+.formWrapper {
   width: 400px;
   display: flex;
   flex-direction: column;
@@ -24,7 +24,8 @@ form {
   flex-wrap: wrap;
 }
 
-.form-wrapper > h1 {
+.formWrapper > h1,
+.formWrapper > h3 {
   text-align: center;
   width: 100%;
   color: #111;
@@ -45,59 +46,44 @@ input {
   border: 1px solid #cfcfcf;
 }
 
+input:hover {
+  cursor: text;
+  border-color: #508ca4;
+}
+
 input::placeholder {
   font-size: 1.2em;
   font-weight: lighter;
   color: #999;
 }
 
-.date {
-  padding-top: 15px;
-  padding-bottom: 20px;
-}
-
-.hairstyle {
-  display: flex;
-  flex-direction: column;
-  padding-top: 20px;
-  padding-left: 35px;
-  width: 90%;
-  color: #555;
-}
-
-select:hover {
-  border: 2px solid #519e8a;
-}
-
-.password .time {
-  display: flex;
-  flex-direction: column;
-  margin-bottom: 15px;
-}
-
-.firstName,
-.lastName {
-  width: 49%;
+.formWrapper p {
+  font-size: 0.8rem;
+  margin-top: 0.5rem;
 }
 
 .email,
-.password {
+.phone,
+.password,
+.password2 {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 15px;
   width: 100%;
 }
 
-.loginAccount {
+.createAccount {
   width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-.loginAccount button {
+.createAccount button {
   background-color: #519e8a;
   color: #fff;
-  border-radius: 20px;
   border: 2px solid #fff;
-  width: 30%;
+  width: 100%;
   margin-top: 1em;
   padding: 8px 0;
   font-size: 1em;
@@ -106,12 +92,39 @@ select:hover {
   margin-bottom: 0.25em;
 }
 
-.loginAccount button:hover {
+.gotologin button {
+  background-color: #519e8a;
+  color: #fff;
+  border: 2px solid #fff;
+  width: 40%;
+  margin-top: 1em;
+  padding: 8px 0;
+  font-size: 1em;
+  font-weight: lighter;
+  letter-spacing: 1px;
+  margin-bottom: 0.25em;
+  border-radius: 25px;
+}
+
+.createAccount button:hover {
   color: #5198ea;
   background-color: #fff;
   border: 2px solid #519e8a;
 }
 
-.loginAccount small {
+.createAccount small {
   font-weight: lighter;
+}
+
+.gotologin {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.gotologin button:hover {
+  color: #5198ea;
+  background-color: #fff;
+  border: 2px solid #519e8a;
 }
