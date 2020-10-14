@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import apiUri from "../api/apiUri";
 import PropTypes from "prop-types";
 import "../App.css";
-import "./styles/SignUp.css";
+import styles from "./styles/SignUp.module.css";
 
 /**
  * @function SignUpForm
@@ -115,14 +115,14 @@ const SignUpForm = ({ submitForm }) => {
   };
 
   return(
-    <div className="wrapper">
-      <div className="form-wrapper">
+    <div className={styles.wrapper}>
+      <div className={styles.formWrapper}>
         <h1>Create Account</h1>
         <form onSubmit={ev => {
           handleSubmitForm(ev);
         }}>
 
-          <div className="email">
+          <div className={styles.email}>
             <label htmlFor="email">Email</label>
             <input type="email" 
               className="" 
@@ -136,7 +136,7 @@ const SignUpForm = ({ submitForm }) => {
             />
           </div>
 
-          <div className="phone">
+          <div className={styles.phone}>
             <label htmlFor="phone">Phone</label>
             <input type="tel" 
               className="" 
@@ -149,7 +149,7 @@ const SignUpForm = ({ submitForm }) => {
             />
           </div>
 
-          <div className="password">
+          <div className={styles.password}>
             <label htmlFor="password">Password</label>
             <input
               type="password" 
@@ -163,7 +163,7 @@ const SignUpForm = ({ submitForm }) => {
             />
           </div>
 
-          <div className="password2">
+          <div className={styles.password2}>
             <label htmlFor="password2">Confirm your password</label>
             <input
               type="password" 
@@ -181,7 +181,7 @@ const SignUpForm = ({ submitForm }) => {
             { errorMsg }
           </p>
 
-          <div className="createAccount">
+          <div className={styles.createAccount}>
             <button type="submit">Create an Account</button>
 
             <Link to ="/login" style={{ textDecoration: "none" }}>
