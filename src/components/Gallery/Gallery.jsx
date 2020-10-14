@@ -1,7 +1,7 @@
 import React, { useState, useCallback } from "react";
 import Gallery from "react-photo-gallery";
 import Carousel, { Modal, ModalGateway } from "react-images";
-import { photos } from "./photos";
+import photos from "./photos";
 
 function ImageGallery() {
   const [currentImage, setCurrentImage] = useState(0);
