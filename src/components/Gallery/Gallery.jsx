@@ -18,7 +18,7 @@ function ImageGallery() {
   };
 
   return (
-    <div>
+    <React.Fragment>
       <Gallery photos={photos} onClick={openLightbox} />
       <ModalGateway>
         {viewerIsOpen ? (
@@ -34,7 +34,7 @@ function ImageGallery() {
           </Modal>
         ) : null}
       </ModalGateway>
-    </div>
+    </React.Fragment>
   );
 }
 
