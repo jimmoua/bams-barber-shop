@@ -61,7 +61,19 @@ const Scheduling = () => {
         });
         setStep(step + 1);
       }}/>,
-      <AdditionalInfo key={2} />,
+      <AdditionalInfo key={2} setFormDetails={(firstName, lastName, email, phoneNumber, additionalInfo) => {
+        setAppointmentDetails({
+          ...appointmentDetails,
+          formDetails: {
+            firstName : firstName,
+            lastName: lastName,
+            email: email,
+            phoneNumber: phoneNumber,
+            additionalInfo: additionalInfo
+          }
+        });
+        setStep(step + 1);
+      }}/>,
       <Review appointmentDetails={appointmentDetails} key={3} />
     ];
 
