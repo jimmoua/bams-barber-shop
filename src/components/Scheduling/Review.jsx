@@ -19,8 +19,10 @@ const Review = ({ appointmentDetails }) => {
     <React.Fragment>
       <div className={styles.box}>
         <div className={styles.spacer}>
-          <h2>Name</h2>
-          <span>{appointmentDetails.formDetails.firstName + " " + appointmentDetails.formDetails.lastName}</span>
+          <h2>Name and Contact</h2>
+          <div>{appointmentDetails.formDetails.firstName + " " + appointmentDetails.formDetails.lastName}</div>
+          <div>{appointmentDetails.formDetails.email}</div>
+          <div>{appointmentDetails.formDetails.phoneNumber}</div>
         </div>
 
         <div className={styles.spacer}>
@@ -38,7 +40,7 @@ const Review = ({ appointmentDetails }) => {
           <textarea
             className={styles.textarea}
             disabled
-            value={appointmentDetails.formDetails.additionInfo || "N/A"}
+            value={appointmentDetails.formDetails.additionalInfo || "N/A"}
           />
         </div>
 

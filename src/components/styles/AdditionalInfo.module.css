@@ -54,12 +54,13 @@ input::placeholder {
   padding-right: 20px;
 }
 
-.textarea {
+.textareaDiv {
   max-width: 100%;
   padding-top: 5px;
 }
 
-textarea {
+.textarea {
+  resize: none;
   padding: 10px 10px;
   max-width: 100%;
 }
