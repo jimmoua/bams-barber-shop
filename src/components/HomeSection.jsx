@@ -14,7 +14,7 @@ function HomeSection() {
           className="btns"
           buttonStye="btn--outline"
           buttonSize="btn--large"
-          linkTo="/register"
+          linkTo="/scheduling"
         >
           BOOK AN APPOINTMENT
         </Button>

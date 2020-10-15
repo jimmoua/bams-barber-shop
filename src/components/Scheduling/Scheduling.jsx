@@ -7,6 +7,7 @@ import ClipLoader from "react-spinners/ClipLoader";
 import Button from "../Button";
 import styles from "../styles/Scheduling.module.css";
 import DatePicker from "./DatePicker";
+import AdditionalInfo from "./AdditionalInfo";
 import Review from "./Review";
 
 /**
@@ -60,7 +61,12 @@ const Scheduling = () => {
         });
         setStep(step + 1);
       }}/>,
-      <ClipLoader key={2} />,
+      <AdditionalInfo key={2} formDetails={appointmentDetails.formDetails} setFormDetails={(formDetails) => {
+        setAppointmentDetails({
+          ...appointmentDetails,
+          formDetails: formDetails
+        });
+      }}/>,
       <Review appointmentDetails={appointmentDetails} key={3} />
     ];
 
