@@ -74,7 +74,7 @@ const AdditionalInfo = ({
           <div className={styles.textareaDiv}>
             <textarea
               className={styles.textarea}
-              rows="5" cols="138"
+              rows="5" cols="123456"
               placeholder="Additional notes (optional)"
               onChange={(ev) => {
                 setFormData({ ...formData, additionalInfo: ev.target.value });
