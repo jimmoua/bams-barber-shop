@@ -1,20 +1,20 @@
 import React from "react";
 import "../App.css";
 import Button from "./Button";
-import "./styles/HomeSection.css" ;
+import styles from "./styles/HomeSection.module.css" ;
 
 function HomeSection() {
   return (
-    <div className="home-container">
+    <div className={styles.homeContainer}>
             
       <h1>BAMS BARBER SHOP</h1>
       <p>Come for the freshest trims!!</p>
-      <div className="home-btns">
+      <div className={styles.homeBtns}>
         <Button 
           className="btns"
           buttonStye="btn--outline"
           buttonSize="btn--large"
-          linkTo="/register"
+          linkTo="/scheduling"
         >
           BOOK AN APPOINTMENT
         </Button>

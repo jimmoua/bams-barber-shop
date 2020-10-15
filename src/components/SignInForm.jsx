@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 import apiUri from "../api/apiUri";
 import "../App.css";
-import "./styles/SignIn.css";
+import styles from "./styles/SignIn.module.css";
 
 /**
  * @function SignIn
@@ -59,7 +59,7 @@ const SignInForm = () => {
     <React.Fragment>
       <h1>Sign in</h1>
       <form onSubmit={ev => handleFormSubmit(ev)}>
-        <div className="email">
+        <div className={styles.email}>
           <label htmlFor="email">Email</label>
           <input
             type="email" 
@@ -72,7 +72,7 @@ const SignInForm = () => {
           />
         </div>
 
-        <div className="password">
+        <div className={styles.password}>
           <label htmlFor="password">Password</label>
           <input
             type="password" 
@@ -89,7 +89,7 @@ const SignInForm = () => {
           {errorMsg.length > 0 ? errorMsg : ""}
         </p>
 
-        <div className="loginAccount">
+        <div className={styles.loginAccount}>
           <button type="submit"> Login</button>
           <Link to ="/register" style={{ textDecoration: "none" }}>
             <small>Don&apos;t Have an account? Sign up</small>
