@@ -2,13 +2,17 @@ import React from "react";
 import styles from "../styles/AdditionalInfo.module.css";
 import PropTypes from "prop-types";
 
-const AdditionalInfo = () => {
+const AdditionalInfo = ({
+  formDetails,
+  setFormDetails
+}) => {
+
   const [formData, setFormData] = React.useState({
-    phoneNumber: "",
-    email: "",
-    firstName: "",
-    lastName: "",
-    AdditionalInfo: ""
+    phoneNumber: formDetails.phoneNumber || "",
+    email: formDetails.email || "",
+    firstName: formDetails.firstName || "",
+    lastName: formDetails.lastName || "",
+    additionalInfo: formDetails.additionalInfo || ""
   });
 
   return(
@@ -19,12 +23,11 @@ const AdditionalInfo = () => {
 
           <div className={styles.phone}>
             <input type="tel" 
-              className="" 
               placeholder="Mobile Phone" 
-              name="phoneNumber"
               value={formData.phoneNumber}
               onChange={ev => {
-                setFormData({ ...formData, phoneNumber:ev.target.value });
+                setFormData({ ...formData, phoneNumber: ev.target.value });
+                setFormDetails({ ...formData, phoneNumber: ev.target.value });
               }}
               required
             />
@@ -32,12 +35,11 @@ const AdditionalInfo = () => {
 
           <div className={styles.email}>
             <input type="email" 
-              className="" 
               placeholder="Email" 
-              name="email"
               value={formData.email}
               onChange={ev => {
-                setFormData({ ...formData, email:ev.target.value });
+                setFormData({ ...formData, email: ev.target.value });
+                setFormDetails({ ...formData, email: ev.target.value });
               }}
               required
             />
@@ -47,11 +49,11 @@ const AdditionalInfo = () => {
             <input
               type="text" 
               placeholder="First Name" 
-              name="firstName"
               required
               value={formData.firstName}
               onChange={ev => {
-                setFormData({ ...formData, firstName:ev.target.value });
+                setFormData({ ...formData, firstName: ev.target.value });
+                setFormDetails({ ...formData, firstName: ev.target.value });
               }}
             />
           </div>
@@ -60,17 +62,26 @@ const AdditionalInfo = () => {
             <input
               type="text" 
               placeholder="Last Name" 
-              name="lastName"
               value={formData.lastName}
               onChange={ev => {
-                setFormData({ ...formData, lastName:ev.target.value });
+                setFormData({ ...formData, lastName: ev.target.value });
+                setFormDetails({ ...formData, lastName: ev.target.value });
               }}
               required
             />
           </div>
 
-          <div className={styles.textarea}>
-            <textarea name="additionalInfo" rows="5" cols="138" placeholder="Additional notes (optional)"/> 
+          <div className={styles.textareaDiv}>
+            <textarea
+              className={styles.textarea}
+              rows="5" cols="138"
+              placeholder="Additional notes (optional)"
+              onChange={(ev) => {
+                setFormData({ ...formData, additionalInfo: ev.target.value });
+                setFormDetails({ ...formData, additionalInfo: ev.target.value });
+              }}
+              value={formData.additionalInfo}
+            /> 
           </div>
         </form>
       </div>
@@ -79,7 +90,8 @@ const AdditionalInfo = () => {
 };
 
 AdditionalInfo.propTypes = {
-  formDetails: PropTypes.func.isRequired
+  formDetails: PropTypes.object.isRequired,
+  setFormDetails: PropTypes.func.isRequired
 };
 
 export default AdditionalInfo;
