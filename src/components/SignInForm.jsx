@@ -3,6 +3,7 @@ import axios from "axios";
 import apiUri from "../api/apiUri";
 import styles from "./styles/SignIn.module.css";
 import { ClipLoader } from "react-spinners";
+import { useHistory } from "react-router-dom";
 
 /**
  * @function SignIn
@@ -16,6 +17,7 @@ const SignInForm = () => {
   });
   const [errorMsg, setErrorMsg] = React.useState("");
   const [btnClick, setBtnClick] = React.useState(false);
+  const history = useHistory();
 
   /**
    * @function handleFormSubmit
@@ -25,37 +27,38 @@ const SignInForm = () => {
    * @description
    * Will post to server login information.
    */
-  const handleFormSubmit = (ev) => {
+  const handleFormSubmit = async(ev) => {
     setBtnClick(true);
     ev.preventDefault();
-    axios.post(`${apiUri}/api/login`, formData, {
-      headers: {
-        "Content-Type": "application/json"
-      },
-      withCredentials: true
-    }).then(results => {
-      // TODO: login state
-      console.log(results.status);
-      console.log(results.data);
-    }).catch(errors => {
-      if(errors.response) {
-        switch(errors.response.status) {
+    let response;
+    try {
+      response = await axios.post(`${apiUri}/api/login`, formData, {
+        headers: {
+          "Content-Type": "application/json"
+        },
+        withCredentials: true
+      });
+      if(response.status === 200) {
+        return history.push("/");
+      }
+    } catch(err) {
+      console.log(err);
+      if(err.response) {
+        switch(err.response.status) {
           case 401:
-            setErrorMsg("Wrong password or username.");
+            setErrorMsg("Incorrect credentials");
             break;
           case 400:
-            setErrorMsg(errors.response.data);
+            setErrorMsg(response.data);
             break;
           default:
-            setErrorMsg(errors.response.data);
-            break;
+            setErrorMsg(response.data);
         }
       } else {
         setErrorMsg("Could not reach servers. Please try again later.");
       }
-    }).finally(() => {
-      setBtnClick(false);
-    });
+    }
+    setBtnClick(false);
   };
 
   return(
@@ -85,7 +88,7 @@ const SignInForm = () => {
         </div>
 
         <div className={styles.err}>
-          {errorMsg.length > 0 ? errorMsg : ""}
+          {errorMsg.length > 0 ? errorMsg : <></>}
         </div>
 
         <div className={styles.loginAccount}>
