@@ -1,23 +1,17 @@
 import React from "react";
-import Navbar from "./components/Navbar";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import "./App.css";
-import Home from "./components/pages/Home";
-import Services from "./components/pages/Services";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import Main from "./components/Main";
+import Login from "./components/SignInForm";
 import { Component404 } from "./components/pages/ErrorPages";
-import Scheduling from "./components/Scheduling/Scheduling";
-import Gallery from "./components/Gallery/Gallery";
+import "./App.css";
 
 function App() {
   return (
     <>
       <Router>
-        <Navbar />
         <Switch>
-          <Route exact path="/" component={Home}/>
-          <Route exact path="/services" component={Services}/>
-          <Route exact path="/scheduling" component={Scheduling}/>
-          <Route exact path="/gallery" component={Gallery}/>
+          <Route exact path="/login" component={Login} />
+          <Main />
           <Route component={Component404} />
         </Switch>
       </Router>
