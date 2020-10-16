@@ -2,6 +2,7 @@ import React from "react";
 import axios from "axios";
 import apiUri from "../api/apiUri";
 import styles from "./styles/SignIn.module.css";
+import { ClipLoader } from "react-spinners";
 
 /**
  * @function SignIn
@@ -10,11 +11,11 @@ import styles from "./styles/SignIn.module.css";
  */
 const SignInForm = () => {
   const [formData, setFormData] = React.useState({
-    email: "",
+    username: "",
     password: ""
   });
-
   const [errorMsg, setErrorMsg] = React.useState("");
+  const [btnClick, setBtnClick] = React.useState(false);
 
   /**
    * @function handleFormSubmit
@@ -25,6 +26,7 @@ const SignInForm = () => {
    * Will post to server login information.
    */
   const handleFormSubmit = (ev) => {
+    setBtnClick(true);
     ev.preventDefault();
     axios.post(`${apiUri}/api/login`, formData, {
       headers: {
@@ -45,11 +47,14 @@ const SignInForm = () => {
             setErrorMsg(errors.response.data);
             break;
           default:
+            setErrorMsg(errors.response.data);
             break;
         }
       } else {
         setErrorMsg("Could not reach servers. Please try again later.");
       }
+    }).finally(() => {
+      setBtnClick(false);
     });
   };
 
@@ -62,7 +67,7 @@ const SignInForm = () => {
             placeholder="username" 
             name="email"
             onChange={ev => {
-              setFormData({ ...formData, email: ev.target.value });
+              setFormData({ ...formData, username: ev.target.value });
             }}
             required
           />
@@ -79,14 +84,13 @@ const SignInForm = () => {
           />
         </div>
 
-        <p>
+        <div className={styles.err}>
           {errorMsg.length > 0 ? errorMsg : ""}
-        </p>
+        </div>
 
         <div className={styles.loginAccount}>
-          <button type="submit"> Login</button>
+          { btnClick ? <ClipLoader/> : <button type="submit"> Login</button> }
         </div>
-          
       </form>
     </React.Fragment>
   );
