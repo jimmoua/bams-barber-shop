@@ -1,8 +1,6 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import axios from "axios";
 import apiUri from "../api/apiUri";
-import "../App.css";
 import styles from "./styles/SignIn.module.css";
 
 /**
@@ -57,13 +55,11 @@ const SignInForm = () => {
 
   return(
     <React.Fragment>
-      <h1>Sign in</h1>
+      <h1 className={styles.h1}>Employee Login</h1>
       <form onSubmit={ev => handleFormSubmit(ev)}>
-        <div className={styles.email}>
-          <label htmlFor="email">Email</label>
+        <div className={styles.input}>
           <input
-            type="email" 
-            placeholder="Enter your email address" 
+            placeholder="username" 
             name="email"
             onChange={ev => {
               setFormData({ ...formData, email: ev.target.value });
@@ -72,12 +68,10 @@ const SignInForm = () => {
           />
         </div>
 
-        <div className={styles.password}>
-          <label htmlFor="password">Password</label>
+        <div className={styles.input}>
           <input
             type="password" 
-            placeholder="Enter a password" 
-            name="password"
+            placeholder="password" 
             onChange={ev => {
               setFormData({ ...formData, password: ev.target.value });
             }}
@@ -91,9 +85,6 @@ const SignInForm = () => {
 
         <div className={styles.loginAccount}>
           <button type="submit"> Login</button>
-          <Link to ="/register" style={{ textDecoration: "none" }}>
-            <small>Don&apos;t Have an account? Sign up</small>
-          </Link>
         </div>
           
       </form>

@@ -1,7 +1,7 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Main from "./components/Main";
-import Login from "./components/SignInForm";
+import Login from "./components/pages/Login";
 import { Component404 } from "./components/pages/ErrorPages";
 import "./App.css";
 
