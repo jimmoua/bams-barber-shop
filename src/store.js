@@ -1,5 +1,6 @@
 import React, { createContext, useContext, useReducer } from "react";
 import PropTypes from "prop-types";
+import logoutFn from "./api/logout";
 
 const StoreContext = createContext();
 const initialState = { loggedIn: localStorage.getItem("loggedIn") ? true : false };
@@ -14,6 +15,7 @@ const reducer = (state, action) => {
         loggedIn: true
       };
     case "logout":
+      logoutFn();
       localStorage.removeItem("loggedIn");
       return {
         loggedIn: false
@@ -40,13 +42,23 @@ export const useStore = () => useContext(StoreContext);
  * @description
  * Checks local storage to see if loggedIn has expired. If it has, remove it
  * and go to the home page. This will allow for the applicaiton to remount itself.
+ * 
+ * We will want to call this function on every component mount that the user is logged into.
  */
 export function checkStorage() {
-  const { expiresAt } = JSON.parse(localStorage.getItem("loggedIn"));
+  let expiresAt;
+  try {
+    expiresAt = JSON.parse(localStorage.getItem("loggedIn")).expiresAt;
+  } catch( error ) {
+    localStorage.removeItem("loggedIn");
+    alert("Could not parse expiresAt in localStorage");
+    logoutFn();
+    return window.location.replace("/login");
+  }
   if(expiresAt) {
     if( new Date().getTime() > expiresAt ) {
       localStorage.removeItem("loggedIn");
-      window.location.replace("/");
+      window.location.replace("/login");
     }
   }
 }
