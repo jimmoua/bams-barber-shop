@@ -48,7 +48,7 @@ const SignInForm = () => {
         return history.push("/");
       }
     } catch(err) {
-      console.log(err);
+      console.error(err);
       if(err.response) {
         switch(err.response.status) {
           case 401:
