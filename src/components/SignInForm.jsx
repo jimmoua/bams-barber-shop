@@ -4,6 +4,7 @@ import apiUri from "../api/apiUri";
 import styles from "./styles/SignIn.module.css";
 import { ClipLoader } from "react-spinners";
 import { useHistory } from "react-router-dom";
+import { useStore } from "../store";
 
 /**
  * @function SignIn
@@ -18,6 +19,7 @@ const SignInForm = () => {
   const [errorMsg, setErrorMsg] = React.useState("");
   const [btnClick, setBtnClick] = React.useState(false);
   const history = useHistory();
+  const { dispatch } = useStore();
 
   /**
    * @function handleFormSubmit
@@ -39,6 +41,10 @@ const SignInForm = () => {
         withCredentials: true
       });
       if(response.status === 200) {
+        if(!response.data.ttl) {
+          console.error("Error: no ttl was set by the server");
+        }
+        dispatch({ type: "login", ttl: response.data.ttl });
         return history.push("/");
       }
     } catch(err) {
