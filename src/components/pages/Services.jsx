@@ -3,6 +3,7 @@ import ServiceList from "../ServiceList";
 import axios from "axios";
 import apiUri from "../../api/apiUri";
 import styles from "../styles/Services.module.css";
+import Navbar from "../Navbar";
 
 function Services() {
   const [stylesList, setStylesList] = React.useState();
@@ -19,6 +20,7 @@ function Services() {
 
   return(
     <div className={styles.servicePage}>
+      <Navbar />
       <h1 className="pageHeader">Services Offered</h1>
       <ServiceList serviceList={stylesList} displayScheduleNow={true}/>
     </div>
