@@ -2,6 +2,7 @@ import React from "react";
 import ServiceCard from "./ServiceCard";
 import styles from "./styles/Services.module.css";
 import PropTypes from "prop-types";
+import { ClipLoader } from "react-spinners";
 
 function ServiceList({ serviceList, displayScheduleNow, setService }) {
   const [cardList, setCardList] = React.useState([]);
@@ -26,9 +27,18 @@ function ServiceList({ serviceList, displayScheduleNow, setService }) {
       });
     }
   }, [serviceList, displayScheduleNow, setService]);
+
+  const loader = (
+    <div style={{
+      textAlign: "center"
+    }}>
+      <ClipLoader />
+    </div>
+  );
+
   return(
     <div className={styles.serviceList}>
-      {cardList}
+      {serviceList ? cardList : loader}
     </div>
   );
 }
