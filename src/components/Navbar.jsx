@@ -9,7 +9,7 @@ function Navbar() {
 
   const handleClick = () => setClick(!click);
   const closeMobileMenu = () => setClick(false);
-  const { state } = useStore();
+  const { state, dispatch } = useStore();
 
   /**
    * @function LinkWrapper
@@ -28,7 +28,8 @@ function Navbar() {
   };
   LinkWrapper.propTypes = {
     to: PropTypes.string.isRequired,
-    children: PropTypes.any.isRequired
+    children: PropTypes.any.isRequired,
+    onClick: PropTypes.func
   };
 
   /**
@@ -42,7 +43,9 @@ function Navbar() {
     if(state.loggedIn) {
       return (
         <React.Fragment>
-          <LinkWrapper to="#">Logout</LinkWrapper>
+          <span onClick={() => dispatch({ type: "logout" })}>
+            <LinkWrapper to="#">Logout</LinkWrapper>
+          </span>
         </React.Fragment>
       );
     } else {
