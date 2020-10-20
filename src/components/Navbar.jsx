@@ -1,12 +1,64 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import "./styles/Navbar.css";
+import { useStore } from "../store";
+import PropTypes from "prop-types";
 
 function Navbar() {
   const [click, setClick] = useState(false);
 
   const handleClick = () => setClick(!click);
   const closeMobileMenu = () => setClick(false);
+  const { state, dispatch } = useStore();
+
+  /**
+   * @function LinkWrapper
+   *
+   * @description
+   * Returns a Link component with onClick and className attributes.
+   */
+  const LinkWrapper = ({ to, children }) => {
+    return (
+      <li className="nav-item">
+        <Link to={to} className="nav-links" onClick={closeMobileMenu}>
+          { children }
+        </Link>
+      </li>
+    );
+  };
+  LinkWrapper.propTypes = {
+    to: PropTypes.string.isRequired,
+    children: PropTypes.any.isRequired,
+    onClick: PropTypes.func
+  };
+
+  /**
+   * @function renderLinks
+   * 
+   * @description
+   * Determines the links to render based on the whether a login state is
+   * present or not.
+   */
+  function renderLinks() {
+    if(state.loggedIn) {
+      return (
+        <React.Fragment>
+          <span onClick={() => dispatch({ type: "logout" })}>
+            <LinkWrapper to="#">Logout</LinkWrapper>
+          </span>
+        </React.Fragment>
+      );
+    } else {
+      return (
+        <React.Fragment>
+          <LinkWrapper to="/">Home</LinkWrapper>
+          <LinkWrapper to="/services">Services</LinkWrapper>
+          <LinkWrapper to="/gallery">Gallery</LinkWrapper>
+          <LinkWrapper to="/scheduling">Schedule</LinkWrapper>
+        </React.Fragment>
+      );
+    }
+  }
 
   return(
     <>
@@ -19,26 +71,7 @@ function Navbar() {
             <i className={click ? "fa fa-times" : "fa fa-bars"}/>
           </div>
           <ul className={click ? "nav-menu active" : "nav-menu"}>
-            <li className="nav-item">
-              <Link to="/" className="nav-links" onClick={closeMobileMenu}>
-                Home
-              </Link>
-            </li>
-            <li className="nav-item">
-              <Link to="/services" className="nav-links" onClick={closeMobileMenu}>
-                Services
-              </Link>
-            </li>
-            <li className="nav-item">
-              <Link to="/gallery" className="nav-links" onClick={closeMobileMenu}>
-                Gallery
-              </Link>
-            </li>
-            <li className="nav-item">
-              <Link to="/scheduling" className="nav-links" onClick={closeMobileMenu}>
-                Schedule
-              </Link>
-            </li>
+            {renderLinks()}
           </ul>
         </div>
       </nav>

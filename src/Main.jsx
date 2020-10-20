@@ -8,11 +8,13 @@ import Gallery from "./components/Gallery/Gallery";
 import { Component404 } from "./components/pages/ErrorPages";
 import { useStore } from "./store";
 import EmployeeHome from "./components/Employee/EmployeeHome";
+import Navbar from "./components/Navbar";
 
 const Main = () => {
   const { state } = useStore();
   return (
     <Router>
+      <Navbar />
       <Switch>
         <Route exact path="/" component={state.loggedIn ? EmployeeHome : Home}/>
         <Route exact path="/services" component={Services}/>
