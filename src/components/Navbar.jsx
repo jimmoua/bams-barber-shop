@@ -19,9 +19,11 @@ function Navbar() {
    */
   const LinkWrapper = ({ to, children }) => {
     return (
-      <Link to={to} className="nav-links" onClick={closeMobileMenu}>
-        { children }
-      </Link>
+      <li className="nav-item">
+        <Link to={to} className="nav-links" onClick={closeMobileMenu}>
+          { children }
+        </Link>
+      </li>
     );
   };
   LinkWrapper.propTypes = {
@@ -45,18 +47,10 @@ function Navbar() {
     } else {
       return (
         <React.Fragment>
-          <li className="nav-item">
-            <LinkWrapper to="/">Home</LinkWrapper>
-          </li>
-          <li className="nav-item">
-            <LinkWrapper to="/services">Services</LinkWrapper>
-          </li>
-          <li className="nav-item">
-            <LinkWrapper to="/gallery">Gallery</LinkWrapper>
-          </li>
-          <li className="nav-item">
-            <LinkWrapper to="/scheduling">Schedule</LinkWrapper>
-          </li>
+          <LinkWrapper to="/">Home</LinkWrapper>
+          <LinkWrapper to="/services">Services</LinkWrapper>
+          <LinkWrapper to="/gallery">Gallery</LinkWrapper>
+          <LinkWrapper to="/scheduling">Schedule</LinkWrapper>
         </React.Fragment>
       );
     }
