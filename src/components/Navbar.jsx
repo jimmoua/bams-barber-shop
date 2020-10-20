@@ -42,6 +42,7 @@ function Navbar() {
     if(state.loggedIn) {
       return (
         <React.Fragment>
+          <LinkWrapper to="#">Logout</LinkWrapper>
         </React.Fragment>
       );
     } else {

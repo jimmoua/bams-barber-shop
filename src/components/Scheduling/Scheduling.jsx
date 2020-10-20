@@ -9,7 +9,6 @@ import styles from "../styles/Scheduling.module.css";
 import DatePicker from "./DatePicker";
 import AdditionalInfo from "./AdditionalInfo";
 import Review from "./Review";
-import Navbar from "../Navbar";
 
 /**
  * @function Scheduling
@@ -107,7 +106,6 @@ const Scheduling = () => {
 
   return (
     <React.Fragment>
-      <Navbar />
       <div className={styles.container}>
         <h1 className="pageHeader">Scheduling</h1>
         <Stepper activeStep={step} >
