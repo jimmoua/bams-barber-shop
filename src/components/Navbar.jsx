@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import "./styles/Navbar.css";
 import { useStore } from "../store";
+import PropTypes from "prop-types";
 
 function Navbar() {
   const [click, setClick] = useState(false);
@@ -9,6 +10,24 @@ function Navbar() {
   const handleClick = () => setClick(!click);
   const closeMobileMenu = () => setClick(false);
   const { state } = useStore();
+
+  /**
+   * @function LinkWrapper
+   *
+   * @description
+   * Returns a Link component with onClick and className attributes.
+   */
+  const LinkWrapper = ({ to, children }) => {
+    return (
+      <Link to={to} className="nav-links" onClick={closeMobileMenu}>
+        { children }
+      </Link>
+    );
+  };
+  LinkWrapper.propTypes = {
+    to: PropTypes.string.isRequired,
+    children: PropTypes.any.isRequired
+  };
 
   /**
    * @function renderLinks
@@ -27,24 +46,16 @@ function Navbar() {
       return (
         <React.Fragment>
           <li className="nav-item">
-            <Link to="/" className="nav-links" onClick={closeMobileMenu}>
-                Home
-            </Link>
+            <LinkWrapper to="/">Home</LinkWrapper>
           </li>
           <li className="nav-item">
-            <Link to="/services" className="nav-links" onClick={closeMobileMenu}>
-                Services
-            </Link>
+            <LinkWrapper to="/services">Services</LinkWrapper>
           </li>
           <li className="nav-item">
-            <Link to="/gallery" className="nav-links" onClick={closeMobileMenu}>
-                Gallery
-            </Link>
+            <LinkWrapper to="/gallery">Gallery</LinkWrapper>
           </li>
           <li className="nav-item">
-            <Link to="/scheduling" className="nav-links" onClick={closeMobileMenu}>
-                Schedule
-            </Link>
+            <LinkWrapper to="/scheduling">Schedule</LinkWrapper>
           </li>
         </React.Fragment>
       );
