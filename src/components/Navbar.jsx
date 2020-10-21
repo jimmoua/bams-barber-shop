@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import "./styles/Navbar.css";
 import { useStore } from "../store";
 import PropTypes from "prop-types";
-import EditStyles from "./Employee/EditStyles";
+import EditStylesPage from "./Employee/EditStylesPage";
 import EmployeeHome from "./Employee/EmployeeHome";
 
 function Navbar() {
@@ -55,7 +55,7 @@ function Navbar() {
           }}>
             <LinkWrapper to="#">Home</LinkWrapper>
           </span>
-          <span onClick={() => dispatch({ type: "setEmployeeComponent", component: <EditStyles /> })}>
+          <span onClick={() => dispatch({ type: "setEmployeeComponent", component: <EditStylesPage /> })}>
             <LinkWrapper to="#">Edit Styles</LinkWrapper>
           </span>
           <span onClick={() => dispatch({ type: "logout" })}>

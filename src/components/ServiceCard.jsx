@@ -1,6 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import styles from "./styles/Services.module.css";
+import { useStore } from "../store";
 
 /**
  * @function ServiceCard
@@ -12,8 +13,23 @@ function ServiceCard({
   display = false,
   setService
 }) {
+  const { state, dispatch } = useStore();
+  /**
+   * @function determine
+   * 
+   * @description
+   * Determines whether we should edit the style (employee) or go to a "book now"
+   */
+  const determine = (id) => {
+    if(state.loggedIn) {
+      alert("Hello, employee");
+    }
+    else alert(id);
+  };
   return (
-    <div key={haircut.key} className={styles.serviceCard} onClick={setService ? () => setService(haircut) : () => alert(haircut.key)}>
+    <div key={haircut.key} className={styles.serviceCard} onClick={
+      setService ? () => setService(haircut) : () => determine(haircut.key)
+    }>
       { display && <span className={styles.bookNow}>Schedule Now</span>}
       <h2>{haircut.name}</h2>
       <span className={styles.servicePrice}>${haircut.price} &bull; {haircut.time} minutes</span>

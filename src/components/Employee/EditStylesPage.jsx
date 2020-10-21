@@ -2,7 +2,7 @@ import React from "react";
 import fetchStyles from "../../api/fetchStyles";
 import ServiceList from "../ServiceList";
 
-const EditStyles = () => {
+const EditStylesPage = () => {
   const [list, setList] = React.useState();
   React.useEffect(() => {
     async function fetcher() {
@@ -17,4 +17,4 @@ const EditStyles = () => {
   );
 };
 
-export default EditStyles;
+export default EditStylesPage;
