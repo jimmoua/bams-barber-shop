@@ -9,7 +9,7 @@ const EditStylesPage = () => {
       setList(await fetchStyles());
     }
     fetcher();
-  });
+  }, []);
   return (
     <React.Fragment>
       <ServiceList serviceList={list} displayScheduleNow={false} />
