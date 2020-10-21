@@ -1,6 +1,5 @@
 import React from "react";
-import axios from "axios";
-import apiUri from "../../api/apiUri";
+import fetchStyles from "../../api/fetchStyles";
 import { Step, Stepper } from "react-form-stepper";
 import ServiceList from "../ServiceList";
 import ClipLoader from "react-spinners/ClipLoader";
@@ -39,10 +38,7 @@ const Scheduling = () => {
   React.useEffect(() => {
     // Define a function to fetch the data from our API
     const fetchData = async() => {
-      await axios.get(`${apiUri}/api/styles`)
-        .then(response => {
-          setServiceList(response.data);
-        });
+      setServiceList(await fetchStyles());
     };
 
     // TODO: replace with their appropriate components later.
