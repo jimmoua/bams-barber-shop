@@ -9,6 +9,7 @@ import { Component404 } from "./components/pages/ErrorPages";
 import { useStore } from "./store";
 import EmployeeHome from "./components/Employee/EmployeeHome";
 import Navbar from "./components/Navbar";
+import SquarePaymentForm from "react-square-payment-form";
 
 const Main = () => {
   const { state } = useStore();
@@ -21,6 +22,7 @@ const Main = () => {
         <Route exact path="/scheduling" component={Scheduling}/>
         <Route exact path="/gallery" component={Gallery}/>
         <Route exact path="/login" component={Login} />
+        <Route exact path="/pay" component={SquarePaymentForm} />
         <Route component={Component404} />
       </Switch>
     </Router>
