@@ -2,14 +2,14 @@ import axios from "axios";
 import apiUri from "./apiUri";
 
 async function sendUpdate(body) {
-  let info;
+  let retCode;
   try {
-    const { status } = await axios.post(`${apiUri}/api/styles/update`, body, { withCredentials: true });
-    alert(status);
+    retCode = (await axios.post(`${apiUri}/api/styles/update`, body, { withCredentials: true })).status;
   } catch (err) {
     console.error(err);
+    retCode = err.status;
   }
-  return info;
+  return retCode;
 }
 
 export default sendUpdate;
