@@ -87,7 +87,14 @@ const Scheduling = () => {
    * Handles the actions for when the continue button is pressed
    */
   const buttonContinueHandler = () => {
-    if(step >= 0 && step < 3) {
+  
+    if(step == 1 && appointmentDetails.date != null) {
+      if(step >= 0 && step < 3 ) {
+        setStep(step + 1);
+      }
+    }
+    
+    else if(step <= 0 ) {
       setStep(step + 1);
     }
   };
