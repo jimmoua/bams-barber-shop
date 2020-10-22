@@ -35,7 +35,7 @@ const Scheduling = () => {
       additionalInfo: null
     }
   });
-
+  
   React.useEffect(() => {
     // Define a function to fetch the data from our API
     const fetchData = async() => {
