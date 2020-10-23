@@ -4,7 +4,6 @@ import apiUri from "../../api/apiUri";
 import { Step, Stepper } from "react-form-stepper";
 import ServiceList from "../ServiceList";
 import ClipLoader from "react-spinners/ClipLoader";
-import Button from "../Button";
 import styles from "../styles/Scheduling.module.css";
 import DatePicker from "./DatePicker";
 import AdditionalInfo from "./AdditionalInfo";
@@ -87,9 +86,23 @@ const Scheduling = () => {
    * Handles the actions for when the continue button is pressed
    */
   const buttonContinueHandler = () => {
-    if(step >= 2 && step < 3) {
-      setStep(step + 1);
+    switch(step) {
+      case 0:
+        if(!appointmentDetails.service) {
+          return alert("Please select a service");
+        }
+        break;
+      case 1:
+        if(appointmentDetails.date) break;
+        else return;
+      case 2: {
+        let fd = appointmentDetails.formDetails;
+        if(fd.firstName && fd.lastName && fd.email && fd.phoneNumber) break;
+        else return;
+      }
+      default: return;
     }
+    setStep(step + 1);
   };
 
   /**
@@ -99,8 +112,26 @@ const Scheduling = () => {
    * Handles the action for when the back button is pressed
    */
   const buttonBackHandler = () => {
-    if(step > 0 && step < 4) {
-      setStep(step - 1);
+    switch(step) {
+      case 1: {
+        setStep(step - 1);
+        return setAppointmentDetails({
+          ...appointmentDetails,
+          service: null,
+          date: null
+        });
+      }
+      case 2: {
+        setStep(step - 1);
+        return setAppointmentDetails({
+          ...appointmentDetails,
+          date: null
+        });
+      }
+      case 3: {
+        return setStep(step - 1);
+      }
+      default: return;
     }
   };
 
@@ -108,20 +139,37 @@ const Scheduling = () => {
     <React.Fragment>
       <div className={styles.container}>
         <h1 className="pageHeader">Scheduling</h1>
-        <Stepper activeStep={step} >
-          <Step label="Select a Service" onClick={() => setStep(0)} />
-          <Step label="Select a date" onClick={() => setStep(1)} />
-          <Step label="Additional Information" onClick={() => setStep(2)} />
+        <Stepper activeStep={step}>
+          <Step
+            label="Select a Service"
+            onClick={() => {
+              setStep(0);
+              setAppointmentDetails({
+                ...appointmentDetails,
+                service: null,
+                date: null
+              });
+            }} />
+          <Step label="Select a date" onClick={() => {
+            setStep(1);
+            setAppointmentDetails({
+              ...appointmentDetails,
+              date: null
+            });
+          }} />
+          <Step label="Additional Information" onClick={() => {
+            setStep(2);
+          }} />
           <Step label="Review" onClick={() => setStep(3)} />
         </Stepper>
       </div>
-      <div className={styles.schedulingBody}>
-        {stepComponent}
-      </div>
-      <div className={styles.buttonBody}>
-        <span className={styles.leftAlignedBtn}><Button onClick={buttonBackHandler}>Back</Button></span>
-        <span className={styles.rightAlignedBtn}><Button onClick={buttonContinueHandler}>Continue</Button></span>
-      </div>
+      <form className={styles.schedulingBody} onSubmit={ev => ev.preventDefault()}>
+        {stepComponent} 
+        <div className={styles.buttonBody}>
+          <span className={styles.leftAlignedBtn}><button type="submit" onClick={buttonBackHandler}>Back</button></span>
+          <span className={styles.rightAlignedBtn}><button type="submit" onClick={buttonContinueHandler}>Continue</button></span>
+        </div>
+      </form>
     </React.Fragment>
   );
 };
