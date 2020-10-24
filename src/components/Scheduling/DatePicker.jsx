@@ -9,6 +9,7 @@ import "react-datepicker/dist/react-datepicker.css";
 const createMockTime = (hh, mm = 0) => {
   const foo = new Date();
   foo.setUTCMilliseconds(0);
+  foo.setUTCSeconds(0);
   foo.setUTCHours(hh);
   foo.setUTCMinutes(mm);
   return foo;
