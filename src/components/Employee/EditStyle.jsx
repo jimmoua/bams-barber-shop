@@ -23,8 +23,11 @@ const EditStyle = ({ style }) => {
       <React.Fragment>
         <Button
           onClick={async() => {
+            const ans = window.confirm(`Delete the service ${style.name}?`);
+            if(!ans) {
+              return;
+            }
             setSubmit(true);
-            // alert(formStyle.key);
             const status = await deleteStyle(formStyle.key);
             if(status === 200) {
               alert(`Style ${formStyle.name} has been deleted`);
