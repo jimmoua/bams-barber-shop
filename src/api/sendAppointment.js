@@ -13,20 +13,18 @@ import apiUri from "./apiUri";
  */
 async function sendData({ service, date, formDetails }) {
   const appointmentData = { service: service.key, date, formDetails };
-  const { data } = await axios.post(`${apiUri}/api/appointments`, appointmentData)
-    .catch(error => {
-      if(error.response) {
-        switch(error.response.status) {
-          case 404:
-            alert("Hello! Not found c: please contact a developer");
-            break;
-          case 500:
-          default:
-            alert("Something went wrong!");
-        }
-      }
-    });
-  return data;
+  let retCode;
+  try {
+    retCode = (await axios.post(`${apiUri}/api/appointments`, appointmentData, { withCredentials: true })).status;
+  } catch (err) {
+    if(err.response) {
+      retCode = err.response.status;
+    }
+    else {
+      retCode = 500;
+    }
+  }
+  return retCode;
 }
 
 export default sendData;
