@@ -1,6 +1,8 @@
 import React from "react";
 import PropTypes from "prop-types";
 import styles from "./styles/Services.module.css";
+import { useStore } from "../store";
+import EditStyle from "./Employee/EditStyle";
 
 /**
  * @function ServiceCard
@@ -12,8 +14,24 @@ function ServiceCard({
   display = false,
   setService
 }) {
+  const { state, dispatch } = useStore();
+  /**
+   * @function determine
+   * 
+   * @description
+   * Determines whether we should edit the style (employee) or go to a "book now"
+   */
+  const determine = (haircut) => {
+    if(state.loggedIn) {
+      dispatch({ type: "setEmployeeComponent", component: <EditStyle style={haircut} /> });
+    } else {
+      alert(haircut.key);
+    }
+  };
   return (
-    <div key={haircut.key} className={styles.serviceCard} onClick={setService ? () => setService(haircut) : () => alert(haircut.key)}>
+    <div key={haircut.key} className={styles.serviceCard} onClick={
+      setService ? () => setService(haircut) : () => determine(haircut)
+    }>
       { display && <span className={styles.bookNow}>Schedule Now</span>}
       <h2>{haircut.name}</h2>
       <span className={styles.servicePrice}>${haircut.price} &bull; {haircut.time} minutes</span>

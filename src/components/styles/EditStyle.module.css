@@ -1,0 +1,31 @@
+.body {
+  padding-top: 10%;
+}
+
+.inner {
+  width: fit-content;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  justify-items: center;
+  margin: auto;
+}
+
+.label {
+  padding: 2rem;
+}
+
+.label label {
+  float: none;
+  padding-right: 2rem;
+}
+
+.label input {
+  float: right;
+}
+
+.buttons {
+  padding: 2rem;
+  text-align: center;
+}

@@ -1,9 +1,13 @@
 import React, { createContext, useContext, useReducer } from "react";
 import PropTypes from "prop-types";
 import logoutFn from "./api/logout";
+import EmployeeHome from "./components/Employee/EmployeeHome";
 
 const StoreContext = createContext();
-const initialState = { loggedIn: localStorage.getItem("loggedIn") ? true : false };
+const initialState = {
+  loggedIn: localStorage.getItem("loggedIn") ? true : false,
+  currentEmployeeComponent: <EmployeeHome />
+};
 
 const reducer = (state, action) => {
   switch(action.type) {
@@ -12,13 +16,19 @@ const reducer = (state, action) => {
         expiresAt: action.ttl
       }));
       return {
-        loggedIn: true
+        loggedIn: true,
+        currentEmployeeComponent: <EmployeeHome />
       };
     case "logout":
       logoutFn();
       localStorage.removeItem("loggedIn");
       return {
         loggedIn: false
+      };
+    case "setEmployeeComponent":
+      return {
+        ...state,
+        currentEmployeeComponent: action.component
       };
     default:
       throw new Error(`Unhandled action type: ${action.type}`);
