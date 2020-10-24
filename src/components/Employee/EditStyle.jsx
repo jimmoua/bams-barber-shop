@@ -5,6 +5,7 @@ import { updateStyle, deleteStyle } from "../../api/styles";
 import { ClipLoader } from "react-spinners";
 import { useStore } from "../../store";
 import EditStylesPage from "./EditStylesPage";
+import styles from "../styles/EditStyle.module.css";
 
 /**
  * @param {Object} style The style of the haircut
@@ -55,21 +56,24 @@ const EditStyle = ({ style }) => {
 
   return(
     <React.Fragment>
-      <div>
-        <div>
-          <label>Style name</label>
-          <input type="text" value={formStyle.name} onChange={ ev => setFormStyle({ ...formStyle, name: ev.target.value }) } />
-        </div>
-        <div>
-          <label>Price</label>
-          <input type="text" value={formStyle.price} onChange={ ev => setFormStyle({ ...formStyle, price: ev.target.value })} />
-        </div>
-        <div>
-          <label>Estimated time</label>
-          <input type="text" value={formStyle.time} onChange={ ev=> setFormStyle({ ...formStyle, time: ev.target.value })} />
-        </div>
-        <div>
-          {buttons()}
+      <div className={styles.body}>
+        <div className={styles.inner}>
+          <div className={styles.label}>
+            <label>Style name</label>
+            <input type="text" value={formStyle.name} onChange={ ev => setFormStyle({ ...formStyle, name: ev.target.value }) } />
+          </div>
+          <div className={styles.label}>
+            <label>Price</label>
+            <input type="text" value={formStyle.price} onChange={ ev => setFormStyle({ ...formStyle, price: ev.target.value })} />
+          </div>
+          <div className={styles.label}>
+            <label>Estimated time</label>
+            <input type="text" value={formStyle.time} onChange={ ev=> setFormStyle({ ...formStyle, time: ev.target.value })} />
+          </div>
+          <br/>
+          <div className={styles.buttons}>
+            {buttons()}
+          </div>
         </div>
       </div>
     </React.Fragment>
