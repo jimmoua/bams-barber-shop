@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import Button from "../Button";
-import { updateStyle, deleteStyle } from "../../api/appointments";
+import { updateStyle, deleteStyle } from "../../api/styles";
 import { ClipLoader } from "react-spinners";
 import { useStore } from "../../store";
 import EditStylesPage from "./EditStylesPage";
