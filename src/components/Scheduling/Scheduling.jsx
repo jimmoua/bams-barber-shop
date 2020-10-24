@@ -1,5 +1,5 @@
 import React from "react";
-import fetchStyles from "../../api/fetchStyles";
+import { fetchStyles } from "../../api/styles";
 import { Step, Stepper } from "react-form-stepper";
 import ServiceList from "../ServiceList";
 import ClipLoader from "react-spinners/ClipLoader";

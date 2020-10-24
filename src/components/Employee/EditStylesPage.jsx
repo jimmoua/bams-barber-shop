@@ -1,5 +1,5 @@
 import React from "react";
-import fetchStyles from "../../api/fetchStyles";
+import { fetchStyles } from "../../api/styles";
 import ServiceList from "../ServiceList";
 
 const EditStylesPage = () => {

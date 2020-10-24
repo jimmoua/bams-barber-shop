@@ -1,7 +1,7 @@
 import React from "react";
 import ServiceList from "../ServiceList";
 import styles from "../styles/Services.module.css";
-import fetchStyles from "../../api/fetchStyles";
+import { fetchStyles } from "../../api/styles";
 
 function Services() {
   const [stylesList, setStylesList] = React.useState();

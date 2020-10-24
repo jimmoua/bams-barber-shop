@@ -23,3 +23,8 @@ export async function deleteStyle(key) {
   }
   return retCode;
 }
+
+export async function fetchStyles() {
+  const { data } = await axios.get(`${apiUri}/api/styles`);
+  return data;
+}
