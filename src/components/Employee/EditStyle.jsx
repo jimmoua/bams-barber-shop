@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import Button from "../Button";
-import sendUpdate from "../../api/sendUpdate";
+import { updateStyle, deleteStyle } from "../../api/appointments";
 import { ClipLoader } from "react-spinners";
 import { useStore } from "../../store";
 import EditStylesPage from "./EditStylesPage";
@@ -21,14 +21,23 @@ const EditStyle = ({ style }) => {
     return (
       <React.Fragment>
         <Button
-          onClick={() => alert("delete c:")}
+          onClick={async() => {
+            setSubmit(true);
+            // alert(formStyle.key);
+            const status = await deleteStyle(formStyle.key);
+            if(status === 200) {
+              alert(`Style ${formStyle.name} has been deleted`);
+              return dispatch({ type: "setEmployeeComponent", component: <EditStylesPage /> });
+            }
+            setSubmit(false);
+          }}
         >
           Delete
         </Button>
         <Button
           onClick={async() => {
             setSubmit(true);
-            const status = await sendUpdate(formStyle);
+            const status = await updateStyle(formStyle);
             if(status === 200) {
               alert(`Style ${formStyle.name} has been updated.`);
               return dispatch({ type: "setEmployeeComponent", component: <EditStylesPage /> });
