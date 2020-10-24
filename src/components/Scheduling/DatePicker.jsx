@@ -6,15 +6,6 @@ import PropTypes from "prop-types";
 import styles from "../styles/DatePicker.module.css";
 import "react-datepicker/dist/react-datepicker.css";
 
-const createMockTime = (hh, mm = 0) => {
-  const foo = new Date();
-  foo.setUTCMilliseconds(0);
-  foo.setUTCSeconds(0);
-  foo.setUTCHours(hh);
-  foo.setUTCMinutes(mm);
-  return foo;
-};
-
 /**
  * 
  * @param {Function} setDate - sets the time state for scheduling component or parent component
@@ -23,6 +14,16 @@ const DatePicker = ({ setDate }) => {
   const [loading, setLoading] = React.useState(false);
   const [chosenDate, setChosenDate] = React.useState(null);
   const [availableTimes, setAvailableTimes] = React.useState([]);
+
+  const createMockTime = (hh, mm = 0) => {
+    const foo = new Date();
+    foo.setUTCMilliseconds(0);
+    foo.setUTCSeconds(0);
+    foo.setUTCHours(hh);
+    foo.setUTCMinutes(mm);
+    foo.setUTCDate(chosenDate.getDate());
+    return foo;
+  };
 
   React.useEffect(() => {
     if(loading) {

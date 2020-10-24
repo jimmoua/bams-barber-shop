@@ -7,13 +7,22 @@ import { ClipLoader } from "react-spinners";
 
 const Review = ({ appointmentDetails }) => {
   const [sent, setSent] = React.useState(false);
-  function send() {
+  async function send() {
     setSent(true);
-    sendAppointment(appointmentDetails)
-      .then(response => {
-        alert(JSON.stringify(response));
-        setSent(false);
-      });
+    const statusCode = await sendAppointment(appointmentDetails);
+    switch(statusCode) {
+      case 200:
+        alert("Appointment Booked!");
+        break;
+      case 409:
+        alert("Appointment conflict!");
+        break;
+      case 500:
+      default:
+        alert(`Something went wrong: ${statusCode}`);
+        break;
+    }
+    setSent(false);
   }
   return (
     <React.Fragment>
