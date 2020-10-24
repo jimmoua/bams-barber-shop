@@ -15,19 +15,19 @@ const DatePicker = ({ setDate }) => {
   const [chosenDate, setChosenDate] = React.useState(null);
   const [availableTimes, setAvailableTimes] = React.useState([]);
 
-  const createMockTime = (hh, mm = 0) => {
-    const foo = new Date();
-    foo.setUTCMilliseconds(0);
-    foo.setUTCSeconds(0);
-    foo.setUTCHours(hh);
-    foo.setUTCMinutes(mm);
-    foo.setUTCDate(chosenDate.getDate());
-    return foo;
-  };
-
   React.useEffect(() => {
     if(loading) {
       setTimeout(() => {
+        const createMockTime = (hh, mm = 0) => {
+          const foo = new Date();
+          foo.setUTCMilliseconds(0);
+          foo.setUTCSeconds(0);
+          foo.setUTCHours(hh);
+          foo.setUTCMinutes(mm);
+          foo.setUTCDate(chosenDate.getDate());
+          return foo;
+        };
+
         const mockTimes = [
           createMockTime(14, 30),
           createMockTime(15),
