@@ -81,6 +81,7 @@ const DatePicker = ({ setDate }) => {
           minDate={new Date()}
           withPortal
           todayButton="Go to Today"
+          required
         />
       </div>
       <div className={styles.timeContainer}>

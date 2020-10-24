@@ -1,16 +1,12 @@
 .infoForm {
   width: 80%;
   padding: 10px;
-}
-
-form {
-  width: 100%;
   display: flex;
   flex-wrap: wrap;
 }
 
 .infoForm > h3 {
-  width: 100%;
+  width: 80%;
   color: #111;
   font-weight: lighter;
   padding-bottom: 10px;
