@@ -7,9 +7,10 @@ import Scheduling from "./components/Scheduling/Scheduling";
 import Gallery from "./components/Gallery/Gallery";
 import { Component404 } from "./components/pages/ErrorPages";
 import { useStore } from "./store";
-import EmployeeHome from "./components/Employee/EmployeeHome";
 import Navbar from "./components/Navbar";
 import PaymentPage from "./components/PaymentPage";
+import EmployeeMain from "./components/Employee/EmployeeMain";
+
 
 const Main = () => {
   const { state } = useStore();
@@ -17,7 +18,7 @@ const Main = () => {
     <Router>
       <Navbar />
       <Switch>
-        <Route exact path="/" component={state.loggedIn ? EmployeeHome : Home}/>
+        <Route exact path="/" component={state.loggedIn ? EmployeeMain : Home}/>
         <Route exact path="/services" component={Services}/>
         <Route exact path="/scheduling" component={Scheduling}/>
         <Route exact path="/gallery" component={Gallery}/>

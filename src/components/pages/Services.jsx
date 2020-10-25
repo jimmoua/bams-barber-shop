@@ -1,18 +1,14 @@
 import React from "react";
 import ServiceList from "../ServiceList";
-import axios from "axios";
-import apiUri from "../../api/apiUri";
 import styles from "../styles/Services.module.css";
+import { fetchStyles } from "../../api/styles";
 
 function Services() {
   const [stylesList, setStylesList] = React.useState();
 
   React.useEffect(() => {
     const fetchList = async() => {
-      await axios.get(`${apiUri}/api/styles`)
-        .then(response => {
-          setStylesList(response.data);
-        });
+      setStylesList(await fetchStyles());
     };
     fetchList();
   }, []);
