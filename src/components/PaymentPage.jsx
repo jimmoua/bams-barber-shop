@@ -16,7 +16,7 @@ import {
 import "react-square-payment-form/lib/default.css";
 
 const APPLICATION_ID = "sandbox-sq0idb-h2DsjssE8Xeceg3wZAiDCg";
-const LOCATION_ID = "REPLACE-ME";
+const LOCATION_ID = "L7VQVP9W2G7AS";
 
 const PaymentPage = () => {
   const [errorMessages, setErrorMessages] = useState([]);
