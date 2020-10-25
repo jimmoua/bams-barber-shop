@@ -11,7 +11,6 @@ import Navbar from "./components/Navbar";
 import PaymentPage from "./components/PaymentPage";
 import EmployeeMain from "./components/Employee/EmployeeMain";
 
-
 const Main = () => {
   const { state } = useStore();
   return (
