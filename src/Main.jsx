@@ -8,6 +8,7 @@ import Gallery from "./components/Gallery/Gallery";
 import { Component404 } from "./components/pages/ErrorPages";
 import { useStore } from "./store";
 import Navbar from "./components/Navbar";
+import PaymentPage from "./components/PaymentPage";
 import EmployeeMain from "./components/Employee/EmployeeMain";
 
 const Main = () => {
@@ -21,6 +22,7 @@ const Main = () => {
         <Route exact path="/scheduling" component={Scheduling}/>
         <Route exact path="/gallery" component={Gallery}/>
         <Route exact path="/login" component={Login} />
+        <Route exact path="/pay" component={PaymentPage} />
         <Route component={Component404} />
       </Switch>
     </Router>
