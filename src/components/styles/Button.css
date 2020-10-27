@@ -43,3 +43,25 @@
   color: #242424;
   transition: 250ms;
 }
+
+.btn--delete{
+  background-color: #ea4335;
+  border: 2px solid black;
+  margin-right:90px;
+  transition: all 0.2s;
+}
+
+.btn--delete:hover{
+  background-color:red;
+}
+
+.btn--edit{
+  background-color:#34a853;
+  border: 2px solid black;
+  transition: all 0.2s;
+}
+
+.btn--edit:hover{
+  background-color:rgb(13, 221, 13);
+}
+

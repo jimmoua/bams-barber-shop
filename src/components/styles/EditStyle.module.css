@@ -1,28 +1,39 @@
 .body {
-  padding-top: 10%;
+ height:90vh;
+ padding: 0px;
+ margin:0;
+ display:flex;
+ background-color:#BDD4E7;
 }
 
 .inner {
   width: fit-content;
-  text-align: center;
+  text-align: right;
   justify-content: center;
-  align-items: center;
-  align-content: center;
+  align-items: left;
+  align-content: right;
   justify-items: center;
   margin: auto;
+  background-color: #258ea6;
+  border: 2px solid black;
+
 }
 
 .label {
-  padding: 2rem;
+  padding: 2rem; 
 }
 
 .label label {
   float: none;
-  padding-right: 2rem;
+  padding-top:.5rem;
+  padding-right: 1rem;
+  display:inline-block;
+  font-size:20;
 }
 
 .label input {
   float: right;
+  background-color:#BDD4E7
 }
 
 .buttons {
