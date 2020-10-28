@@ -15,6 +15,12 @@ import {
 } from "react-square-payment-form";
 import "react-square-payment-form/lib/default.css";
 
+/**
+ * @function determineAppId
+ * 
+ * @description
+ * Returns Square Application ID based on environment.
+ */
 const determineAppId = () => {
   if(process.env.NODE_ENV === "production") {
     return process.env.REACT_APP_SQUARE_APPLICATION_ID_PRODUCTION;
@@ -22,6 +28,12 @@ const determineAppId = () => {
   return process.env.REACT_APP_SQUARE_APPLICATION_ID_STAGING;
 };
 
+/**
+ * @function determineLocationId
+ * 
+ * @description
+ * Returns Square Location ID based on environment.
+ */
 const determineLocationId = () => {
   if(process.env.NODE_ENV === "production") {
     return process.env.REACT_APP_SQUARE_LOCATION_ID_PRODUCTION;
