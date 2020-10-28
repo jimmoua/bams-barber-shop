@@ -5,7 +5,11 @@ import styles from "../styles/Review.module.css";
 import Button from "../Button";
 import { ClipLoader } from "react-spinners";
 
-const Review = ({ appointmentDetails }) => {
+/**
+ * @param {Object} appointmentDetails - object containing customer appointment details
+ * @param {Function} setAppointmentSubmit - used to set the submit flag so we can display a redirect component to payment
+ */
+const Review = ({ appointmentDetails, setAppointmentSubmit }) => {
   const [sent, setSent] = React.useState(false);
   async function send() {
     setSent(true);
@@ -13,6 +17,7 @@ const Review = ({ appointmentDetails }) => {
     switch(statusCode) {
       case 200:
         alert("Appointment Booked!");
+        setAppointmentSubmit(true);
         break;
       case 409:
         alert("Appointment conflict!");
@@ -62,7 +67,8 @@ const Review = ({ appointmentDetails }) => {
 };
 
 Review.propTypes = {
-  appointmentDetails: PropTypes.object.isRequired
+  appointmentDetails: PropTypes.object.isRequired,
+  setAppointmentSubmit: PropTypes.func.isRequired
 };
 
 export default Review;
