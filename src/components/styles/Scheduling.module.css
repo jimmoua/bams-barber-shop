@@ -35,3 +35,19 @@
   padding-top: 8px;
   padding-right: 20px;
 }
+
+button {
+  padding: 10px 20px;
+  font-size: 18px;
+  outline: none;
+  cursor: pointer;
+  background-color: red;
+  color: whitesmoke;
+  border: 2px solid black;
+  border-radius: 25px;
+  transition: all 0.2s;
+}
+
+button:hover {
+  border-color: rgba(255, 255, 255, 1);
+}

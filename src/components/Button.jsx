@@ -3,7 +3,7 @@ import "./styles/Button.css";
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 
-const STYLES = ["btn--primary", "btn--outline", "btn--test"];
+const STYLES = ["btn--primary", "btn--outline", "btn--delete", "btn--edit"];
 
 const SIZES = ["btn--medium", "btn--large"];
 
