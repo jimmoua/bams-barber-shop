@@ -1,4 +1,6 @@
 import "react-square-payment-form/lib/default.css";
+import PropType from "prop-types";
+import { ClipLoader } from "react-spinners";
 
 import React, { useState } from "react";
 
@@ -44,18 +46,30 @@ const determineLocationId = () => {
 const APPLICATION_ID = determineAppId();
 const LOCATION_ID = determineLocationId();
 
-console.log(APPLICATION_ID);
-console.log(LOCATION_ID);
-
 /**
  * @function PaymentPage
+ * 
+ * @param {Object} appointmentDetails - Object containing the price of the service and the appointment ID.
  * 
  * @description
  * Returns React content for the Square payment stuff.
  */
-const PaymentPage = () => {
+const PaymentPage = ({ appointmentDetails }) => {
   const [errorMessages, setErrorMessages] = useState([]);
+  const [paymentSubmit, setPaymentSubmit] = useState(false);
 
+  /**
+   * @function cardNonceResponseReceived
+   * 
+   * @description
+   * this function is required for all features and is invoked with payment
+   * form receives result of nonce generation
+   * 
+   * @param {Array} errors - self explanatory
+   * @param {String} nonce  - nonce that is generated to send to the backend for Square payment
+   * @param {Object} cardData  - Object containing card information (last four digits, etc)
+   * @param {*} buyerVerificationToken 
+   */
   function cardNonceResponseReceived(errors, nonce, cardData, buyerVerificationToken) {
     if (errors) {
       setErrorMessages(errors.map(error => error.message));
@@ -68,6 +82,12 @@ const PaymentPage = () => {
     // API.post('/payments', data: { nonce: nonce, buyerVerificationToken: buyerVerificationToken }) // implement this
   }
 
+  /**
+   * @function createPaymentRequest
+   *
+   * @description
+   * Invoked when digital wallet payment button is pressed.
+   */
   function createPaymentRequest() {
     return {
       requestShippingAddress: false,
@@ -75,7 +95,7 @@ const PaymentPage = () => {
       currencyCode: "USD",
       countryCode: "US",
       total: {
-        label: "MERCHANT NAME",
+        label: "Bam's Barber Shop",
         amount: "1",
         pending: false
       },
@@ -89,33 +109,6 @@ const PaymentPage = () => {
     };
   }
 
-  function createVerificationDetails() {
-    return {
-      amount: "100.00",
-      currencyCode: "USD",
-      intent: "CHARGE",
-      billingContact: {
-        familyName: "Smith",
-        givenName: "John",
-        email: "jsmith@example.com",
-        country: "GB",
-        city: "London",
-        addressLines: ["1235 Emperor's Gate"],
-        postalCode: "SW7 4JA",
-        phone: "020 7946 0532"
-      }
-    };
-  }
-
-  function postalCode() {
-    const postalCode = "12345"; // your logic here
-    return postalCode;
-  }
-
-  function focusField() {
-    return "cardNumber";
-  }
-
   const loadingView = <div className="sq-wallet-loading"></div>;
   const unavailableApple = (
     <div className="sq-wallet-unavailable">Apple pay unavailable. Open safari on desktop or mobile to use.</div>
@@ -123,16 +116,32 @@ const PaymentPage = () => {
   const unavailableGoogle = <div className="sq-wallet-unavailable">Google pay unavailable.</div>;
   const unavailableMasterpass = <div className="sq-wallet-unavailable">Masterpass unavailable.</div>;
 
+  const submitPayButton = () => {
+    if(paymentSubmit) {
+      return (
+        <ClipLoader />
+      );
+    }
+    return (
+      <span
+        onClick={() => {
+          setPaymentSubmit(true);
+        }}
+      >
+        <CreditCardSubmitButton>Pay $1.00</CreditCardSubmitButton>
+      </span>
+    );
+  };
+
   return (
     <SquarePaymentForm
+      formId="squarePaymentForm"
       sandbox={process.env.NODE_ENV === "production" ? false : true}
       applicationId={APPLICATION_ID}
       locationId={LOCATION_ID}
       cardNonceResponseReceived={cardNonceResponseReceived}
       createPaymentRequest={createPaymentRequest}
-      createVerificationDetails={createVerificationDetails}
-      postalCode={postalCode}
-      focusField={focusField}
+      focusField={() => { return "cardNumber"; }}
     >
       <ApplePayButton loadingView={loadingView} unavailableView={unavailableApple} />
       <GooglePayButton loadingView={loadingView} unavailableView={unavailableGoogle} />
@@ -159,7 +168,7 @@ const PaymentPage = () => {
         </div>
       </fieldset>
 
-      <CreditCardSubmitButton>Pay $1.00</CreditCardSubmitButton>
+      { submitPayButton() }
 
       <div className="sq-error-message">
         {errorMessages.map(errorMessage => (
@@ -168,6 +177,10 @@ const PaymentPage = () => {
       </div>
     </SquarePaymentForm>
   );
+};
+
+PaymentPage.propTypes = {
+  appointmentDetails: PropType.object // TODO: for now, not requried because in dev, but will have to be required
 };
 
 export default PaymentPage;

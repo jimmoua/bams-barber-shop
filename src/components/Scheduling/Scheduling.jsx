@@ -186,7 +186,7 @@ const Scheduling = () => {
    */
   const paymentRedirectContainer = (
     <React.Fragment>
-      <PaymentPage />
+      <PaymentPage appointmentDetails={appointmentDetails} />
     </React.Fragment>
   );
   return (
