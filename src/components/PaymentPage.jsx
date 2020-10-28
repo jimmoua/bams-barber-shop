@@ -125,7 +125,7 @@ const PaymentPage = () => {
 
   return (
     <SquarePaymentForm
-      sandbox={true}
+      sandbox={process.env.NODE_ENV === "production" ? false : true}
       applicationId={APPLICATION_ID}
       locationId={LOCATION_ID}
       cardNonceResponseReceived={cardNonceResponseReceived}
