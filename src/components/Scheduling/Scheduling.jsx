@@ -7,6 +7,7 @@ import styles from "../styles/Scheduling.module.css";
 import DatePicker from "./DatePicker";
 import AdditionalInfo from "./AdditionalInfo";
 import Review from "./Review";
+import PaymentPage from "../PaymentPage";
 
 /**
  * @function Scheduling
@@ -175,8 +176,17 @@ const Scheduling = () => {
     </React.Fragment>
   );
 
+  /**
+   * @function paymentRedirectContainer
+   * 
+   * @description
+   * Container for our redireciton. Asks the customer if they want to pay now
+   * or later. If they pay now, redirect to the payment page with predefined
+   * information for payment.
+   */
   const paymentRedirectContainer = (
     <React.Fragment>
+      <PaymentPage />
     </React.Fragment>
   );
   return (
