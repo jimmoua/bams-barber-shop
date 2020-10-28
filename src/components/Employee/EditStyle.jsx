@@ -21,7 +21,8 @@ const EditStyle = ({ style }) => {
     }
     return (
       <React.Fragment>
-        <Button
+        <Button 
+          buttonStyle="btn--delete"
           onClick={async() => {
             const ans = window.confirm(`Delete the service ${style.name}?`);
             if(!ans) {
@@ -39,6 +40,7 @@ const EditStyle = ({ style }) => {
           Delete
         </Button>
         <Button
+          buttonStyle="btn--edit"
           onClick={async() => {
             setSubmit(true);
             const status = await updateStyle(formStyle);
@@ -62,15 +64,15 @@ const EditStyle = ({ style }) => {
       <div className={styles.body}>
         <div className={styles.inner}>
           <div className={styles.label}>
-            <label>Style name</label>
+            <label>Style name : </label>
             <input type="text" value={formStyle.name} onChange={ ev => setFormStyle({ ...formStyle, name: ev.target.value }) } />
           </div>
           <div className={styles.label}>
-            <label>Price</label>
+            <label>Price : </label>
             <input type="text" value={formStyle.price} onChange={ ev => setFormStyle({ ...formStyle, price: ev.target.value })} />
           </div>
           <div className={styles.label}>
-            <label>Estimated time</label>
+            <label>Estimated time :</label>
             <input type="text" value={formStyle.time} onChange={ ev=> setFormStyle({ ...formStyle, time: ev.target.value })} />
           </div>
           <br/>

@@ -1,15 +1,21 @@
 .body {
-  padding-top: 10%;
+  height: 90vh;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  background-color: #bdd4e7;
 }
 
 .inner {
   width: fit-content;
-  text-align: center;
+  text-align: right;
   justify-content: center;
-  align-items: center;
-  align-content: center;
+  align-items: left;
+  align-content: right;
   justify-items: center;
   margin: auto;
+  background-color: #258ea6;
+  border: 2px solid black;
 }
 
 .label {
@@ -18,11 +24,15 @@
 
 .label label {
   float: none;
-  padding-right: 2rem;
+  padding-top: 0.5rem;
+  padding-right: 1rem;
+  display: inline-block;
+  font-size: 20;
 }
 
 .label input {
   float: right;
+  background-color: #bdd4e7;
 }
 
 .buttons {
