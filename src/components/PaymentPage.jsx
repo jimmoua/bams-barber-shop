@@ -15,9 +15,32 @@ import {
 } from "react-square-payment-form";
 import "react-square-payment-form/lib/default.css";
 
-const APPLICATION_ID = "sandbox-sq0idb-h2DsjssE8Xeceg3wZAiDCg";
-const LOCATION_ID = "L7VQVP9W2G7AS";
+const determineAppId = () => {
+  if(process.env.NODE_ENV === "production") {
+    return process.env.REACT_APP_SQUARE_APPLICATION_ID_PRODUCTION;
+  }
+  return process.env.REACT_APP_SQUARE_APPLICATION_ID_STAGING;
+};
 
+const determineLocationId = () => {
+  if(process.env.NODE_ENV === "production") {
+    return process.env.REACT_APP_SQUARE_LOCATION_ID_PRODUCTION;
+  }
+  return process.env.REACT_APP_SQUARE_LOCATION_ID_STAGING;
+};
+
+const APPLICATION_ID = determineAppId();
+const LOCATION_ID = determineLocationId();
+
+console.log(APPLICATION_ID);
+console.log(LOCATION_ID);
+
+/**
+ * @function PaymentPage
+ * 
+ * @description
+ * Returns React content for the Square payment stuff.
+ */
 const PaymentPage = () => {
   const [errorMessages, setErrorMessages] = useState([]);
 
