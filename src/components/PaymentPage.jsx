@@ -71,14 +71,18 @@ const PaymentPage = ({ price }) => {
    * @param {*} buyerVerificationToken 
    */
   function cardNonceResponseReceived(errors, nonce, cardData, buyerVerificationToken) {
+    setPaymentSubmit(true);
     if (errors) {
       setErrorMessages(errors.map(error => error.message));
+      setPaymentSubmit(false);
       return;
     }
 
     setErrorMessages([]);
 
-    alert("nonce created: " + nonce + ", buyerVerificationToken: " + buyerVerificationToken);
+    // TODO: implemente backend with nonce
+    console.log(`nonce created: ${nonce}`);
+    console.log(`buyfer id: ${buyerVerificationToken}`);
     // API.post('/payments', data: { nonce: nonce, buyerVerificationToken: buyerVerificationToken }) // implement this
   }
 
@@ -131,13 +135,7 @@ const PaymentPage = ({ price }) => {
       );
     }
     return (
-      <span
-        onClick={() => {
-          setPaymentSubmit(true);
-        }}
-      >
-        <CreditCardSubmitButton>Pay ${price}</CreditCardSubmitButton>
-      </span>
+      <CreditCardSubmitButton>Pay ${price}</CreditCardSubmitButton>
     );
   };
 
