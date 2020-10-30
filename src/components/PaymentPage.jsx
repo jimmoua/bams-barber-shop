@@ -116,6 +116,14 @@ const PaymentPage = ({ price }) => {
   const unavailableGoogle = <div className="sq-wallet-unavailable">Google pay unavailable.</div>;
   const unavailableMasterpass = <div className="sq-wallet-unavailable">Masterpass unavailable.</div>;
 
+  /**
+   * @function submitPayButton
+   * 
+   * @description
+   * Determines whether to render the Square submit button or a spinner.
+   * 
+   * Return the spinner if they have decided to pay, and a nonce has been generated.
+   */
   const submitPayButton = () => {
     if(paymentSubmit) {
       return (
