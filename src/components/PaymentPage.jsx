@@ -49,12 +49,12 @@ const LOCATION_ID = determineLocationId();
 /**
  * @function PaymentPage
  * 
- * @param {Object} appointmentDetails - Object containing the price of the service and the appointment ID.
+ * @param {Number} price - Price of the style to pay
  * 
  * @description
  * Returns React content for the Square payment stuff.
  */
-const PaymentPage = ({ appointmentDetails }) => {
+const PaymentPage = ({ price }) => {
   const [errorMessages, setErrorMessages] = useState([]);
   const [paymentSubmit, setPaymentSubmit] = useState(false);
 
@@ -128,7 +128,7 @@ const PaymentPage = ({ appointmentDetails }) => {
           setPaymentSubmit(true);
         }}
       >
-        <CreditCardSubmitButton>Pay $1.00</CreditCardSubmitButton>
+        <CreditCardSubmitButton>Pay $1.00 {price ? price : ""}</CreditCardSubmitButton>
       </span>
     );
   };
@@ -180,7 +180,7 @@ const PaymentPage = ({ appointmentDetails }) => {
 };
 
 PaymentPage.propTypes = {
-  appointmentDetails: PropType.object // TODO: for now, not requried because in dev, but will have to be required
+  price: PropType.number
 };
 
 export default PaymentPage;

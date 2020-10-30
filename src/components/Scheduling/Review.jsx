@@ -18,7 +18,7 @@ const Review = ({ appointmentDetails, setAppointmentSubmit }) => {
       case 200:
         alert("Appointment Booked!");
         setAppointmentSubmit(true);
-        break;
+        return;
       case 409:
         alert("Appointment conflict!");
         break;
