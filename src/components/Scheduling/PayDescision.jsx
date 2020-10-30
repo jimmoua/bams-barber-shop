@@ -1,6 +1,7 @@
 import React from "react";
 import FormSuccess from "../FormSuccess";
 import PropType from "prop-types";
+import PaymentPage from "../PaymentPage";
 
 /**
  * @param {Objectl} appointmentDetails - The style ID that will be used to fetch the price.
@@ -40,7 +41,9 @@ const PayDecision = ({ appointmentDetails }) => {
    * If the user clicks "Yes" button, run this function
    */
   function handleYesFunction() {
-    alert("YES");
+    setDisplay(
+      <PaymentPage price={appointmentDetails.service.price} />
+    );
   }
 
   return (

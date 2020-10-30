@@ -128,7 +128,7 @@ const PaymentPage = ({ price }) => {
           setPaymentSubmit(true);
         }}
       >
-        <CreditCardSubmitButton>Pay $1.00 {price ? price : ""}</CreditCardSubmitButton>
+        <CreditCardSubmitButton>Pay ${price}</CreditCardSubmitButton>
       </span>
     );
   };
