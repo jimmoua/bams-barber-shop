@@ -1,6 +1,7 @@
 import "react-square-payment-form/lib/default.css";
 import PropType from "prop-types";
 import { ClipLoader } from "react-spinners";
+import { createPayment } from "../api/payment";
 
 import React, { useState } from "react";
 
@@ -77,9 +78,18 @@ const PaymentPage = ({ price }) => {
 
     setErrorMessages([]);
 
-    // TODO: implemente backend with nonce
     console.log(`nonce created: ${nonce}`);
     console.log(`buyfer id: ${buyerVerificationToken}`);
+
+    createPayment(nonce, price)
+      .then(response => {
+        console.log(response);
+      }).catch(err => {
+        console.error(err);
+      }).finally(() => {
+        setPaymentSubmit(false);
+      });
+
     // API.post('/payments', data: { nonce: nonce, buyerVerificationToken: buyerVerificationToken }) // implement this
   }
 
