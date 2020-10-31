@@ -6,14 +6,11 @@ import React, { useState } from "react";
 
 import {
   SquarePaymentForm,
-  ApplePayButton,
   CreditCardCVVInput,
   CreditCardExpirationDateInput,
   CreditCardNumberInput,
   CreditCardPostalCodeInput,
-  CreditCardSubmitButton,
-  GooglePayButton,
-  MasterpassButton
+  CreditCardSubmitButton
 } from "react-square-payment-form";
 import "react-square-payment-form/lib/default.css";
 
@@ -100,25 +97,18 @@ const PaymentPage = ({ price }) => {
       countryCode: "US",
       total: {
         label: "Bam's Barber Shop",
-        amount: "1",
+        amount: price.toString(),
         pending: false
       },
       lineItems: [
         {
           label: "Subtotal",
-          amount: "1",
+          amount: price.toString(),
           pending: false
         }
       ]
     };
   }
-
-  const loadingView = <div className="sq-wallet-loading"></div>;
-  const unavailableApple = (
-    <div className="sq-wallet-unavailable">Apple pay unavailable. Open safari on desktop or mobile to use.</div>
-  );
-  const unavailableGoogle = <div className="sq-wallet-unavailable">Google pay unavailable.</div>;
-  const unavailableMasterpass = <div className="sq-wallet-unavailable">Masterpass unavailable.</div>;
 
   /**
    * @function submitPayButton
@@ -149,15 +139,6 @@ const PaymentPage = ({ price }) => {
       createPaymentRequest={createPaymentRequest}
       focusField={() => { return "cardNumber"; }}
     >
-      <ApplePayButton loadingView={loadingView} unavailableView={unavailableApple} />
-      <GooglePayButton loadingView={loadingView} unavailableView={unavailableGoogle} />
-      <MasterpassButton loadingView={loadingView} unavailableView={unavailableMasterpass} />
-
-      <div className="sq-divider">
-        <span className="sq-divider-label">Or</span>
-        <hr className="sq-divider-hr" />
-      </div>
-
       <fieldset className="sq-fieldset">
         <CreditCardNumberInput />
 
