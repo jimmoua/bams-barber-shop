@@ -71,6 +71,7 @@ const PaymentPage = ({ price }) => {
   function cardNonceResponseReceived(errors, nonce, cardData, buyerVerificationToken) {
     setPaymentSubmit(true);
     if (errors) {
+      console.log(errors);
       setErrorMessages(errors.map(error => error.message));
       setPaymentSubmit(false);
       return;
@@ -83,14 +84,17 @@ const PaymentPage = ({ price }) => {
 
     createPayment(nonce, price)
       .then(response => {
+        console.log("response is ");
         console.log(response);
+        if(response.errors) {
+          setErrorMessages(["Unable to complete transaction. Please see below: ", ...response.errors.map(e => e.code)]);
+        }
       }).catch(err => {
         console.error(err);
       }).finally(() => {
         setPaymentSubmit(false);
       });
 
-    // API.post('/payments', data: { nonce: nonce, buyerVerificationToken: buyerVerificationToken }) // implement this
   }
 
   /**
