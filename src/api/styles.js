@@ -28,3 +28,8 @@ export async function fetchStyles() {
   const { data } = await axios.get(`${apiUri}/api/styles`);
   return data;
 }
+
+export async function fetchStyle(key) {
+  const { data } = await axios.get(`${apiUri}/api/styles?key=${key}`);
+  return data;
+}
