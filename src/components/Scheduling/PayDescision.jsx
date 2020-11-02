@@ -55,8 +55,9 @@ const PayDecision = ({ appointmentDetails }) => {
    * If the user clicks "Yes" button, run this function
    */
   function handleYesFunction() {
+    console.log(appointmentDetails);
     setDisplay(
-      <PaymentPage price={appointmentDetails.service.price} setDisplayCallback={setDisplayCallback} />
+      <PaymentPage appointmentDetails={appointmentDetails} setDisplayCallback={setDisplayCallback} />
     );
   }
 

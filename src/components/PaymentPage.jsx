@@ -47,13 +47,13 @@ const LOCATION_ID = determineLocationId();
 /**
  * @function PaymentPage
  * 
- * @param {Number} price - Price of the style to pay
+ * @param {Object} appointmentDetails - Appointment details contain the appointment details, which contain price.
  * @param {Funtion} setDisplayCallback - function to set the display component after a successful payment.
  * 
  * @description
  * Returns React content for the Square payment stuff.
  */
-const PaymentPage = ({ price, setDisplayCallback }) => {
+const PaymentPage = ({ appointmentDetails, setDisplayCallback }) => {
   const [errorMessages, setErrorMessages] = useState([]);
   const [paymentSubmit, setPaymentSubmit] = useState(false);
 
@@ -83,12 +83,13 @@ const PaymentPage = ({ price, setDisplayCallback }) => {
     console.log(`nonce created: ${nonce}`);
     console.log(`buyfer id: ${buyerVerificationToken}`);
 
-    createPayment(nonce, price)
+    createPayment(nonce, appointmentDetails)
       .then(response => {
         console.log("response is ");
         console.log(response);
         if(response.errors) {
           setErrorMessages(["Unable to complete transaction. Please see below: ", ...response.errors.map(e => e.code)]);
+          setPaymentSubmit(false);
         } else {
           return setDisplayCallback();
         }
@@ -112,13 +113,13 @@ const PaymentPage = ({ price, setDisplayCallback }) => {
       countryCode: "US",
       total: {
         label: "Bam's Barber Shop",
-        amount: price.toString(),
+        amount: appointmentDetails.service.price.toString(),
         pending: false
       },
       lineItems: [
         {
           label: "Subtotal",
-          amount: price.toString(),
+          amount: appointmentDetails.service.price.toString(),
           pending: false
         }
       ]
@@ -140,7 +141,7 @@ const PaymentPage = ({ price, setDisplayCallback }) => {
       );
     }
     return (
-      <CreditCardSubmitButton>Pay ${price}</CreditCardSubmitButton>
+      <CreditCardSubmitButton>Pay ${appointmentDetails.service.price}</CreditCardSubmitButton>
     );
   };
 
@@ -182,7 +183,7 @@ const PaymentPage = ({ price, setDisplayCallback }) => {
 };
 
 PaymentPage.propTypes = {
-  price: PropType.number,
+  appointmentDetails: PropType.object.isRequired,
   setDisplayCallback: PropType.func.isRequired
 };
 

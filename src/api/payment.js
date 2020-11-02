@@ -4,11 +4,11 @@ import axios from "axios";
 /**
  * 
  * @param {String} nonce - nonce id string
- * @param {String} price - price of the style (must represent string)
+ * @param {String} appointmentDetails - appointment details containing contact information and price
  */
-export async function createPayment(nonce, price) {
+export async function createPayment(nonce, appointmentDetails) {
   const { data } = await axios.post(`${apiUri}/api/payment`, {
-    price,
+    appointmentDetails,
     nonce
   }, {
     withCredentials: true
