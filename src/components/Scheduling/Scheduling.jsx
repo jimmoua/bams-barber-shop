@@ -7,6 +7,7 @@ import styles from "../styles/Scheduling.module.css";
 import DatePicker from "./DatePicker";
 import AdditionalInfo from "./AdditionalInfo";
 import Review from "./Review";
+import PayDecision from "./PayDescision";
 
 /**
  * @function Scheduling
@@ -33,6 +34,7 @@ const Scheduling = () => {
       additionalInfo: null
     }
   });
+  const [appointmentSubmit, setAppointmentSubmit] = React.useState(false);
   
   React.useEffect(() => {
     // Define a function to fetch the data from our API
@@ -40,7 +42,6 @@ const Scheduling = () => {
       setServiceList(await fetchStyles());
     };
 
-    // TODO: replace with their appropriate components later.
     const stepComponentMap = [
       <ServiceList key={0} serviceList={serviceList} displayScheduleNow={false} setService={(service) => {
         setAppointmentDetails({
@@ -62,7 +63,7 @@ const Scheduling = () => {
           formDetails: formDetails
         });
       }}/>,
-      <Review appointmentDetails={appointmentDetails} key={3} />
+      <Review appointmentDetails={appointmentDetails} setAppointmentSubmit={setAppointmentSubmit} key={3} />
     ];
 
     // Determine the which component to render based on which step we are in.
@@ -73,7 +74,7 @@ const Scheduling = () => {
     if(!serviceList) {
       fetchData();
     }
-  }, [serviceList, step, appointmentDetails]);
+  }, [serviceList, step, appointmentDetails, appointmentSubmit]);
 
   /**
    * @function buttonContinueHandler
@@ -131,7 +132,13 @@ const Scheduling = () => {
     }
   };
 
-  return (
+  /**
+   * @schedulingContainer
+   * 
+   * @description
+   * Returns body for the scheduling wizard.
+   */
+  const schedulingContainer = (
     <React.Fragment>
       <div className={styles.container}>
         <h1 className="pageHeader">Scheduling</h1>
@@ -166,6 +173,12 @@ const Scheduling = () => {
           <span className={styles.rightAlignedBtn}><button type="submit" onClick={buttonContinueHandler}>Continue</button></span>
         </div>
       </form>
+    </React.Fragment>
+  );
+
+  return (
+    <React.Fragment>
+      { appointmentSubmit ? <PayDecision appointmentDetails={appointmentDetails} /> : schedulingContainer }
     </React.Fragment>
   );
 };
