@@ -35,6 +35,20 @@ const PayDecision = ({ appointmentDetails }) => {
   }
 
   /**
+   * @function setDisplayCallback
+   */
+  function setDisplayCallback() {
+    setDisplay(
+      <FormSuccess
+        date={new Date(appointmentDetails.date).toLocaleString("en-US", {
+          dateStyle: "full",
+          timeStyle: "short"
+        })}
+      />
+    );
+  }
+
+  /**
    * @function handleYesBtnSubmit
    * 
    * @description
@@ -42,7 +56,7 @@ const PayDecision = ({ appointmentDetails }) => {
    */
   function handleYesFunction() {
     setDisplay(
-      <PaymentPage price={appointmentDetails.service.price} />
+      <PaymentPage price={appointmentDetails.service.price} setDisplayCallback={setDisplayCallback} />
     );
   }
 

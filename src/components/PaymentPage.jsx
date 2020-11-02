@@ -48,11 +48,12 @@ const LOCATION_ID = determineLocationId();
  * @function PaymentPage
  * 
  * @param {Number} price - Price of the style to pay
+ * @param {Funtion} setDisplayCallback - function to set the display component after a successful payment.
  * 
  * @description
  * Returns React content for the Square payment stuff.
  */
-const PaymentPage = ({ price }) => {
+const PaymentPage = ({ price, setDisplayCallback }) => {
   const [errorMessages, setErrorMessages] = useState([]);
   const [paymentSubmit, setPaymentSubmit] = useState(false);
 
@@ -88,13 +89,13 @@ const PaymentPage = ({ price }) => {
         console.log(response);
         if(response.errors) {
           setErrorMessages(["Unable to complete transaction. Please see below: ", ...response.errors.map(e => e.code)]);
+        } else {
+          return setDisplayCallback();
         }
       }).catch(err => {
         console.error(err);
-      }).finally(() => {
         setPaymentSubmit(false);
       });
-
   }
 
   /**
@@ -181,7 +182,8 @@ const PaymentPage = ({ price }) => {
 };
 
 PaymentPage.propTypes = {
-  price: PropType.number
+  price: PropType.number,
+  setDisplayCallback: PropType.func.isRequired
 };
 
 export default PaymentPage;
