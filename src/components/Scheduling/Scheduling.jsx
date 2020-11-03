@@ -81,7 +81,7 @@ const Scheduling = ( props ) => {
       });
       setStep(1);
     }
-  }, [serviceList, step, appointmentDetails, appointmentSubmit]);
+  }, [serviceList, step, appointmentDetails, appointmentSubmit, props]);
 
   /**
    * @function buttonContinueHandler
