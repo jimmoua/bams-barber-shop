@@ -76,14 +76,6 @@ const Scheduling = () => {
     }
   }, [serviceList, step, appointmentDetails, appointmentSubmit]);
 
-  const regex = () =>{
-    let fd = appointmentDetails.formDetails;
-    if (fd.phoneNumber === 10 ) {
-      return alert("hello ");
-    }
-    else return;
-  };
-   
   /**
    * @function buttonContinueHandler
    * 
@@ -102,8 +94,8 @@ const Scheduling = () => {
         else return;
       case 2: {
         let fd = appointmentDetails.formDetails;
-        if(fd.firstName && fd.lastName && fd.email && fd.phoneNumber) break;
-        return regex();
+        if(fd.firstName && fd.lastName && fd.email && fd.phoneNumber)break;
+        else return;
       }
       default: return;
     }
