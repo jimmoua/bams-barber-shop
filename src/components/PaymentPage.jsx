@@ -66,10 +66,9 @@ const PaymentPage = ({ appointmentDetails, setDisplayCallback }) => {
    * 
    * @param {Array} errors - self explanatory
    * @param {String} nonce  - nonce that is generated to send to the backend for Square payment
-   * @param {Object} cardData  - Object containing card information (last four digits, etc)
    * @param {*} buyerVerificationToken 
    */
-  function cardNonceResponseReceived(errors, nonce, cardData, buyerVerificationToken) {
+  function cardNonceResponseReceived(errors, nonce) {
     setPaymentSubmit(true);
     if (errors) {
       console.log(errors);
