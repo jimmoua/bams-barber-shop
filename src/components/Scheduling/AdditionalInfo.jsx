@@ -24,6 +24,7 @@ const AdditionalInfo = ({
             placeholder="Mobile Phone"
             value={formData.phoneNumber}
             pattern="^\(?([0-9]{3})\)?[-.●]?([0-9]{3})[-.●]?([0-9]{4})$"
+            title="###-###-#### or ##########"
             onChange={ev => {
               setFormData({ ...formData, phoneNumber: ev.target.value });
               setFormDetails({ ...formData, phoneNumber: ev.target.value });
