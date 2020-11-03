@@ -80,13 +80,8 @@ const PaymentPage = ({ appointmentDetails, setDisplayCallback }) => {
 
     setErrorMessages([]);
 
-    console.log(`nonce created: ${nonce}`);
-    console.log(`buyfer id: ${buyerVerificationToken}`);
-
     createPayment(nonce, appointmentDetails)
       .then(response => {
-        console.log("response is ");
-        console.log(response);
         if(response.errors) {
           setErrorMessages(["Unable to complete transaction. Please see below: ", ...response.errors.map(e => e.code)]);
           setPaymentSubmit(false);
