@@ -23,6 +23,7 @@ const AdditionalInfo = ({
           <input type="tel" 
             placeholder="Mobile Phone"
             value={formData.phoneNumber}
+            pattern="^\(?([0-9]{3})\)?[-.●]?([0-9]{3})[-.●]?([0-9]{4})$"
             onChange={ev => {
               setFormData({ ...formData, phoneNumber: ev.target.value });
               setFormDetails({ ...formData, phoneNumber: ev.target.value });

@@ -35,7 +35,7 @@ const Scheduling = () => {
     }
   });
   const [appointmentSubmit, setAppointmentSubmit] = React.useState(false);
-  
+
   React.useEffect(() => {
     // Define a function to fetch the data from our API
     const fetchData = async() => {
@@ -94,7 +94,7 @@ const Scheduling = () => {
         else return;
       case 2: {
         let fd = appointmentDetails.formDetails;
-        if(fd.firstName && fd.lastName && fd.email && fd.phoneNumber)break;
+        if(fd.firstName && fd.lastName && fd.email && fd.phoneNumber) break;
         else return;
       }
       default: return;
