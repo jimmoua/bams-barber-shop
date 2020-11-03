@@ -29,7 +29,7 @@ function ServiceCard({
     } else if(state.loggedIn) {
       dispatch({ type: "setEmployeeComponent", component: <EditStyle style={haircut} /> });
     } else {
-      history.push("/scheduling");
+      history.push("/scheduling", { service: haircut });
     }
   };
   return (
