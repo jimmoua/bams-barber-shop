@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import styles from "./styles/Services.module.css";
 import { useStore } from "../store";
 import EditStyle from "./Employee/EditStyle";
+import { useHistory } from "react-router-dom";
 
 /**
  * @function ServiceCard
@@ -15,6 +16,7 @@ function ServiceCard({
   setService
 }) {
   const { state, dispatch } = useStore();
+  const history = useHistory();
   /**
    * @function determine
    * 
@@ -27,7 +29,7 @@ function ServiceCard({
     } else if(state.loggedIn) {
       dispatch({ type: "setEmployeeComponent", component: <EditStyle style={haircut} /> });
     } else {
-      alert(haircut.key);
+      history.push("/scheduling");
     }
   };
   return (
