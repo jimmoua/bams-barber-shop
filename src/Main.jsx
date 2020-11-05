@@ -10,7 +10,7 @@ import { useStore } from "./store";
 import Navbar from "./components/Navbar";
 import PaymentPage from "./components/PaymentPage";
 import EmployeeMain from "./components/Employee/EmployeeMain";
-import TestComponent from "./components/TestComponent";
+import AppointmentLookup from "./components/pages/AppointmentLookup";
 
 const Main = () => {
   const { state } = useStore();
@@ -24,7 +24,11 @@ const Main = () => {
         <Route exact path="/gallery" component={Gallery}/>
         <Route exact path="/login" component={Login} />
         <Route exact path="/pay" component={PaymentPage} />
-        <Route exact path="/test" component={TestComponent} />
+
+        {/* ROUTE TEST OR DEV COMPONENTS */}
+        <Route exact path="/appointment_lookup" component={AppointmentLookup} />
+
+        {/* 404 Component */}
         <Route component={Component404} />
       </Switch>
     </Router>
