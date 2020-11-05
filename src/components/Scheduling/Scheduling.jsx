@@ -8,6 +8,7 @@ import DatePicker from "./DatePicker";
 import AdditionalInfo from "./AdditionalInfo";
 import Review from "./Review";
 import PayDecision from "./PayDescision";
+import PropType from "prop-types";
 
 /**
  * @function Scheduling
@@ -18,7 +19,7 @@ import PayDecision from "./PayDescision";
  * @returns
  * React stuff
  */
-const Scheduling = () => {
+const Scheduling = ( props ) => {
 
   const [serviceList, setServiceList] = React.useState();
   const [step, setStep] = React.useState(0);
@@ -69,12 +70,18 @@ const Scheduling = () => {
     // Determine the which component to render based on which step we are in.
     setStepComponent(stepComponentMap[step]);
 
-    // This conditional if should allow us to perform the fetch just once.
-    // Otherwise, we will be infinitely looping the useEffect.
+    // If there isn't a service list AND we were NOT redirected from the services page, fetch data.
     if(!serviceList) {
       fetchData();
     }
-  }, [serviceList, step, appointmentDetails, appointmentSubmit]);
+    else if(props?.location?.state?.service && !appointmentDetails.service) {
+      setAppointmentDetails({
+        ...appointmentDetails,
+        service: props.location.state.service
+      });
+      setStep(1);
+    }
+  }, [serviceList, step, appointmentDetails, appointmentSubmit, props]);
 
   /**
    * @function buttonContinueHandler
@@ -114,7 +121,6 @@ const Scheduling = () => {
         setStep(step - 1);
         return setAppointmentDetails({
           ...appointmentDetails,
-          service: null,
           date: null
         });
       }
@@ -149,7 +155,6 @@ const Scheduling = () => {
               setStep(0);
               setAppointmentDetails({
                 ...appointmentDetails,
-                service: null,
                 date: null
               });
             }} />
@@ -181,6 +186,10 @@ const Scheduling = () => {
       { appointmentSubmit ? <PayDecision appointmentDetails={appointmentDetails} /> : schedulingContainer }
     </React.Fragment>
   );
+};
+
+Scheduling.propTypes = {
+  location: PropType.object
 };
 
 export default Scheduling;
