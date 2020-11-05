@@ -3,7 +3,7 @@ import { appointmentSearchByPhone } from "../../api/appointments";
 
 const AppointmentLookup = () => {
   const [phoneNumber, setPhoneNumber] = React.useState("");
-  const [appointmentList, setAppointmentList] = React.useState();
+  const [appointmentList, setAppointmentList] = React.useState([]);
 
   /**
    * @function lookupButtonHandler
@@ -17,17 +17,17 @@ const AppointmentLookup = () => {
       console.log(JSON.stringify(data));
       setAppointmentList(JSON.stringify(data));
     } else {
-      setAppointmentList("");
+      setAppointmentList([]);
     }
   };
   return (
     <React.Fragment>
       <h1>Appointment Lookup</h1>
       <form onSubmit={(ev) => ev.preventDefault()}>
-        <input value={phoneNumber} onChange={((ev) => setPhoneNumber(ev.target.value))} type="text"/>
+        <input value={phoneNumber} placeholder="Phone Number" onChange={((ev) => setPhoneNumber(ev.target.value))} type="tel"/>
         <button onClick={lookupButtonHandler}>Lookup</button>
       </form>
-      <p>{appointmentList}</p>
+      {appointmentList}
     </React.Fragment>
   );
 };
