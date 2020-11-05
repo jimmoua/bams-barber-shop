@@ -93,7 +93,7 @@ function Navbar() {
           <div className = "dropdownMenu" onMouseEnter={onMouseEnter}
             onMouseLeave={onMouseLeave}>
             <LinkWrapper to="/scheduling" 
-            >Schedule {dropdown && <Dropdown />}</LinkWrapper>  </div>
+            >Schedule <i className="fa fa-caret-down" /> {dropdown && <Dropdown />}</LinkWrapper>  </div>
         </React.Fragment>
       );
     }
