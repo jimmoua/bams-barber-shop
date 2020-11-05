@@ -4,6 +4,11 @@ import styles from "./styles/Services.module.css";
 import PropTypes from "prop-types";
 import { ClipLoader } from "react-spinners";
 
+/**
+ * @param {Array} serviceList is an Array of ServiceCards. This will be a state from another component.
+ * @param {Boolean} displayScheduleNow determines whether to display the "Schedule Now" text or not.
+ * @param {Function} setService sets the React state of serviceList.
+ */
 function ServiceList({ serviceList, displayScheduleNow, setService }) {
   const [cardList, setCardList] = React.useState([]);
   React.useEffect(() => {
