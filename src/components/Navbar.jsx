@@ -5,9 +5,11 @@ import { useStore } from "../store";
 import PropTypes from "prop-types";
 import EditStylesPage from "./Employee/EditStylesPage";
 import EmployeeHome from "./Employee/EmployeeHome";
+import Dropdown from "./Dropdown";
 
 function Navbar() {
   const [click, setClick] = useState(false);
+  const [dropdown, setDropdown] = useState(false);
 
   const handleClick = () => setClick(!click);
   const closeMobileMenu = () => setClick(false);
@@ -32,6 +34,22 @@ function Navbar() {
     to: PropTypes.string.isRequired,
     children: PropTypes.any.isRequired,
     onClick: PropTypes.func
+  };
+
+  const onMouseEnter = () => {
+    if (window.innerWidth < 960) {
+      setDropdown(false);
+    } else {
+      setDropdown(true);
+    }
+  };
+
+  const onMouseLeave = () => {
+    if (window.innerWidth < 960) {
+      setDropdown(false);
+    } else {
+      setDropdown(false);
+    }
   };
 
   /**
@@ -72,7 +90,10 @@ function Navbar() {
           <LinkWrapper to="/">Home</LinkWrapper>
           <LinkWrapper to="/services">Services</LinkWrapper>
           <LinkWrapper to="/gallery">Gallery</LinkWrapper>
-          <LinkWrapper to="/scheduling">Schedule</LinkWrapper>
+          <div className = "dropdownMenu" onMouseEnter={onMouseEnter}
+            onMouseLeave={onMouseLeave}>
+            <LinkWrapper to="/scheduling" 
+            >Schedule {dropdown && <Dropdown />}</LinkWrapper>  </div>
         </React.Fragment>
       );
     }
