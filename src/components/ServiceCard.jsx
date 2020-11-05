@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import styles from "./styles/Services.module.css";
 import { useStore } from "../store";
 import EditStyle from "./Employee/EditStyle";
+import { useHistory } from "react-router-dom";
 
 /**
  * @function ServiceCard
@@ -15,6 +16,7 @@ function ServiceCard({
   setService
 }) {
   const { state, dispatch } = useStore();
+  const history = useHistory();
   /**
    * @function determine
    * 
@@ -22,16 +24,16 @@ function ServiceCard({
    * Determines whether we should edit the style (employee) or go to a "book now"
    */
   const determine = (haircut) => {
-    if(state.loggedIn) {
+    if(setService) {
+      setService(haircut);
+    } else if(state.loggedIn) {
       dispatch({ type: "setEmployeeComponent", component: <EditStyle style={haircut} /> });
     } else {
-      alert(haircut.key);
+      history.push("/scheduling", { service: haircut });
     }
   };
   return (
-    <div key={haircut.key} className={styles.serviceCard} onClick={
-      setService ? () => setService(haircut) : () => determine(haircut)
-    }>
+    <div key={haircut.key} className={styles.serviceCard} onClick={() => determine(haircut)}>
       { display && <span className={styles.bookNow}>Schedule Now</span>}
       <h2>{haircut.name}</h2>
       <span className={styles.servicePrice}>${haircut.price} &bull; {haircut.time} minutes</span>
