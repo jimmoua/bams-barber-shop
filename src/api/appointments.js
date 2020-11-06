@@ -34,3 +34,14 @@ export async function appointmentCancel(dateKey) {
   }
   return response.status;
 }
+
+export async function appointmentConfirmDelete(key) {
+  let response;
+  try {
+    response = await axios.delete(`${apiUri}/api/appointments?confirmCode=${key}`, { withCredentials: true });
+  } catch (err) {
+    console.error(err);
+    return err?.response?.status;
+  }
+  return response.status;
+}
