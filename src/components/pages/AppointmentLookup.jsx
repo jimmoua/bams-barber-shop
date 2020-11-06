@@ -1,11 +1,13 @@
 import React from "react";
 import { useHistory } from "react-router-dom";
+import { ClipLoader } from "react-spinners";
 import { appointmentSearchByPhone } from "../../api/appointments";
 import styles from "../styles/AppointmentLookup.module.css";
 
 const AppointmentLookup = () => {
   const [phoneNumber, setPhoneNumber] = React.useState("");
-  const [appointmentList, setAppointmentList] = React.useState([]);
+  const [appointmentList, setAppointmentList] = React.useState();
+  const [loading, setLoading] = React.useState(false);
   const history = useHistory();
 
   /**
@@ -15,6 +17,10 @@ const AppointmentLookup = () => {
    * Onclick handler submits axios post to backend
    */
   const lookupButtonHandler = async() => {
+    if(phoneNumber.length === 0 || !/^[0-9]\d{9}$/.test(phoneNumber)) {
+      return;
+    }
+    setLoading(true);
     const data = await appointmentSearchByPhone(phoneNumber);
     if(data?.length > 0) {
       setAppointmentList(JSON.stringify(data));
@@ -28,15 +34,38 @@ const AppointmentLookup = () => {
     } else {
       setAppointmentList([]);
     }
+    setLoading(false);
   };
+
+  const displayAppointmentList = () => {
+    if(appointmentList?.length === 0) {
+      return (
+        <React.Fragment>
+          <p>No results found</p>
+        </React.Fragment>
+      );
+    }
+    return (
+      <React.Fragment>
+        {appointmentList}
+      </React.Fragment>
+    );
+  };
+
   return (
     <React.Fragment>
       <h1>Appointment Lookup</h1>
       <form onSubmit={(ev) => ev.preventDefault()}>
-        <input value={phoneNumber} placeholder="Phone Number" onChange={((ev) => setPhoneNumber(ev.target.value))} type="tel"/>
+        <input
+          required
+          value={phoneNumber}
+          placeholder="Phone Number"
+          onChange={(ev) => setPhoneNumber(ev.target.value)}
+          type="tel"
+        />
         <button onClick={lookupButtonHandler}>Lookup</button>
       </form>
-      {appointmentList}
+      {loading ? <ClipLoader /> : displayAppointmentList()}
     </React.Fragment>
   );
 };
