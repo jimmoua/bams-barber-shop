@@ -1,19 +1,23 @@
 import React from "react";
 import PropType from "prop-types";
 import { appointmentCancel } from "../api/appointments";
+import { ClipLoader } from "react-spinners";
 
 /**
  * 
  * @param {Object} props We are interested in the location.state that is passed into this prop
  */
 const SpecificAppointmentView = (props) => {
+  const [cancelSubmit, setCancelSubmit] = React.useState(false);
   const handleCancelAppointment = async() => {
+    setCancelSubmit(true);
     const statusCode = await appointmentCancel(props.location.state.dateKey);
+    setCancelSubmit(false);
     switch(statusCode) {
       case 200:
-        return console.log("Passed with 200");
+        return alert("To finalize your cancellation, please check your email or text message.");
       default:
-        return console.log(`Failed with status code ${statusCode}`);
+        return alert("Unable to process your cancellation request.");
     }
   };
   const renderAppointmentDetails = () => {
@@ -31,7 +35,7 @@ const SpecificAppointmentView = (props) => {
               <p>{props.location.state.customer}</p>
               <p>{props.location.state.date}</p>
               <p>{props.location.state.styleName}</p>
-              <button onClick={handleCancelAppointment}>Cancel Appointment</button>
+              {cancelSubmit ? <ClipLoader /> : <button onClick={handleCancelAppointment}>Cancel Appointment</button>}
             </form>
           </div>
         </React.Fragment>
