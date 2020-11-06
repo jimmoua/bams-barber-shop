@@ -11,6 +11,7 @@ import Navbar from "./components/Navbar";
 import PaymentPage from "./components/PaymentPage";
 import EmployeeMain from "./components/Employee/EmployeeMain";
 import AppointmentLookup from "./components/pages/AppointmentLookup";
+import SpecificAppointmentView from "./components/SpecificAppointmentView";
 
 const Main = () => {
   const { state } = useStore();
@@ -25,8 +26,9 @@ const Main = () => {
         <Route exact path="/login" component={Login} />
         <Route exact path="/pay" component={PaymentPage} />
 
-        {/* ROUTE TEST OR DEV COMPONENTS */}
+        {/* routes for appointment related stuff */}
         <Route exact path="/appointment_lookup" component={AppointmentLookup} />
+        <Route exact path="/appointment_view" component={SpecificAppointmentView} />
 
         {/* 404 Component */}
         <Route component={Component404} />

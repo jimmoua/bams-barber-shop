@@ -1,10 +1,12 @@
 import React from "react";
+import { useHistory } from "react-router-dom";
 import { appointmentSearchByPhone } from "../../api/appointments";
 import styles from "../styles/AppointmentLookup.module.css";
 
 const AppointmentLookup = () => {
   const [phoneNumber, setPhoneNumber] = React.useState("");
   const [appointmentList, setAppointmentList] = React.useState([]);
+  const history = useHistory();
 
   /**
    * @function lookupButtonHandler
@@ -15,12 +17,11 @@ const AppointmentLookup = () => {
   const lookupButtonHandler = async() => {
     const data = await appointmentSearchByPhone(phoneNumber);
     if(data?.length > 0) {
-      // console.log(JSON.stringify(data));
       setAppointmentList(JSON.stringify(data));
       const newAppointmentList = [];
       data.forEach((e, idx) => {
         newAppointmentList.push(
-          <p key={idx} className={styles.appointment}>{e.date}</p>
+          <p onClick={() => history.push("/appointment_view", e)} key={idx} className={styles.appointment}>{e.date}</p>
         );
       });
       setAppointmentList(newAppointmentList);
