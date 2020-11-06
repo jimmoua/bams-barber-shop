@@ -12,13 +12,13 @@ const AppointmentDelete = (props) => {
   const [confirmCode, setConfirmCode] = React.useState();
   const [finishedRequest, setFinishedRequest] = React.useState(false);
   const [statusCode, setStatusCode] = React.useState(null);
+  const queryString = props.location.search;
 
   // On component mount:
   // 1. extract the parameters from the query string
   // 2. send a request to our API using the query string
   // 3. if 200 status, appointment was removed, otherwise appointment could not be removed for other reasons (not found or server down)
   React.useEffect(() => {
-    const queryString = props?.location?.search;
     const { verification_code } = qs.parse(queryString, { ignoreQueryPrefix: true });
     if(verification_code) {
       setConfirmCode(verification_code);
@@ -29,7 +29,7 @@ const AppointmentDelete = (props) => {
         setStatusCode(response);
         setFinishedRequest(true);
       });
-  }, [props?.location?.search]);
+  }, [queryString]);
 
   // Render conditions
   // 1. If the API request has not responded with an http code, return the spinner
