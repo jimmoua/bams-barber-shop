@@ -1,5 +1,6 @@
 import React from "react";
 import { appointmentSearchByPhone } from "../../api/appointments";
+import styles from "../styles/AppointmentLookup.module.css";
 
 const AppointmentLookup = () => {
   const [phoneNumber, setPhoneNumber] = React.useState("");
@@ -14,8 +15,15 @@ const AppointmentLookup = () => {
   const lookupButtonHandler = async() => {
     const data = await appointmentSearchByPhone(phoneNumber);
     if(data?.length > 0) {
-      console.log(JSON.stringify(data));
+      // console.log(JSON.stringify(data));
       setAppointmentList(JSON.stringify(data));
+      const newAppointmentList = [];
+      data.forEach((e, idx) => {
+        newAppointmentList.push(
+          <p key={idx} className={styles.appointment}>{e.date}</p>
+        );
+      });
+      setAppointmentList(newAppointmentList);
     } else {
       setAppointmentList([]);
     }
