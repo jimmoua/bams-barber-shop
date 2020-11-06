@@ -30,7 +30,6 @@ const AdditionalInfo = ({
               setFormDetails({ ...formData, phoneNumber: ev.target.value });
             }}
             required
-            formNoValidate
           />
         </div>
 

@@ -8,7 +8,7 @@ function HomeSection() {
     <div className={styles.homeContainer}>
             
       <h1>BAMS BARBER SHOP</h1>
-      <p>Come for the freshest trims!!</p>
+      <p><i className="fa fa-large fa-phone" aria-hidden="true"></i> :501-318-3142</p>
       <div className={styles.homeBtns}>
         <Button 
           className="btns"
