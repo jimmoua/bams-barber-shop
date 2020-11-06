@@ -16,7 +16,14 @@ const SpecificAppointmentView = (props) => {
     } else {
       return (
         <React.Fragment>
-          {JSON.stringify(props.location.state)}
+          <div>
+            <form onSubmit={(ev) => ev.preventDefault()}>
+              <p>{props.location.state.customer}</p>
+              <p>{props.location.state.date}</p>
+              <p>{props.location.state.styleName}</p>
+              <button>Cancel Appointment</button>
+            </form>
+          </div>
         </React.Fragment>
       );
     }
