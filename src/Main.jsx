@@ -10,6 +10,9 @@ import { useStore } from "./store";
 import Navbar from "./components/Navbar";
 import PaymentPage from "./components/PaymentPage";
 import EmployeeMain from "./components/Employee/EmployeeMain";
+import AppointmentLookup from "./components/pages/AppointmentLookup";
+import SpecificAppointmentView from "./components/SpecificAppointmentView";
+import AppointmentDelete from "./components/AppointmentDelete";
 
 const Main = () => {
   const { state } = useStore();
@@ -23,6 +26,13 @@ const Main = () => {
         <Route exact path="/gallery" component={Gallery}/>
         <Route exact path="/login" component={Login} />
         <Route exact path="/pay" component={PaymentPage} />
+
+        {/* routes for appointment related stuff */}
+        <Route exact path="/appointment_lookup" component={AppointmentLookup} />
+        <Route exact path="/appointment_view" component={SpecificAppointmentView} />
+        <Route exact path="/delete_appointment" component={AppointmentDelete} />k
+
+        {/* 404 Component */}
         <Route component={Component404} />
       </Switch>
     </Router>

@@ -18,12 +18,6 @@
   background-color: #fff;
 }
 
-form {
-  width: 100%;
-  display: flex;
-  flex-wrap: wrap;
-}
-
 .formWrapper > h1,
 .formWrapper > h3 {
   text-align: center;
