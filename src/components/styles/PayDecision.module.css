@@ -38,6 +38,10 @@
   background-color: white;
 }
 
+.button button:hover {
+    background-color: #902020;
+    border: 2px solid black;
+}
 .button {
   text-align: center;
 }
