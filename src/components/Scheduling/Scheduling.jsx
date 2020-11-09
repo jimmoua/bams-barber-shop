@@ -9,7 +9,7 @@ import AdditionalInfo from "./AdditionalInfo";
 import Review from "./Review";
 import PayDecision from "./PayDescision";
 import PropType from "prop-types";
-import { Alert } from "react-bootstrap";
+import AlertMessage from "../AlertMessage";
 
 /**
  * @function Scheduling
@@ -37,6 +37,7 @@ const Scheduling = ( props ) => {
     }
   });
   const [appointmentSubmit, setAppointmentSubmit] = React.useState(false);
+  const [status, setStatusBase] = React.useState("");
 
   React.useEffect(() => {
     // Define a function to fetch the data from our API
@@ -91,23 +92,16 @@ const Scheduling = ( props ) => {
    * Handles the actions for when the continue button is pressed
    */
   const buttonContinueHandler = () => {
+    setStatusBase({ msg: "Success", key: Math.random() });
     switch(step) {
       case 0:
         if(!appointmentDetails.service) {
-          return <Alert variant="success">
-            <Alert.Heading>Hey, nice to see you</Alert.Heading>
-            <p>
-            Aww yeah, you successfully read this important alert message. This example
-            text is going to run a bit longer so that you can see how spacing within an
-            alert works with this kind of content.
-            </p>
-            <hr />
-            <p className="mb-0">
-            Whenever you need to, be sure to use margin utilities to keep things nice
-            and tidy.
-            </p>
-          </Alert>;
+        //{return alert ("hi");
+          return ( <React.Fragment>   {status ? <AlertMessage key={status.key} message={status.msg} /> : null}
+          </React.Fragment>
+          );
         }
+        
         break;
       case 1:
         if(appointmentDetails.date) break;
