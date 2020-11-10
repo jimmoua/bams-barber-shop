@@ -281,3 +281,38 @@
     opacity: 1;
   }
 }
+
+/* Css For Table */
+.OpeningTime{
+  color: white;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  font-size: 18px;
+  margin-top: -140px;
+  padding-bottom: 30px;
+}
+
+.OpeningTime h1{
+  font-size: 60px;
+}
+
+@media screen and (max-width:768px){
+  .OpeningTime{
+    margin-top: -340px;
+  }
+}
+
+table{
+  text-align: left;
+}
+
+th{
+  text-align: right;
+}
+
+td{
+  padding-left: 10px;
+}
+
+
