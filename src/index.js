@@ -8,18 +8,16 @@ import {
 } from "react-alert";
 import AlertTemplate from "react-alert-template-basic";
 
-// optional configuration
+// Configuration for alert
 const options = {
-  // you can also just use 'bottom center'
-  position: positions.BOTTOM_CENTER,
-  timeout: 5000,
-  offset: "30px",
-  // you can also just use 'scale'
+  position: positions.TOP_CENTER,
+  timeout: 3000,
+  offset: "100px",
   transition: transitions.SCALE
 };
 
 ReactDOM.render(
-  <AlertProvider template={AlertTemplate} options={options}>
+  <AlertProvider template={AlertTemplate} {...options}>
     <React.StrictMode>
       <App />
     </React.StrictMode>
