@@ -9,7 +9,7 @@ import AdditionalInfo from "./AdditionalInfo";
 import Review from "./Review";
 import PayDecision from "./PayDescision";
 import PropType from "prop-types";
-import AlertMessage from "../AlertMessage";
+import { useAlert } from "react-alert";
 
 /**
  * @function Scheduling
@@ -21,7 +21,7 @@ import AlertMessage from "../AlertMessage";
  * React stuff
  */
 const Scheduling = ( props ) => {
-
+  const alert = useAlert();
   const [serviceList, setServiceList] = React.useState();
   const [step, setStep] = React.useState(0);
   const [stepComponent, setStepComponent] = React.useState(<ClipLoader />);
@@ -92,16 +92,12 @@ const Scheduling = ( props ) => {
    * Handles the actions for when the continue button is pressed
    */
   const buttonContinueHandler = () => {
-    setStatusBase({ msg: "Success", key: Math.random() });
     switch(step) {
       case 0:
         if(!appointmentDetails.service) {
-        //{return alert ("hi");
-          return ( <React.Fragment>   {status ? <AlertMessage key={status.key} message={status.msg} /> : null}
-          </React.Fragment>
-          );
+          alert.show("Please select a service");
+          return;
         }
-        
         break;
       case 1:
         if(appointmentDetails.date) break;
