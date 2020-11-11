@@ -65,6 +65,8 @@ const AppointmentLookup = () => {
                 placeholder="Phone Number"
                 onChange={(ev) => setPhoneNumber(ev.target.value)}
                 type="tel"
+                pattern="^\(?([0-9]{3})\)?[-.●]?([0-9]{3})[-.●]?([0-9]{4})$"
+                title="##########"
               />
               <button className={styles.buttonLookup} onClick={lookupButtonHandler}>Lookup</button>
             </form>
