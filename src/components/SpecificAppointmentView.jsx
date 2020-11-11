@@ -2,6 +2,7 @@ import React from "react";
 import PropType from "prop-types";
 import { appointmentCancel } from "../api/appointments";
 import { ClipLoader } from "react-spinners";
+import styles from "../components/styles/SpecificAppointmentView.module.css";
 
 /**
  * 
@@ -30,10 +31,10 @@ const SpecificAppointmentView = (props) => {
     } else {
       return (
         <React.Fragment>
-          <div>
+          <div className={styles.buttonSubmit}>
             <form onSubmit={(ev) => ev.preventDefault()}>
               <p>{props.location.state.customer}</p>
-              <p>{props.location.state.date}</p>
+              <p>Date:{props.location.state.date}</p>
               <p>{props.location.state.styleName}</p>
               {cancelSubmit ? <ClipLoader /> : <button onClick={handleCancelAppointment}>Cancel Appointment</button>}
             </form>
@@ -45,8 +46,12 @@ const SpecificAppointmentView = (props) => {
 
   return (
     <React.Fragment>
-      <h1>Appointment Details</h1>
-      {renderAppointmentDetails()}
+      <div className={styles.wrapper}>
+        <div className={styles.formWrapper}>
+          <h1>Appointment Details</h1>
+          {renderAppointmentDetails()}
+        </div>
+      </div>
     </React.Fragment>
   );
 };

@@ -1,0 +1,32 @@
+.wrapper {
+    height: 87.5vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #d62828;
+  }
+  
+  .formWrapper {
+    width: 400px;
+    display: flex;
+    flex-direction: column;
+    padding: 20px 40px;
+    border-radius: 10px;
+    box-shadow: 0 10px 50px #555;
+    background-color: #fff;
+  }
+
+  .formWrapper >h1 {
+      text-align: center;
+      padding-bottom: 20px;
+  }
+
+  .buttonSubmit{
+      text-align: center;
+  }
+
+  button {
+    margin-top: 20px;
+  }
