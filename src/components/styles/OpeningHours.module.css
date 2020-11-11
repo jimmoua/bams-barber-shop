@@ -69,26 +69,27 @@
     color: #ff65bd;
     text-shadow: none;
   }
+
   82%,
   97% {
     color: #ff2483;
     text-shadow: none;
   }
 }
-  
-  .flicker {
-    animation: shine 2s forwards, blink 3s 2s infinite;
-  }
-  
-  .fastFlicker {
-    animation: shine 2s forwards, blink 10s 1s infinite;
-  }
-  
+
+.flicker {
+  animation: shine 2s forwards, blink 3s 2s infinite;
+}
+
+.fastFlicker {
+  animation: shine 2s forwards, blink 10s 1s infinite;
+}
+
 @keyframes shine {
   0% {
     color: #6b1839;
     text-shadow: none;
-    }
+  }
 
   100% {
     color: #ffe6ff;
