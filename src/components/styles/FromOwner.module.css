@@ -1,41 +1,41 @@
-.container{
-    background-color: whitesmoke;
-    padding:30px;
-}
-.FromOwner{
-    display:flex;
-    padding: 20px;
+.container {
+  background-color: whitesmoke;
+  padding: 30px;
 }
 
-.OwnerComment{
-    color: black;
-    display:flex;
-    flex-direction:column;
-    padding-left: 20px;
-    text-indent: 50px;
+.FromOwner {
+  display: flex;
+  padding: 20px;
 }
 
-.container >h1{
-
-    text-align: center;
+.OwnerComment {
+  color: black;
+  display: flex;
+  flex-direction: column;
+  padding-left: 20px;
+  text-indent: 50px;
 }
 
-.image{
-    border-radius:50%;
-    width: 100%;
+.container > h1 {
+  text-align: center;
+}
+
+.image {
+  border-radius: 50%;
+  width: 100%;
 }
 
 @media screen and (max-width: 600px) {
-    .FromOwner{
-      display: flex;
-      flex-direction: column;
-    }
+  .FromOwner {
+    display: flex;
+    flex-direction: column;
+  }
 
-    .image{
-        height:200px;
-        width:200px;
-        display: block;
-        margin-left: auto;
-        margin-right: auto;
-    }
+  .image {
+    height: 200px;
+    width: 200px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+  }
 }
