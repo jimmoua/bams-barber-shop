@@ -66,7 +66,7 @@ const AppointmentLookup = () => {
                 onChange={(ev) => setPhoneNumber(ev.target.value)}
                 type="tel"
               />
-              <button onClick={lookupButtonHandler}>Lookup</button>
+              <button className={styles.buttonLookup} onClick={lookupButtonHandler}>Lookup</button>
             </form>
             {loading ? <ClipLoader /> : displayAppointmentList()}
           </div>

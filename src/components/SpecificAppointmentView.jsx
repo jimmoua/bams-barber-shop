@@ -31,14 +31,12 @@ const SpecificAppointmentView = (props) => {
     } else {
       return (
         <React.Fragment>
-          <div className={styles.buttonSubmit}>
-            <form onSubmit={(ev) => ev.preventDefault()}>
-              <p>{props.location.state.customer}</p>
-              <p>Date:{props.location.state.date}</p>
-              <p>{props.location.state.styleName}</p>
-              {cancelSubmit ? <ClipLoader /> : <button onClick={handleCancelAppointment}>Cancel Appointment</button>}
-            </form>
-          </div>
+          <form onSubmit={(ev) => ev.preventDefault()}>
+            <p>Name: {props.location.state.customer}</p>
+            <p>Date: {props.location.state.date}</p>
+            <p>Style: {props.location.state.styleName}</p>
+            {cancelSubmit ? <ClipLoader /> : <button className={styles.buttonSubmit} onClick={handleCancelAppointment}>Cancel Appointment</button>}
+          </form>
         </React.Fragment>
       );
     }

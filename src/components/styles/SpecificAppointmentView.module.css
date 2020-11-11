@@ -19,14 +19,13 @@
   }
 
   .formWrapper >h1 {
-      text-align: center;
       padding-bottom: 20px;
   }
 
-  .buttonSubmit{
-      text-align: center;
-  }
-
-  button {
-    margin-top: 20px;
-  }
+.buttonSubmit {
+  display: block;
+  margin-top: 20px;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+}
