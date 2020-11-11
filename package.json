@@ -8,6 +8,8 @@
     "axios": "^0.20.0",
     "qs": "^6.9.4",
     "react": "^16.13.1",
+    "react-alert": "^7.0.2",
+    "react-alert-template-basic": "^1.0.0",
     "react-datepicker": "^3.2.2",
     "react-dom": "^16.13.1",
     "react-form-stepper": "^1.2.10",
