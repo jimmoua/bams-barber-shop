@@ -37,7 +37,6 @@ const Scheduling = ( props ) => {
     }
   });
   const [appointmentSubmit, setAppointmentSubmit] = React.useState(false);
-  const [status, setStatusBase] = React.useState("");
 
   React.useEffect(() => {
     // Define a function to fetch the data from our API
