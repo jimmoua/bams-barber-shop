@@ -2,6 +2,7 @@ import "react-square-payment-form/lib/default.css";
 import PropType from "prop-types";
 import { ClipLoader } from "react-spinners";
 import { createPayment } from "../api/payment";
+import styles from "../components/styles/AppointmentLookup.module.css";
 
 import React, { useState } from "react";
 
@@ -139,39 +140,44 @@ const PaymentPage = ({ appointmentDetails, setDisplayCallback }) => {
   };
 
   return (
-    <SquarePaymentForm
-      formId="squarePaymentForm"
-      sandbox={process.env.NODE_ENV === "production" ? false : true}
-      applicationId={APPLICATION_ID}
-      locationId={LOCATION_ID}
-      cardNonceResponseReceived={cardNonceResponseReceived}
-      createPaymentRequest={createPaymentRequest}
-      focusField={() => { return "cardNumber"; }}
-    >
-      <fieldset className="sq-fieldset">
-        <CreditCardNumberInput />
+    <div className={styles.wrapper}>
+      <div className={styles.creditCardWrapper}>
+        <h1>Enter Payment Details:</h1>
+        <SquarePaymentForm
+          formId="squarePaymentForm"
+          sandbox={process.env.NODE_ENV === "production" ? false : true}
+          applicationId={APPLICATION_ID}
+          locationId={LOCATION_ID}
+          cardNonceResponseReceived={cardNonceResponseReceived}
+          createPaymentRequest={createPaymentRequest}
+          focusField={() => { return "cardNumber"; }}
+        >
+          <fieldset className="sq-fieldset">
+            <CreditCardNumberInput />
 
-        <div className="sq-form-third">
-          <CreditCardExpirationDateInput />
-        </div>
+            <div className="sq-form-third">
+              <CreditCardExpirationDateInput />
+            </div>
 
-        <div className="sq-form-third">
-          <CreditCardPostalCodeInput />
-        </div>
+            <div className="sq-form-third">
+              <CreditCardPostalCodeInput />
+            </div>
 
-        <div className="sq-form-third">
-          <CreditCardCVVInput />
-        </div>
-      </fieldset>
+            <div className="sq-form-third">
+              <CreditCardCVVInput />
+            </div>
+          </fieldset>
 
-      { submitPayButton() }
+          { submitPayButton() }
 
-      <div className="sq-error-message">
-        {errorMessages.map(errorMessage => (
-          <li key={`sq-error-${errorMessage}`}>{errorMessage}</li>
-        ))}
+          <div className="sq-error-message">
+            {errorMessages.map(errorMessage => (
+              <li key={`sq-error-${errorMessage}`}>{errorMessage}</li>
+            ))}
+          </div>
+        </SquarePaymentForm>
       </div>
-    </SquarePaymentForm>
+    </div>
   );
 };
 
