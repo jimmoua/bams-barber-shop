@@ -4,6 +4,7 @@ import sendAppointment from "../../api/sendAppointment";
 import styles from "../styles/Review.module.css";
 import Button from "../Button";
 import { ClipLoader } from "react-spinners";
+import { useAlert } from "react-alert";
 
 /**
  * @param {Object} appointmentDetails - object containing customer appointment details
@@ -11,20 +12,21 @@ import { ClipLoader } from "react-spinners";
  */
 const Review = ({ appointmentDetails, setAppointmentSubmit }) => {
   const [sent, setSent] = React.useState(false);
+  const alert = useAlert();
   async function send() {
     setSent(true);
     const statusCode = await sendAppointment(appointmentDetails);
     switch(statusCode) {
       case 200:
-        alert("Appointment Booked!");
+        alert.success("Appointment Booked!");
         setAppointmentSubmit(true);
         return;
       case 409:
-        alert("Appointment conflict!");
+        alert.error("Appointment conflict!");
         break;
       case 500:
       default:
-        alert(`Something went wrong: ${statusCode}`);
+        alert.error(`Something went wrong: ${statusCode}`);
         break;
     }
     setSent(false);
