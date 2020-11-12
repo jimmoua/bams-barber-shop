@@ -9,6 +9,7 @@ import AdditionalInfo from "./AdditionalInfo";
 import Review from "./Review";
 import PayDecision from "./PayDescision";
 import PropType from "prop-types";
+import { useAlert } from "react-alert";
 
 /**
  * @function Scheduling
@@ -20,7 +21,7 @@ import PropType from "prop-types";
  * React stuff
  */
 const Scheduling = ( props ) => {
-
+  const alert = useAlert();
   const [serviceList, setServiceList] = React.useState();
   const [step, setStep] = React.useState(0);
   const [stepComponent, setStepComponent] = React.useState(<ClipLoader />);
@@ -93,7 +94,8 @@ const Scheduling = ( props ) => {
     switch(step) {
       case 0:
         if(!appointmentDetails.service) {
-          return alert("Please select a service");
+          alert.show("Please select a service");
+          return;
         }
         break;
       case 1:
