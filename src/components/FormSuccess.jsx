@@ -11,7 +11,7 @@ function FormSuccess({ date }) {
       <div className={styles.formWrapper}>
         <h3>You have an appointment with us at {date}.</h3>
         <img className="form-image" src="formsuccess.jpg" alt="form-success"/>
-        <p>Questions? Call us at 555-555-5555.</p>
+        <p>Questions? Call us at 501-318-3142.</p>
       </div>
     </div>
   );

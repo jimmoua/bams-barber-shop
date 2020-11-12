@@ -5,7 +5,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-color: #258ea6;
+  background-color: #d62828;
 }
 
 .formWrapper {
@@ -40,10 +40,10 @@
 }
 
 .loginAccount button {
-  background-color: #519e8a;
+  background-color: red;
   color: #fff;
   border-radius: 20px;
-  border: 2px solid #fff;
+  border: 2px solid black;
   width: 30%;
   margin-top: 1em;
   padding: 8px 0;
@@ -54,9 +54,9 @@
 }
 
 .loginAccount button:hover {
-  color: #5198ea;
+  color: black;
   background-color: #fff;
-  border: 2px solid #519e8a;
+  border: 2px solid red;
 }
 
 .loginAccount small {

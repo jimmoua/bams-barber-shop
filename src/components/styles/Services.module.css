@@ -1,5 +1,6 @@
 .servicePage {
   list-style-type: none;
+  background-color: #d62828;
 }
 
 .serviceList {
@@ -20,7 +21,7 @@
 
 .serviceCard:hover {
   cursor: pointer;
-  border: solid #2996cc;
+  border: solid red;
   border-width: 1px;
 }
 
@@ -29,7 +30,7 @@
 }
 
 .bookNow {
-  color: #2996cc;
+  color: red;
   float: right;
   font-size: small;
 }

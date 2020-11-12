@@ -54,18 +54,26 @@ const AppointmentLookup = () => {
 
   return (
     <React.Fragment>
-      <h1>Appointment Lookup</h1>
-      <form onSubmit={(ev) => ev.preventDefault()}>
-        <input
-          required
-          value={phoneNumber}
-          placeholder="Phone Number"
-          onChange={(ev) => setPhoneNumber(ev.target.value)}
-          type="tel"
-        />
-        <button onClick={lookupButtonHandler}>Lookup</button>
-      </form>
-      {loading ? <ClipLoader /> : displayAppointmentList()}
+      <div className={styles.wrapper}>
+        <div className={styles.formWrapper}>
+          <h1>Appointment Lookup</h1>
+          <div className={styles.searchBar}>
+            <form onSubmit={(ev) => ev.preventDefault()}>
+              <input
+                required
+                value={phoneNumber}
+                placeholder="Phone Number"
+                onChange={(ev) => setPhoneNumber(ev.target.value)}
+                type="tel"
+                pattern="^\(?([0-9]{3})\)?[-.●]?([0-9]{3})[-.●]?([0-9]{4})$"
+                title="##########"
+              />
+              <button className={styles.buttonLookup} onClick={lookupButtonHandler}>Lookup</button>
+            </form>
+            {loading ? <ClipLoader /> : displayAppointmentList()}
+          </div>
+        </div>
+      </div>
     </React.Fragment>
   );
 };
