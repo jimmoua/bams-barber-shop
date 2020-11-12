@@ -5,6 +5,7 @@ import styles from "./styles/HomeSection.module.css" ;
 
 function HomeSection() {
   return (
+
     <div className={styles.homeContainer}>
             
       <h1>BAMS BARBER SHOP</h1>
