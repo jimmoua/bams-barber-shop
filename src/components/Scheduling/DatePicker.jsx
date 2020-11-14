@@ -7,6 +7,7 @@ import styles from "../styles/DatePicker.module.css";
 import "react-datepicker/dist/react-datepicker.css";
 import { fetchAppointmentTimeSlots } from "../../api/appointments";
 import moment from "moment-timezone";
+import { getDay } from "date-fns";
 
 /**
  * 
@@ -71,6 +72,13 @@ const DatePicker = ({ setDate }) => {
           withPortal
           todayButton="Go to Today"
           required
+          filterDate={(date) => {
+            // 0 -> Sunday
+            // 1 -> Monday
+            // Return the days that are not these two
+            const day = getDay(date);
+            return day !== 0 && day !== 1;
+          }}
         />
       </div>
       <div className={styles.timeContainer}>
