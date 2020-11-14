@@ -16,7 +16,7 @@ import { getDay } from "date-fns";
 const DatePicker = ({ setDate }) => {
   const [loading, setLoading] = React.useState(false);
   const [chosenDate, setChosenDate] = React.useState(null);
-  const [availableTimes, setAvailableTimes] = React.useState([]);
+  const [availableTimes, setAvailableTimes] = React.useState();
 
   React.useEffect(() => {
     if(loading) {
@@ -38,23 +38,27 @@ const DatePicker = ({ setDate }) => {
   }, [setDate, chosenDate, loading]);
 
   const renderDates = () => {
-    if(availableTimes.length === 0 && loading) {
+    if(availableTimes?.length === 0 && loading) {
       return (
         <div className={styles.selectTimeTitle}>
           <ClipLoader />
         </div>
       );
-    } else if(availableTimes.length > 0) {
+    } else if(availableTimes?.length > 0) {
       return (
         <React.Fragment>
           <h3 className={styles.selectTimeTitle}>Select a time slot</h3>
           {availableTimes}
         </React.Fragment>
       );
+    } else if(availableTimes?.length === 0) {
+      return (
+        <React.Fragment>
+          <h1>No available time slots</h1>
+        </React.Fragment>
+      );
     }
-    return (
-      <React.Fragment></React.Fragment>
-    );
+    return <React.Fragment></React.Fragment>;
   };
 
   return (
