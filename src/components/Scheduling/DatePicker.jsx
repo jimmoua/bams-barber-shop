@@ -5,6 +5,8 @@ import PropTypes from "prop-types";
 
 import styles from "../styles/DatePicker.module.css";
 import "react-datepicker/dist/react-datepicker.css";
+import { fetchAppointmentTimeSlots } from "../../api/appointments";
+import moment from "moment-timezone";
 
 /**
  * 
@@ -17,35 +19,20 @@ const DatePicker = ({ setDate }) => {
 
   React.useEffect(() => {
     if(loading) {
-      setTimeout(() => {
-        const createMockTime = (hh, mm = 0) => {
-          const foo = new Date();
-          foo.setUTCMilliseconds(0);
-          foo.setUTCSeconds(0);
-          foo.setUTCHours(hh);
-          foo.setUTCMinutes(mm);
-          foo.setUTCDate(chosenDate.getDate());
-          return foo;
-        };
-
-        const mockTimes = [
-          createMockTime(14, 30),
-          createMockTime(15),
-          createMockTime(16, 30),
-          createMockTime(18),
-          createMockTime(21)
-        ];
-
-        const btnArray = [];
-        mockTimes.forEach((e, idx) => {
-          const s = e.toLocaleTimeString([], { timeStyle: "short" } );
-          btnArray.push(
-            <button key={idx} className={styles.dateBtn} onClick={() => setDate(e.toISOString())}>{s}</button>
-          );
+      const m = moment(chosenDate);
+      const btnArray = [];
+      fetchAppointmentTimeSlots(m.year(), m.month(), m.date())
+        .then(response => {
+          console.log(response);
+          response.forEach((e, idx) => {
+            const s = moment(e).toDate().toLocaleTimeString([], { timeStyle: "short" });
+            btnArray.push(
+              <button key={idx} className={styles.dateBtn} onClick={() => setDate(moment(e).toISOString())}>{s}</button>
+            );
+          });
+          setAvailableTimes(btnArray);
+          setLoading(false);
         });
-        setAvailableTimes(btnArray);
-        setLoading(false);
-      }, 300);
     }
   }, [setDate, chosenDate, loading]);
 
