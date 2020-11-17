@@ -3,6 +3,7 @@ import "../../App.css";
 import HomeSection from "../HomeSection";
 import OpeningHours from "../OpeningHours";
 import ImageDisplay from "../ImageDisplay";
+import AboutUs from "../AboutUs";
 
 function Home() {
   return(
@@ -10,6 +11,7 @@ function Home() {
       <HomeSection/>
       <OpeningHours/>
       <ImageDisplay/>
+      <AboutUs/>
     </>
   );
 }
