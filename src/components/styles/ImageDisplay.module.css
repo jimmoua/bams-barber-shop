@@ -32,3 +32,9 @@
     text-align: center;
     margin-top: 10px;
 }
+
+img {
+    margin-bottom: 20px;
+    width: 350px;
+    object-fit: contain;
+}
