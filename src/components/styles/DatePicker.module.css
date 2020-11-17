@@ -26,10 +26,8 @@
 
 @media screen and (max-width: 600px) {
   .timeContainer {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: space-evenly;
+    display: grid;
+    grid-template-columns: auto auto auto;
   }
 
   .timeContainer > button {
