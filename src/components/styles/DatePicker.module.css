@@ -24,15 +24,15 @@
   text-align: left;
 }
 
-@media screen and (max-width: 600px){
-  .timeContainer{
+@media screen and (max-width: 600px) {
+  .timeContainer {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: space-evenly;
   }
 
-  .timeContainer >button{
+  .timeContainer > button {
     margin-bottom: 5px;
     margin-top: 5px;
   }

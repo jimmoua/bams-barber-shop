@@ -1,0 +1,58 @@
+.container {
+  padding: 60px 20px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  background: linear-gradient(90deg, rgb(28, 27, 27) 0%, rgb(26, 23, 23) 100%);
+}
+
+.leftComponent {
+  color: white;
+  position: relative;
+  width: 40%;
+  height: 100%;
+  float: left;
+  margin-right: 10px;
+  margin-left: 20px;
+}
+
+.leftComponent > h1 {
+  font-size: 32px;
+  margin-bottom: 20px;
+}
+
+.leftComponent > p {
+  font-size: 24px;
+  padding-bottom: 8px;
+}
+
+.rightComponent {
+  width: 60%;
+  float: right;
+  margin-left: 10px;
+}
+
+@media screen and (max-width: 600px) {
+  .container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .leftComponent {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+
+  .leftComponent > p {
+    font-size: 21px;
+  }
+
+  .rightComponent {
+    width: 100%;
+  }
+
+  iframe {
+    width: 320px;
+  }
+}
