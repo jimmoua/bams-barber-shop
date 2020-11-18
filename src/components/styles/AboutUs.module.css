@@ -52,7 +52,12 @@
     width: 100%;
   }
 
-  iframe {
+  .iframeStyle {
     width: 320px;
   }
+}
+
+.mailToHref {
+  text-decoration: none;
+  color: inherit;
 }
