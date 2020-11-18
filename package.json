@@ -4,6 +4,8 @@
   "private": true,
   "dependencies": {
     "axios": "^0.20.0",
+    "moment": "^2.29.1",
+    "moment-timezone": "^0.5.31",
     "qs": "^6.9.4",
     "react": "^16.13.1",
     "react-alert": "^7.0.2",

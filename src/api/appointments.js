@@ -45,3 +45,18 @@ export async function appointmentConfirmDelete(key) {
   }
   return response.status;
 }
+
+export async function fetchAppointmentTimeSlots(year, month, date) {
+  let response;
+  try {
+    response = await axios.post(`${apiUri}/api/appointments/timeslots`, {
+      year, month, date
+    },
+    {
+      withCredentials: true
+    });
+  } catch (err) {
+    console.error(err);
+  }
+  return response?.data?.slots || [];
+}
