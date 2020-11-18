@@ -36,7 +36,7 @@
 
 .nav-menu {
   display: grid;
-  grid-template-columns: repeat(4, auto);
+  grid-template-columns: repeat(5, auto);
   grid-gap: 10px;
   list-style: none;
   text-align: center;
@@ -72,6 +72,10 @@
 }
 
 .menu-icon {
+  display: none;
+}
+
+.Lookup {
   display: none;
 }
 
@@ -154,5 +158,9 @@
     background: #fff;
     color: #242424;
     transition: 250ms;
+  }
+
+  .Lookup {
+    display: block;
   }
 }
