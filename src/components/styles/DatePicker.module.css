@@ -23,3 +23,15 @@
 .timeContainer {
   text-align: left;
 }
+
+@media screen and (max-width: 600px) {
+  .timeContainer {
+    display: grid;
+    grid-template-columns: auto auto auto;
+  }
+
+  .timeContainer > button {
+    margin-bottom: 5px;
+    margin-top: 5px;
+  }
+}
