@@ -21,7 +21,8 @@
 .navbar-logo {
   color: #fff;
   justify-self: start;
-  margin-left: -40px;
+  margin-left: 30px;
+  margin-right: 180px;
   cursor: pointer;
   text-decoration: none;
   font-size: 2rem;
@@ -36,7 +37,7 @@
 
 .nav-menu {
   display: grid;
-  grid-template-columns: repeat(4, auto);
+  grid-template-columns: repeat(5, auto);
   grid-gap: 10px;
   list-style: none;
   text-align: center;
@@ -72,6 +73,10 @@
 }
 
 .menu-icon {
+  display: none;
+}
+
+.Lookup {
   display: none;
 }
 
@@ -154,5 +159,9 @@
     background: #fff;
     color: #242424;
     transition: 250ms;
+  }
+
+  .Lookup {
+    display: block;
   }
 }
