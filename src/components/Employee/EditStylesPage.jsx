@@ -1,6 +1,7 @@
 import React from "react";
 import { fetchStyles } from "../../api/styles";
 import ServiceList from "../ServiceList";
+import styles from "../styles/EditStyle.module.css";
 
 const EditStylesPage = () => {
   const [list, setList] = React.useState();
@@ -12,6 +13,9 @@ const EditStylesPage = () => {
   }, []);
   return (
     <React.Fragment>
+      <div className={styles.addButton}>
+        <button> + Add a style</button>
+      </div>
       <ServiceList serviceList={list} displayScheduleNow={false} />
     </React.Fragment>
   );

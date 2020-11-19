@@ -39,3 +39,13 @@
   padding: 2rem;
   text-align: center;
 }
+
+.addButton {
+  margin-top: 15px;
+  text-align: center;
+}
+
+.addButton >button:hover {
+  color: black;
+  border: 2px solid black;
+}
