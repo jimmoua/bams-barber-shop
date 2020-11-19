@@ -94,6 +94,7 @@ function Navbar() {
             onMouseLeave={onMouseLeave}>
             <LinkWrapper to="/scheduling" 
             >Schedule <i className="fa fa-caret-down" /> {dropdown && <Dropdown />}</LinkWrapper>  </div>
+          <div className="Lookup"><LinkWrapper to="/appointment_Lookup">Lookup</LinkWrapper></div>  
         </React.Fragment>
       );
     }
