@@ -60,3 +60,17 @@ export async function fetchAppointmentTimeSlots(year, month, date) {
   }
   return response?.data?.slots || [];
 }
+
+/**
+ * 
+ * @param {Date} date a JavaScript date object
+ */
+export async function getAppointmentByDate(date) {
+  let response;
+  try {
+    response = await axios.get(`${apiUri}/api/appointments?date=${date.toISOString()}`);
+  } catch (err) {
+    console.error(err);
+  }
+  return response?.data || [];
+}
