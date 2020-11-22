@@ -2,7 +2,7 @@ import React from "react";
 import { fetchStyles } from "../../api/styles";
 import ServiceList from "../ServiceList";
 import styles from "../styles/EditStyle.module.css";
-import { useStore } from "../../store";
+import { useStore, checkStorage } from "../../store";
 import AddStyle from "./AddStyle";
 
 const EditStylesPage = () => {
@@ -13,6 +13,7 @@ const EditStylesPage = () => {
       setList(await fetchStyles());
     }
     fetcher();
+    checkStorage();
   }, []);
   return (
     <React.Fragment>

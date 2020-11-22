@@ -1,5 +1,4 @@
 import React from "react";
-// import PropTypes from "prop-types";
 import Button from "../Button";
 import { addStyle } from "../../api/styles";
 import { ClipLoader } from "react-spinners";
@@ -7,6 +6,7 @@ import { useStore } from "../../store";
 import styles from "../styles/EditStyle.module.css";
 import { useAlert } from "react-alert";
 import EditStylesPage from "./EditStylesPage";
+import { checkStorage } from "../../store";
 
 /**
  * @param {Object} style The style of the haircut
@@ -19,6 +19,10 @@ const AddStyle = () => {
     styleName: "",
     price: "",
     ect: ""
+  });
+
+  React.useEffect(() => {
+    checkStorage();
   });
 
   const buttons = () => {
