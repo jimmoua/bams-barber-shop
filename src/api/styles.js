@@ -18,7 +18,6 @@ export async function deleteStyle(key) {
   try {
     retCode = (await axios.post(`${apiUri}/api/styles/delete`, body, { withCredentials: true })).status;
   } catch(err) {
-    alert(err);
     retCode = err.status;
   }
   return retCode;

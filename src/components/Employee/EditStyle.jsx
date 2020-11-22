@@ -6,6 +6,7 @@ import { ClipLoader } from "react-spinners";
 import { useStore } from "../../store";
 import EditStylesPage from "./EditStylesPage";
 import styles from "../styles/EditStyle.module.css";
+import { useAlert } from "react-alert";
 
 /**
  * @param {Object} style The style of the haircut
@@ -14,6 +15,7 @@ const EditStyle = ({ style }) => {
   const [formStyle, setFormStyle] = React.useState(style);
   const [isSubmitting, setSubmit] = React.useState(false);
   const { dispatch } = useStore();
+  const alert = useAlert();
 
   const buttons = () => {
     if(isSubmitting) {
@@ -31,7 +33,7 @@ const EditStyle = ({ style }) => {
             setSubmit(true);
             const status = await deleteStyle(formStyle.key);
             if(status === 200) {
-              alert(`Style ${formStyle.name} has been deleted`);
+              alert.success(`Style ${formStyle.name} has been deleted`);
               return dispatch({ type: "setEmployeeComponent", component: <EditStylesPage /> });
             }
             setSubmit(false);
@@ -45,10 +47,10 @@ const EditStyle = ({ style }) => {
             setSubmit(true);
             const status = await updateStyle(formStyle);
             if(status === 200) {
-              alert(`Style ${formStyle.name} has been updated.`);
+              alert.success(`Style ${formStyle.name} has been updated.`);
               return dispatch({ type: "setEmployeeComponent", component: <EditStylesPage /> });
             } else {
-              alert(`Error: style ${formStyle.name} could not be updated.`);
+              alert.error(`Error: style ${formStyle.name} could not be updated.`);
             }
             setSubmit(false);
           }}
