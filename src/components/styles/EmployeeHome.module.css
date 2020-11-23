@@ -1,0 +1,73 @@
+.container {
+  width: 100%;
+  user-select: none;
+  background-color: white;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  height: 100vh;
+}
+
+.aptListContainer {
+  width: 50%;
+  cursor: pointer;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  padding-top: 3px;
+  padding-bottom: 3px;
+}
+
+.aptListItem {
+  text-align: center;
+}
+
+.aptListItem:hover {
+  background-color: #555;
+}
+
+.detailedContainer {
+  color: #555;
+  margin-left: 2rem;
+  text-align: center;
+  width: 25%;
+  border: 1px solid black;
+}
+
+.modal > .header {
+  width: 100%;
+  border-bottom: 1px solid gray;
+  font-size: 18px;
+  text-align: center;
+  padding: 5px;
+}
+.modal > .content {
+  width: 100%;
+  padding: 10px 5px;
+}
+.modal > .actions {
+  width: 100%;
+  padding: 10px 5px;
+  margin: auto;
+  text-align: center;
+}
+.modal > .close {
+  cursor: pointer;
+  position: absolute;
+  display: block;
+  padding: 2px 5px;
+  line-height: 20px;
+  right: -10px;
+  top: -10px;
+  font-size: 24px;
+  /* background: #ffffff; */
+  border-radius: 18px;
+  border: 1px solid #cfcece;
+}
+
+.button {
+  border: 1px solid black;
+}
