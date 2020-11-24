@@ -48,7 +48,9 @@ const DatePicker = ({ setDate }) => {
       return (
         <React.Fragment>
           <h3 className={styles.selectTimeTitle}>Select a time slot</h3>
-          {availableTimes}
+          <div className={styles.timeContainers}>
+            {availableTimes}
+          </div>
         </React.Fragment>
       );
     } else if(availableTimes?.length === 0) {
