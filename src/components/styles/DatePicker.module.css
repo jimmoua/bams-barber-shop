@@ -20,17 +20,27 @@
   text-align: center;
 }
 
-.timeContainer {
+.timeContainers {
   text-align: left;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 600px;
+}
+
+.timeContainers > button {
+  margin: 8px;
 }
 
 @media screen and (max-width: 600px) {
-  .timeContainer {
-    display: grid;
-    grid-template-columns: auto auto auto;
+  .timeContainers {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    width: 300px;
   }
 
-  .timeContainer > button {
+  .timeContainers > button {
     margin-bottom: 5px;
     margin-top: 5px;
   }
