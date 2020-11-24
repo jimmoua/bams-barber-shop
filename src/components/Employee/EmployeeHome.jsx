@@ -84,6 +84,7 @@ const EmployeeHome = () => {
         .then(status => {
           if(status === 200) {
             alert.success("The appointment was canceled.");
+            window.location.reload();
           } else {
             alert.error("The appointment could not be canceled.");
           }
