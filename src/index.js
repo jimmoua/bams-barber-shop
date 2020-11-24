@@ -18,9 +18,7 @@ const options = {
 
 ReactDOM.render(
   <AlertProvider template={AlertTemplate} {...options}>
-    <React.StrictMode>
-      <App />
-    </React.StrictMode>
+    <App />
   </AlertProvider>,
   document.getElementById("root")
 );
