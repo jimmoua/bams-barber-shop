@@ -7,11 +7,15 @@ import { useStore } from "../../store";
 import EditStylesPage from "./EditStylesPage";
 import styles from "../styles/EditStyle.module.css";
 import { useAlert } from "react-alert";
+import { checkStorage } from "../../store";
 
 /**
  * @param {Object} style The style of the haircut
  */
 const EditStyle = ({ style }) => {
+  React.useEffect(() => {
+    checkStorage();
+  });
   const [formStyle, setFormStyle] = React.useState(style);
   const [isSubmitting, setSubmit] = React.useState(false);
   const { dispatch } = useStore();

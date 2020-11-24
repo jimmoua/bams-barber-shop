@@ -35,6 +35,17 @@ export async function appointmentCancel(dateKey) {
   return response.status;
 }
 
+export async function appointmentCancelEmployee(dateKey) {
+  let response;
+  try {
+    response = await axios.delete(`${apiUri}/api/appointments?dateKey=${dateKey}&employee=true`, { withCredentials: true });
+  } catch (err) {
+    console.error(err);
+    return err?.response?.status || 500;
+  }
+  return response.status;
+}
+
 export async function appointmentConfirmDelete(key) {
   let response;
   try {
@@ -59,4 +70,33 @@ export async function fetchAppointmentTimeSlots(year, month, date) {
     console.error(err);
   }
   return response?.data?.slots || [];
+}
+
+/**
+ * 
+ * @param {Date} date a JavaScript date object
+ */
+export async function getAppointmentByDate(date) {
+  let response;
+  try {
+    response = await axios.get(`${apiUri}/api/appointments?date=${date.toISOString()}`);
+  } catch (err) {
+    console.error(err);
+  }
+  return response?.data || [];
+}
+
+export async function toggleAppointmentComplete(date) {
+  let response;
+  try {
+    response = await axios.patch(`${apiUri}/api/appointments`, {
+      date
+    }, {
+      withCredentials: true
+    });
+  } catch (err) {
+    console.error(err);
+    return response?.status || 500;
+  }
+  return response.status;
 }
