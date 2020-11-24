@@ -28,11 +28,9 @@
   width: 600px;
 }
 
-.timeContainers > button{
+.timeContainers > button {
   margin: 8px;
 }
-
-
 
 @media screen and (max-width: 600px) {
   .timeContainers {
