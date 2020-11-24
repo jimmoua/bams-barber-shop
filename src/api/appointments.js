@@ -35,6 +35,17 @@ export async function appointmentCancel(dateKey) {
   return response.status;
 }
 
+export async function appointmentCancelEmployee(dateKey) {
+  let response;
+  try {
+    response = await axios.delete(`${apiUri}/api/appointments?dateKey=${dateKey}&employee=true`, { withCredentials: true });
+  } catch (err) {
+    console.error(err);
+    return err?.response?.status || 500;
+  }
+  return response.status;
+}
+
 export async function appointmentConfirmDelete(key) {
   let response;
   try {
