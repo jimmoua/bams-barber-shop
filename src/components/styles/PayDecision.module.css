@@ -1,7 +1,7 @@
 .PaymentOption {
   padding: 20px;
   text-align: center;
-  background-color: #d62828;
+  background-color: white;
   height: 100vh;
   top: 0;
 }
@@ -26,6 +26,7 @@
   border-radius: 20px;
   border: 2px solid black;
   background-color: white;
+  box-shadow: 5px 5px 5px #555;
 }
 
 .CardOption {
@@ -36,6 +37,7 @@
   border-radius: 20px;
   border: 2px solid black;
   background-color: white;
+  box-shadow: 5px 5px 5px #555;
 }
 
 .button button:hover {

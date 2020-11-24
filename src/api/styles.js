@@ -7,9 +7,9 @@ export async function updateStyle(body) {
     retCode = (await axios.post(`${apiUri}/api/styles/update`, body, { withCredentials: true })).status;
   } catch (err) {
     console.error(err);
-    retCode = err.status;
+    retCode = err?.response?.status;
   }
-  return retCode;
+  return retCode || 500;
 }
 
 export async function deleteStyle(key) {
@@ -18,10 +18,9 @@ export async function deleteStyle(key) {
   try {
     retCode = (await axios.post(`${apiUri}/api/styles/delete`, body, { withCredentials: true })).status;
   } catch(err) {
-    alert(err);
-    retCode = err.status;
+    retCode = err?.response?.status;
   }
-  return retCode;
+  return retCode || 500;
 }
 
 export async function fetchStyles() {
@@ -32,4 +31,14 @@ export async function fetchStyles() {
 export async function fetchStyle(key) {
   const { data } = await axios.get(`${apiUri}/api/styles?key=${key}`);
   return data;
+}
+
+export async function addStyle(newStyle) {
+  let retCode;
+  try {
+    retCode = (await axios.post(`${apiUri}/api/styles/add`, newStyle, { withCredentials: true })).status;
+  } catch (err) {
+    retCode = err?.response?.status;
+  }
+  return retCode || 500;
 }

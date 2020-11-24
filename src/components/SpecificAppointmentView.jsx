@@ -3,12 +3,14 @@ import PropType from "prop-types";
 import { appointmentCancel } from "../api/appointments";
 import { ClipLoader } from "react-spinners";
 import styles from "../components/styles/SpecificAppointmentView.module.css";
+import { useAlert } from "react-alert";
 
 /**
  * 
  * @param {Object} props We are interested in the location.state that is passed into this prop
  */
 const SpecificAppointmentView = (props) => {
+  const alert = useAlert();
   const [cancelSubmit, setCancelSubmit] = React.useState(false);
   const handleCancelAppointment = async() => {
     setCancelSubmit(true);
@@ -16,9 +18,9 @@ const SpecificAppointmentView = (props) => {
     setCancelSubmit(false);
     switch(statusCode) {
       case 200:
-        return alert("To finalize your cancellation, please check your email or text message.");
+        return alert.show("To finalize your cancellation, please check your email or text message.");
       default:
-        return alert("Unable to process your cancellation request.");
+        return alert.error("Unable to process your cancellation request.");
     }
   };
   const renderAppointmentDetails = () => {
