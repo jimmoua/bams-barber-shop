@@ -5,7 +5,7 @@ import ReactDatePicker from "react-datepicker";
 import moment from "moment-timezone";
 import ClipLoader from "react-spinners/ClipLoader";
 import getDay from "date-fns/getDay";
-import { appointmentCancelEmployee, getAppointmentByDate } from "../../api/appointments";
+import { appointmentCancelEmployee, getAppointmentByDate, toggleAppointmentComplete } from "../../api/appointments";
 import MaterialTable from "material-table";
 import Popup from "reactjs-popup";
 import Button from "@material-ui/core/Button";
@@ -183,6 +183,52 @@ const EmployeeHome = () => {
                         </div>
                       </div>
                     )}
+                  </Popup>
+                );
+              }
+            },
+            {
+              icon: "cached",
+              tooltip: "Toggle Complete",
+              onClick: (ev, rowData) => {
+                toggleAppointmentComplete(rowData.key.date)
+                  .then(retCode => {
+                    if(retCode === 200) {
+                      setPopupComponent(
+                        <Popup open closeOnDocumentClick={false} closeOnEscape={false}>
+                          {() => {
+                            setTimeout(() => {
+                              window.location.reload();
+                            }, 300);
+                            return (
+                              <div className={styles.modal}>
+                                <div className={styles.header}>Appointment Toggle</div>
+                                <div className={styles.content}>
+                                  <div style={{ textAlign: "center" }}>
+                                    The appointment status was updated!
+                                  </div>
+                                </div>
+                              </div>
+                            );
+                          }}
+                        </Popup>
+                      );
+                    }
+                  });
+                setPopupComponent(
+                  <Popup open closeOnDocumentClick={false} closeOnEscape={false}>
+                    {() => {
+                      return (
+                        <div className={styles.modal}>
+                          <div className={styles.header}>Toggling Completetion Status...</div>
+                          <div className={styles.content}>
+                            <div style={{ textAlign: "center" }}>
+                              <ClipLoader />
+                            </div>
+                          </div>
+                        </div>
+                      );
+                    }}
                   </Popup>
                 );
               }

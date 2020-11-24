@@ -85,3 +85,18 @@ export async function getAppointmentByDate(date) {
   }
   return response?.data || [];
 }
+
+export async function toggleAppointmentComplete(date) {
+  let response;
+  try {
+    response = await axios.patch(`${apiUri}/api/appointments`, {
+      date
+    }, {
+      withCredentials: true
+    });
+  } catch (err) {
+    console.error(err);
+    return response?.status || 500;
+  }
+  return response.status;
+}
